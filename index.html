@@ -1,852 +1,1985 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wash & Glow — Hand Car Wash, Cheetham Hill, Manchester</title>
-<meta name="description" content="Hand car wash and valeting at 210 Cheetham Hill Rd, Manchester M8 8LW. Rated 4.2 from 408 Google reviews. Call 07483 124950.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#0A1F33;
-    --deep:#12304D;
-    --foam:#EEF5FA;
-    --spray:#3FA7F5;
-    --wax:#F5C451;
-    --mist:#9DB6CC;
-    --mud:#6E5E4C;
-    --display:"Bricolage Grotesque", system-ui, sans-serif;
-    --body:"Instrument Sans", system-ui, sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
-  section,.hero,footer{overflow-x:clip}
-  body{font-family:var(--body);background:var(--foam);color:var(--ink);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  a{color:inherit}
-  img,svg{display:block}
-  :focus-visible{outline:3px solid var(--wax);outline-offset:3px;border-radius:6px}
-  .wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wash & Glow — Hand Car Wash, Cheetham Hill, Manchester</title>
+  <meta name="description"
+    content="Hand car wash and valeting at 210 Cheetham Hill Rd, Manchester M8 8LW. Rated 4.2 from 408 Google reviews. Call 000000000.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0A1F33;
+      --deep: #12304D;
+      --foam: #EEF5FA;
+      --spray: #3FA7F5;
+      --wax: #F5C451;
+      --mist: #9DB6CC;
+      --mud: #6E5E4C;
+      --display: "Bricolage Grotesque", system-ui, sans-serif;
+      --body: "Instrument Sans", system-ui, sans-serif;
+    }
 
-  /* ---------- NAV ---------- */
-  .nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .35s, box-shadow .35s}
-  .nav.solid{background:rgba(10,31,51,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--foam);font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
-  .logo svg{width:34px;height:34px}
-  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:600;font-size:16px;text-decoration:none;border-radius:999px;padding:14px 24px;border:0;cursor:pointer;transition:transform .2s, background .2s, color .2s}
-  .btn svg{width:18px;height:18px}
-  .btn-wax{background:linear-gradient(180deg,#FFD877,var(--wax));color:var(--ink);box-shadow:0 5px 0 #B98A1E, 0 14px 24px -8px rgba(245,196,81,.55), inset 0 1px 0 rgba(255,255,255,.6)}
-  .btn-wax:hover{transform:translateY(-2px);box-shadow:0 7px 0 #B98A1E, 0 18px 28px -8px rgba(245,196,81,.6), inset 0 1px 0 rgba(255,255,255,.6)}
-  .btn-wax:active{transform:translateY(4px);box-shadow:0 1px 0 #B98A1E, inset 0 1px 0 rgba(255,255,255,.6)}
-  .btn-ghost{background:transparent;color:var(--foam);box-shadow:inset 0 0 0 1.5px rgba(238,245,250,.35)}
-  .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--foam)}
-  .nav .btn{padding:10px 18px;font-size:15px}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-  /* ---------- HERO ---------- */
-  .hero{position:relative;background:radial-gradient(120% 90% at 80% 20%, #173E63 0%, var(--ink) 60%);color:var(--foam);padding:150px 0 110px;overflow:hidden;isolation:isolate}
-  .bubbles{position:absolute;inset:0;z-index:-1;pointer-events:none}
-  .bubble{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle at 32% 30%, rgba(255,255,255,.85) 0 8%, rgba(255,255,255,.12) 22%, rgba(157,182,204,.08) 60%, rgba(255,255,255,.35) 100%);box-shadow:inset 0 0 6px rgba(255,255,255,.35);animation:rise linear infinite}
-  @keyframes rise{
-    0%{transform:translate(0,0) scale(.7);opacity:0}
-    10%{opacity:.9}
-    50%{transform:translate(var(--drift),-55vh) scale(1)}
-    100%{transform:translate(0,-115vh) scale(1.1);opacity:0}
-  }
-  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      overflow-x: clip
+    }
 
-  .wipe{position:relative;font-family:var(--display);font-weight:800;font-size:clamp(46px,7vw,100px);line-height:.92;letter-spacing:-.045em;display:inline-block;padding-right:.05em}
-  .wipe .dirty,.wipe .clean{display:block}
-  .wipe .dirty{position:absolute;inset:0;color:transparent;background:
-      radial-gradient(circle at 12% 30%, #4b3f33 0 2px, transparent 3px) 0 0/23px 19px,
-      radial-gradient(circle at 70% 60%, #3e342a 0 1.5px, transparent 2.5px) 0 0/17px 21px,
-      linear-gradient(180deg,#8a7a66,#5e5040);
-    -webkit-background-clip:text;background-clip:text}
-  .wipe .clean{position:relative;color:transparent;background:linear-gradient(100deg,#ffffff 0%,#dff0ff 38%,#ffffff 46%,#bfe0fb 60%,#ffffff 100%);background-size:250% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;clip-path:inset(0 100% 0 0);animation:clean 1.7s cubic-bezier(.65,0,.35,1) .6s forwards, glint 2.4s ease-in-out 2.5s forwards}
-  .wipe .depth{position:absolute;inset:0;display:block;color:#1E5388;text-shadow:1px 1px 0 #2A66A0,2px 2px 0 #245C94,3px 3px 0 #1F5388,4px 4px 0 #1A4A7C,5px 5px 0 #164270,6px 6px 0 #123A63,7px 7px 0 #0E3157,9px 12px 14px rgba(0,0,0,.4);clip-path:inset(-20% 100% -30% 0);animation:cleanD 1.7s cubic-bezier(.65,0,.35,1) .6s forwards}
-  .squeegee{position:absolute;top:-6%;height:112%;width:12px;left:0;border-radius:6px;background:linear-gradient(90deg,#1b1b1b,#3a3a3a 40%,#111);box-shadow:-18px 0 30px rgba(63,167,245,.45), 0 0 0 2px rgba(255,255,255,.08);opacity:0;animation:sweep 1.7s cubic-bezier(.65,0,.35,1) .6s forwards}
-  .squeegee::before{content:"";position:absolute;left:50%;top:50%;width:46px;height:12px;border-radius:6px;background:var(--wax);transform:translate(-2px,-50%)}
-  @keyframes clean{to{clip-path:inset(0 0 0 0)}}
-  @keyframes cleanD{to{clip-path:inset(-20% -10% -30% 0)}}
-  @keyframes sweep{0%{left:-2%;opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
-  @keyframes glint{to{background-position:0 0}}
+    section,
+    .hero,
+    footer {
+      overflow-x: clip
+    }
 
-  .hero p.lede{font-size:clamp(18px,1.6vw,21px);color:#C9D9E8;max-width:30ch;margin:28px 0 34px;opacity:0;animation:up .8s ease 2.1s forwards}
-  .hero .ctas{display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:up .8s ease 2.3s forwards}
-  .facts{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:44px;padding-top:24px;border-top:1px solid rgba(157,182,204,.2);font-size:15px;color:var(--mist);opacity:0;animation:up .8s ease 2.5s forwards}
-  .facts span{display:flex;align-items:center;gap:8px}
-  .facts strong{color:var(--foam);font-weight:600}
-  .facts svg{width:17px;height:17px;flex:none}
-  .star{color:var(--wax)}
-  @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    body {
+      font-family: var(--body);
+      background: var(--foam);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden
+    }
 
-  .hero-car{position:relative;opacity:0;animation:drive 1.3s cubic-bezier(.2,.8,.2,1) .2s forwards}
-  @keyframes drive{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
-  .hero-car{height:clamp(360px,46vw,600px)}
-  .hero-car canvas{position:absolute;inset:0;width:100%!important;height:100%!important;cursor:grab;touch-action:pan-y;opacity:0;transition:opacity 1s ease}
-  .hero-car canvas:active{cursor:grabbing}
-  .hero-car.has3d canvas{opacity:1}
-  .hero-car .fallback{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);width:100%;height:auto;overflow:visible;transition:opacity .6s}
-  .hero-car.has3d .fallback{opacity:0}
-  .spin-hint{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);display:none;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--foam);background:rgba(10,31,51,.6);backdrop-filter:blur(6px);padding:8px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(157,182,204,.25);pointer-events:none;transition:opacity .5s;white-space:nowrap}
-  .spin-hint svg{width:15px;height:15px}
-  .has3d .spin-hint{display:flex}
-  .spin-hint.gone{opacity:0}
-  .hero-car .glintbar{animation:carglint 3.2s ease-in-out 2.4s infinite}
-  @keyframes carglint{0%{transform:translateX(-200px)}45%,100%{transform:translateX(760px)}}
-  .spray path{stroke-dasharray:6 14;animation:spray 1s linear infinite}
-  @keyframes spray{to{stroke-dashoffset:-40}}
-  .foamdot{animation:pop 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-  @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+    a {
+      color: inherit
+    }
 
-  /* ---------- MARQUEE ---------- */
-  .marquee{background:var(--wax);color:var(--ink);overflow:hidden;padding:16px 0;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em}
-  .track{display:flex;width:max-content;animation:scroll 32s linear infinite}
-  .track span{display:flex;align-items:center;gap:26px;padding-right:26px;white-space:nowrap}
-  .track i{width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);display:inline-block}
-  @keyframes scroll{to{transform:translateX(-50%)}}
+    img,
+    svg {
+      display: block
+    }
 
-  /* ---------- SECTIONS ---------- */
-  section{padding:110px 0}
-  h2{font-family:var(--display);font-weight:800;font-size:clamp(38px,5vw,64px);line-height:1;letter-spacing:-.035em;max-width:16ch}
-  .intro{color:#44607A;max-width:52ch;margin-top:18px;font-size:18px}
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1)}
-  .reveal.in{opacity:1;transform:none}
+    :focus-visible {
+      outline: 3px solid var(--wax);
+      outline-offset: 3px;
+      border-radius: 6px
+    }
 
-  /* ---------- MENU ---------- */
-  .menu-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:50px}
-  .sizes{display:inline-flex;background:#D3E2EE;border-radius:999px;padding:5px;position:relative;box-shadow:inset 0 3px 6px rgba(10,31,51,.15), 0 1px 0 #fff}
-  .sizes button{position:relative;z-index:1;border:0;background:none;font:600 15px var(--body);color:#44607A;padding:10px 20px;border-radius:999px;cursor:pointer;transition:color .3s}
-  .sizes button[aria-pressed="true"]{color:var(--foam)}
-  .pill{position:absolute;top:5px;bottom:5px;left:5px;background:linear-gradient(180deg,#1A3F63,var(--ink));box-shadow:0 3px 0 #04101C, 0 8px 14px -4px rgba(10,31,51,.5);border-radius:999px;transition:transform .45s cubic-bezier(.3,1.4,.5,1), width .45s}
-  .board-wrap{perspective:1600px}
-  .menu{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 70px;background:linear-gradient(180deg,#fff,#F6FAFD);border-radius:30px;padding:14px 48px 26px;box-shadow:inset 0 1px 0 #fff, 0 10px 0 #C6D7E6, 0 12px 0 #B3C8DA, 0 50px 70px -30px rgba(10,31,51,.45);transform-origin:50% 0;transform:rotateX(28deg) translateY(40px);opacity:0;transition:transform 1.2s cubic-bezier(.2,.8,.2,1), opacity .8s}
-  .menu.in{transform:none;opacity:1}
-  .menu li:last-child,.menu li:nth-last-child(2){border-bottom:0}
-  .menu li{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:14px;padding:26px 0;border-bottom:1.5px solid #D2E0EC}
-  .menu h3{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.02em}
-  .menu .dots{border-bottom:2px dotted #A9C0D4;transform:translateY(-6px)}
-  .menu .price{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;text-align:right;display:inline-block;background:linear-gradient(180deg,#1A3F63,var(--ink));color:var(--foam);padding:6px 14px 7px;border-radius:14px;box-shadow:0 4px 0 #04101C, 0 10px 16px -6px rgba(10,31,51,.5), inset 0 1px 0 rgba(255,255,255,.15)}
-  .menu .price small{color:var(--mist)!important}
-  .menu .price small{font:500 13px var(--body);color:#6C869E;margin-right:4px;letter-spacing:0}
-  .menu .price.flip{animation:flip .45s ease}
-  @keyframes flip{0%{transform:translateY(0);opacity:1}45%{transform:translateY(-12px);opacity:0}55%{transform:translateY(12px);opacity:0}100%{transform:none;opacity:1}}
-  .menu p{grid-column:1/-1;color:#5A7690;font-size:15.5px;margin-top:4px}
+    .wrap {
+      width: min(1180px, 100% - 48px);
+      margin-inline: auto
+    }
 
-  /* ---------- BEFORE / AFTER ---------- */
-  .ba{background:var(--ink);color:var(--foam)}
-  .ba .intro{color:var(--mist)}
-  .ba-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center}
-  .tilt{transition:transform .25s ease-out;will-change:transform}
-  .stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--gx,70%) var(--gy,20%), rgba(255,255,255,.14), transparent 60%)}
-  .stage{box-shadow:0 12px 0 #07182A, 0 14px 0 #04101C, 0 60px 80px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.1);position:relative;border-radius:28px;background:linear-gradient(180deg,#183A5C 0%,#10273F 70%,#0C2034 100%);padding:40px 30px 30px;overflow:hidden;--pos:50%}
-  .stage .layer svg{width:100%;height:auto}
-  .stage .clean-layer{position:absolute;inset:40px 30px 30px;clip-path:inset(0 0 0 var(--pos))}
-  .stage .handle{position:absolute;top:0;bottom:0;left:var(--pos);width:0;pointer-events:none}
-  .stage .handle::before{content:"";position:absolute;top:0;bottom:0;left:-5px;width:10px;background:#1a1a1a;box-shadow:0 0 24px rgba(63,167,245,.6)}
-  .stage .handle::after{content:"";position:absolute;top:50%;left:-28px;width:56px;height:56px;border-radius:50%;background:var(--wax) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A1F33' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l-6 6 6 6M15 6l6 6-6 6'/%3E%3C/svg%3E") center/26px no-repeat;transform:translateY(-50%);box-shadow:0 6px 20px rgba(0,0,0,.35)}
-  .stage input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-  .stage input:focus-visible + .handle::after{outline:3px solid var(--foam);outline-offset:4px}
-  .tag{position:absolute;top:18px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(10,31,51,.7)}
-  .tag.l{left:18px;color:#CDB9A0}.tag.r{right:18px;color:var(--foam)}
-  .hint{margin-top:18px;color:var(--mist);font-size:15px;display:flex;align-items:center;gap:10px}
+    /* ---------- NAV ---------- */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      transition: background .35s, box-shadow .35s
+    }
 
-  /* ---------- STEPS ---------- */
-  .road{position:relative;margin:60px 0 10px;height:70px}
-  .road .line{position:absolute;left:0;right:0;top:50px;height:4px;background:repeating-linear-gradient(90deg,#A9C0D4 0 26px,transparent 26px 44px)}
-  .road .mini{position:absolute;top:8px;left:0;width:90px;transition:left 2.6s cubic-bezier(.45,0,.2,1)}
-  .road.in .mini{left:calc(100% - 90px)}
-  .steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-  .steps li{counter-increment:s}
-  .steps .n{font-family:var(--display);font-weight:800;font-size:72px;line-height:1;letter-spacing:-.05em;color:var(--spray);text-shadow:1px 1px 0 #3198E6,2px 2px 0 #2A89D4,3px 3px 0 #237AC0,4px 4px 0 #1D6BAB,5px 5px 0 #185D96,6px 6px 0 #134F81,7px 7px 0 #0F416C,14px 18px 22px rgba(10,31,51,.3)}
-  .steps h3{font-family:var(--display);font-size:26px;letter-spacing:-.02em;margin:12px 0 8px}
-  .steps p{color:#5A7690;max-width:32ch}
-  .steps li:nth-child(2){transition-delay:.15s}.steps li:nth-child(3){transition-delay:.3s}
+    .nav.solid {
+      background: rgba(10, 31, 51, .92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .08)
+    }
 
-  /* ---------- RATING ---------- */
-  .rating{background:#DCE8F2}
-  .rating .wrap{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:center}
-  .score{font-family:var(--display);font-weight:800;font-size:clamp(120px,17vw,220px);line-height:.85;letter-spacing:-.06em;perspective:900px}
-  .score span{display:inline-block;color:var(--ink);text-shadow:1px 1px 0 #2F7FC4,2px 2px 0 #2B76B8,3px 3px 0 #276DAB,4px 4px 0 #23649E,5px 5px 0 #1F5B91,6px 6px 0 #1B5284,7px 7px 0 #174977,8px 8px 0 #13406A,9px 9px 0 #10375D,10px 10px 0 #0D2F50,22px 30px 36px rgba(10,31,51,.35)}
-  .stars{position:relative;display:inline-block;font-size:40px;letter-spacing:6px;line-height:1;margin:24px 0 8px}
-  .stars .base{color:#B8CBDC}
-  .stars .fill{position:absolute;inset:0;width:0;overflow:hidden;white-space:nowrap;color:#E9A800;transition:width 1.8s cubic-bezier(.3,.8,.3,1) .3s}
-  .rating.in .stars .fill{width:84%}
-  .rating .count{color:#44607A;font-size:18px}
-  .rating .btn{margin-top:30px;background:var(--ink);color:var(--foam)}
-  .rating .btn:hover{transform:translateY(-2px)}
+    .nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px
+    }
 
-  /* ---------- VISIT ---------- */
-  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:stretch}
-  .details{list-style:none;margin:40px 0 36px}
-  .details li{display:grid;grid-template-columns:28px 1fr;gap:16px;padding:18px 0;border-bottom:1.5px solid #D2E0EC}
-  .details svg{width:22px;height:22px;color:var(--spray);margin-top:3px}
-  .details b{display:block;font-weight:600}
-  .details span{color:#5A7690}
-  .details a{text-decoration:none;border-bottom:1.5px solid var(--spray)}
-  .mapbox{border-radius:28px;overflow:hidden;min-height:440px;height:100%;background:#cfdde9;border:8px solid #fff;box-shadow:0 10px 0 #C6D7E6, 0 12px 0 #B3C8DA, 0 50px 70px -30px rgba(10,31,51,.45)}
-  .mapbox iframe{width:100%;height:100%;min-height:440px;border:0;display:block}
-  .visit .btn-wax{margin-right:10px}
-  .visit .btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
-  .visit .btn-line:hover{background:var(--ink);color:var(--foam)}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--foam);
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -.02em
+    }
 
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--ink);color:var(--mist);padding:60px 0 110px;font-size:15px}
-  footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
-  footer .big{font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,72px);letter-spacing:-.045em;color:var(--foam);line-height:1}
+    .logo svg {
+      width: 34px;
+      height: 34px
+    }
 
-  .dock{display:none}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 14px 24px;
+      border: 0;
+      cursor: pointer;
+      transition: transform .2s, background .2s, color .2s
+    }
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width:960px){
-    .hero-grid,.ba-grid,.visit-grid{grid-template-columns:1fr}
-    .hero{padding:120px 0 80px}
-    .hero-car{height:clamp(340px,62vw,520px);margin-right:0}
-    .menu{grid-template-columns:1fr}
-    .rating .wrap{grid-template-columns:1fr;gap:10px}
-  }
-  @media (max-width:680px){
-    body{font-size:16px}
-    section{padding:80px 0}
-    .steps{grid-template-columns:1fr;gap:34px}
-    .road{display:none}
-    .nav .btn{display:none}
-    .dock{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;transform:translateY(120%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
-    .dock.show{transform:none}
-    .dock .btn{justify-content:center;padding:15px;box-shadow:0 10px 30px rgba(10,31,51,.35)}
-    .dock .btn-dark{background:var(--ink);color:var(--foam)}
-    .menu h3{font-size:21px}
-    .menu{padding:6px 22px 16px}
-    .menu li{grid-template-columns:1fr auto}
-    .menu .dots{display:none}
-  }
-  @media (max-width:380px){
-    .menu{padding:4px 16px 12px}
-    .menu h3{font-size:19px}
-    .menu .price{font-size:20px;padding:5px 11px 6px}
-    .menu li:nth-last-child(2){border-bottom:1.5px solid #D2E0EC}
-    .stage{padding:30px 14px 20px}
-    .stage .clean-layer{inset:30px 14px 20px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-    .bubbles{display:none}
-    .wipe .clean,.wipe .depth{clip-path:none}
-    .reveal,.menu{opacity:1;transform:none}
-  }
-</style>
+    .btn svg {
+      width: 18px;
+      height: 18px
+    }
+
+    .btn-wax {
+      background: linear-gradient(180deg, #FFD877, var(--wax));
+      color: var(--ink);
+      box-shadow: 0 5px 0 #B98A1E, 0 14px 24px -8px rgba(245, 196, 81, .55), inset 0 1px 0 rgba(255, 255, 255, .6)
+    }
+
+    .btn-wax:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 0 #B98A1E, 0 18px 28px -8px rgba(245, 196, 81, .6), inset 0 1px 0 rgba(255, 255, 255, .6)
+    }
+
+    .btn-wax:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #B98A1E, inset 0 1px 0 rgba(255, 255, 255, .6)
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--foam);
+      box-shadow: inset 0 0 0 1.5px rgba(238, 245, 250, .35)
+    }
+
+    .btn-ghost:hover {
+      box-shadow: inset 0 0 0 1.5px var(--foam)
+    }
+
+    .nav .btn {
+      padding: 10px 18px;
+      font-size: 15px
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      background: radial-gradient(120% 90% at 80% 20%, #173E63 0%, var(--ink) 60%);
+      color: var(--foam);
+      padding: 150px 0 110px;
+      overflow: hidden;
+      isolation: isolate
+    }
+
+    .bubbles {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, .85) 0 8%, rgba(255, 255, 255, .12) 22%, rgba(157, 182, 204, .08) 60%, rgba(255, 255, 255, .35) 100%);
+      box-shadow: inset 0 0 6px rgba(255, 255, 255, .35);
+      animation: rise linear infinite
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translate(0, 0) scale(.7);
+        opacity: 0
+      }
+
+      10% {
+        opacity: .9
+      }
+
+      50% {
+        transform: translate(var(--drift), -55vh) scale(1)
+      }
+
+      100% {
+        transform: translate(0, -115vh) scale(1.1);
+        opacity: 0
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center
+    }
+
+    .wipe {
+      position: relative;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(46px, 7vw, 100px);
+      line-height: .92;
+      letter-spacing: -.045em;
+      display: inline-block;
+      padding-right: .05em
+    }
+
+    .wipe .dirty,
+    .wipe .clean {
+      display: block
+    }
+
+    .wipe .dirty {
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      background:
+        radial-gradient(circle at 12% 30%, #4b3f33 0 2px, transparent 3px) 0 0/23px 19px,
+        radial-gradient(circle at 70% 60%, #3e342a 0 1.5px, transparent 2.5px) 0 0/17px 21px,
+        linear-gradient(180deg, #8a7a66, #5e5040);
+      -webkit-background-clip: text;
+      background-clip: text
+    }
+
+    .wipe .clean {
+      position: relative;
+      color: transparent;
+      background: linear-gradient(100deg, #ffffff 0%, #dff0ff 38%, #ffffff 46%, #bfe0fb 60%, #ffffff 100%);
+      background-size: 250% 100%;
+      background-position: 100% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      clip-path: inset(0 100% 0 0);
+      animation: clean 1.7s cubic-bezier(.65, 0, .35, 1) .6s forwards, glint 2.4s ease-in-out 2.5s forwards
+    }
+
+    .wipe .depth {
+      position: absolute;
+      inset: 0;
+      display: block;
+      color: #1E5388;
+      text-shadow: 1px 1px 0 #2A66A0, 2px 2px 0 #245C94, 3px 3px 0 #1F5388, 4px 4px 0 #1A4A7C, 5px 5px 0 #164270, 6px 6px 0 #123A63, 7px 7px 0 #0E3157, 9px 12px 14px rgba(0, 0, 0, .4);
+      clip-path: inset(-20% 100% -30% 0);
+      animation: cleanD 1.7s cubic-bezier(.65, 0, .35, 1) .6s forwards
+    }
+
+    .squeegee {
+      position: absolute;
+      top: -6%;
+      height: 112%;
+      width: 12px;
+      left: 0;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #1b1b1b, #3a3a3a 40%, #111);
+      box-shadow: -18px 0 30px rgba(63, 167, 245, .45), 0 0 0 2px rgba(255, 255, 255, .08);
+      opacity: 0;
+      animation: sweep 1.7s cubic-bezier(.65, 0, .35, 1) .6s forwards
+    }
+
+    .squeegee::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 46px;
+      height: 12px;
+      border-radius: 6px;
+      background: var(--wax);
+      transform: translate(-2px, -50%)
+    }
+
+    @keyframes clean {
+      to {
+        clip-path: inset(0 0 0 0)
+      }
+    }
+
+    @keyframes cleanD {
+      to {
+        clip-path: inset(-20% -10% -30% 0)
+      }
+    }
+
+    @keyframes sweep {
+      0% {
+        left: -2%;
+        opacity: 1
+      }
+
+      92% {
+        opacity: 1
+      }
+
+      100% {
+        left: 100%;
+        opacity: 0
+      }
+    }
+
+    @keyframes glint {
+      to {
+        background-position: 0 0
+      }
+    }
+
+    .hero p.lede {
+      font-size: clamp(18px, 1.6vw, 21px);
+      color: #C9D9E8;
+      max-width: 30ch;
+      margin: 28px 0 34px;
+      opacity: 0;
+      animation: up .8s ease 2.1s forwards
+    }
+
+    .hero .ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      opacity: 0;
+      animation: up .8s ease 2.3s forwards
+    }
+
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      margin-top: 44px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(157, 182, 204, .2);
+      font-size: 15px;
+      color: var(--mist);
+      opacity: 0;
+      animation: up .8s ease 2.5s forwards
+    }
+
+    .facts span {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .facts strong {
+      color: var(--foam);
+      font-weight: 600
+    }
+
+    .facts svg {
+      width: 17px;
+      height: 17px;
+      flex: none
+    }
+
+    .star {
+      color: var(--wax)
+    }
+
+    @keyframes up {
+      from {
+        opacity: 0;
+        transform: translateY(18px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .hero-car {
+      position: relative;
+      opacity: 0;
+      animation: drive 1.3s cubic-bezier(.2, .8, .2, 1) .2s forwards
+    }
+
+    @keyframes drive {
+      from {
+        opacity: 0;
+        transform: translateX(-80px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .hero-car {
+      height: clamp(360px, 46vw, 600px)
+    }
+
+    .hero-car canvas {
+      position: absolute;
+      inset: 0;
+      width: 100% !important;
+      height: 100% !important;
+      cursor: grab;
+      touch-action: pan-y;
+      opacity: 0;
+      transition: opacity 1s ease
+    }
+
+    .hero-car canvas:active {
+      cursor: grabbing
+    }
+
+    .hero-car.has3d canvas {
+      opacity: 1
+    }
+
+    .hero-car .fallback {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      transition: opacity .6s
+    }
+
+    .hero-car.has3d .fallback {
+      opacity: 0
+    }
+
+    .spin-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 4%;
+      transform: translateX(-50%);
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foam);
+      background: rgba(10, 31, 51, .6);
+      backdrop-filter: blur(6px);
+      padding: 8px 14px;
+      border-radius: 999px;
+      box-shadow: inset 0 0 0 1px rgba(157, 182, 204, .25);
+      pointer-events: none;
+      transition: opacity .5s;
+      white-space: nowrap
+    }
+
+    .spin-hint svg {
+      width: 15px;
+      height: 15px
+    }
+
+    .has3d .spin-hint {
+      display: flex
+    }
+
+    .spin-hint.gone {
+      opacity: 0
+    }
+
+    .hero-car .glintbar {
+      animation: carglint 3.2s ease-in-out 2.4s infinite
+    }
+
+    @keyframes carglint {
+      0% {
+        transform: translateX(-200px)
+      }
+
+      45%,
+      100% {
+        transform: translateX(760px)
+      }
+    }
+
+    .spray path {
+      stroke-dasharray: 6 14;
+      animation: spray 1s linear infinite
+    }
+
+    @keyframes spray {
+      to {
+        stroke-dashoffset: -40
+      }
+    }
+
+    .foamdot {
+      animation: pop 2.6s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center
+    }
+
+    @keyframes pop {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.12)
+      }
+    }
+
+    /* ---------- MARQUEE ---------- */
+    .marquee {
+      background: var(--wax);
+      color: var(--ink);
+      overflow: hidden;
+      padding: 16px 0;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -.01em
+    }
+
+    .track {
+      display: flex;
+      width: max-content;
+      animation: scroll 32s linear infinite
+    }
+
+    .track span {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding-right: 26px;
+      white-space: nowrap
+    }
+
+    .track i {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      display: inline-block
+    }
+
+    @keyframes scroll {
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      padding: 110px 0
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -.035em;
+      max-width: 16ch
+    }
+
+    .intro {
+      color: #44607A;
+      max-width: 52ch;
+      margin-top: 18px;
+      font-size: 18px
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none
+    }
+
+    /* ---------- MENU ---------- */
+    .menu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 50px
+    }
+
+    .sizes {
+      display: inline-flex;
+      background: #D3E2EE;
+      border-radius: 999px;
+      padding: 5px;
+      position: relative;
+      box-shadow: inset 0 3px 6px rgba(10, 31, 51, .15), 0 1px 0 #fff
+    }
+
+    .sizes button {
+      position: relative;
+      z-index: 1;
+      border: 0;
+      background: none;
+      font: 600 15px var(--body);
+      color: #44607A;
+      padding: 10px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: color .3s
+    }
+
+    .sizes button[aria-pressed="true"] {
+      color: var(--foam)
+    }
+
+    .pill {
+      position: absolute;
+      top: 5px;
+      bottom: 5px;
+      left: 5px;
+      background: linear-gradient(180deg, #1A3F63, var(--ink));
+      box-shadow: 0 3px 0 #04101C, 0 8px 14px -4px rgba(10, 31, 51, .5);
+      border-radius: 999px;
+      transition: transform .45s cubic-bezier(.3, 1.4, .5, 1), width .45s
+    }
+
+    .board-wrap {
+      perspective: 1600px
+    }
+
+    .menu {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 70px;
+      background: linear-gradient(180deg, #fff, #F6FAFD);
+      border-radius: 30px;
+      padding: 14px 48px 26px;
+      box-shadow: inset 0 1px 0 #fff, 0 10px 0 #C6D7E6, 0 12px 0 #B3C8DA, 0 50px 70px -30px rgba(10, 31, 51, .45);
+      transform-origin: 50% 0;
+      transform: rotateX(28deg) translateY(40px);
+      opacity: 0;
+      transition: transform 1.2s cubic-bezier(.2, .8, .2, 1), opacity .8s
+    }
+
+    .menu.in {
+      transform: none;
+      opacity: 1
+    }
+
+    .menu li:last-child,
+    .menu li:nth-last-child(2) {
+      border-bottom: 0
+    }
+
+    .menu li {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: baseline;
+      gap: 14px;
+      padding: 26px 0;
+      border-bottom: 1.5px solid #D2E0EC
+    }
+
+    .menu h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -.02em
+    }
+
+    .menu .dots {
+      border-bottom: 2px dotted #A9C0D4;
+      transform: translateY(-6px)
+    }
+
+    .menu .price {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 24px;
+      letter-spacing: -.02em;
+      text-align: right;
+      display: inline-block;
+      background: linear-gradient(180deg, #1A3F63, var(--ink));
+      color: var(--foam);
+      padding: 6px 14px 7px;
+      border-radius: 14px;
+      box-shadow: 0 4px 0 #04101C, 0 10px 16px -6px rgba(10, 31, 51, .5), inset 0 1px 0 rgba(255, 255, 255, .15)
+    }
+
+    .menu .price small {
+      color: var(--mist) !important
+    }
+
+    .menu .price small {
+      font: 500 13px var(--body);
+      color: #6C869E;
+      margin-right: 4px;
+      letter-spacing: 0
+    }
+
+    .menu .price.flip {
+      animation: flip .45s ease
+    }
+
+    @keyframes flip {
+      0% {
+        transform: translateY(0);
+        opacity: 1
+      }
+
+      45% {
+        transform: translateY(-12px);
+        opacity: 0
+      }
+
+      55% {
+        transform: translateY(12px);
+        opacity: 0
+      }
+
+      100% {
+        transform: none;
+        opacity: 1
+      }
+    }
+
+    .menu p {
+      grid-column: 1/-1;
+      color: #5A7690;
+      font-size: 15.5px;
+      margin-top: 4px
+    }
+
+    /* ---------- BEFORE / AFTER ---------- */
+    .ba {
+      background: var(--ink);
+      color: var(--foam)
+    }
+
+    .ba .intro {
+      color: var(--mist)
+    }
+
+    .ba-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: center
+    }
+
+    .tilt {
+      transition: transform .25s ease-out;
+      will-change: transform
+    }
+
+    .stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(420px circle at var(--gx, 70%) var(--gy, 20%), rgba(255, 255, 255, .14), transparent 60%)
+    }
+
+    .stage {
+      box-shadow: 0 12px 0 #07182A, 0 14px 0 #04101C, 0 60px 80px -30px rgba(0, 0, 0, .7), inset 0 1px 0 rgba(255, 255, 255, .1);
+      position: relative;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #183A5C 0%, #10273F 70%, #0C2034 100%);
+      padding: 40px 30px 30px;
+      overflow: hidden;
+      --pos: 50%
+    }
+
+    .stage .layer svg {
+      width: 100%;
+      height: auto
+    }
+
+    .stage .clean-layer {
+      position: absolute;
+      inset: 40px 30px 30px;
+      clip-path: inset(0 0 0 var(--pos))
+    }
+
+    .stage .handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--pos);
+      width: 0;
+      pointer-events: none
+    }
+
+    .stage .handle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -5px;
+      width: 10px;
+      background: #1a1a1a;
+      box-shadow: 0 0 24px rgba(63, 167, 245, .6)
+    }
+
+    .stage .handle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -28px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--wax) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A1F33' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l-6 6 6 6M15 6l6 6-6 6'/%3E%3C/svg%3E") center/26px no-repeat;
+      transform: translateY(-50%);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .35)
+    }
+
+    .stage input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+      margin: 0
+    }
+
+    .stage input:focus-visible+.handle::after {
+      outline: 3px solid var(--foam);
+      outline-offset: 4px
+    }
+
+    .tag {
+      position: absolute;
+      top: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(10, 31, 51, .7)
+    }
+
+    .tag.l {
+      left: 18px;
+      color: #CDB9A0
+    }
+
+    .tag.r {
+      right: 18px;
+      color: var(--foam)
+    }
+
+    .hint {
+      margin-top: 18px;
+      color: var(--mist);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    /* ---------- STEPS ---------- */
+    .road {
+      position: relative;
+      margin: 60px 0 10px;
+      height: 70px
+    }
+
+    .road .line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50px;
+      height: 4px;
+      background: repeating-linear-gradient(90deg, #A9C0D4 0 26px, transparent 26px 44px)
+    }
+
+    .road .mini {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 90px;
+      transition: left 2.6s cubic-bezier(.45, 0, .2, 1)
+    }
+
+    .road.in .mini {
+      left: calc(100% - 90px)
+    }
+
+    .steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px
+    }
+
+    .steps li {
+      counter-increment: s
+    }
+
+    .steps .n {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 72px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      color: var(--spray);
+      text-shadow: 1px 1px 0 #3198E6, 2px 2px 0 #2A89D4, 3px 3px 0 #237AC0, 4px 4px 0 #1D6BAB, 5px 5px 0 #185D96, 6px 6px 0 #134F81, 7px 7px 0 #0F416C, 14px 18px 22px rgba(10, 31, 51, .3)
+    }
+
+    .steps h3 {
+      font-family: var(--display);
+      font-size: 26px;
+      letter-spacing: -.02em;
+      margin: 12px 0 8px
+    }
+
+    .steps p {
+      color: #5A7690;
+      max-width: 32ch
+    }
+
+    .steps li:nth-child(2) {
+      transition-delay: .15s
+    }
+
+    .steps li:nth-child(3) {
+      transition-delay: .3s
+    }
+
+    /* ---------- RATING ---------- */
+    .rating {
+      background: #DCE8F2
+    }
+
+    .rating .wrap {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 70px;
+      align-items: center
+    }
+
+    .score {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(120px, 17vw, 220px);
+      line-height: .85;
+      letter-spacing: -.06em;
+      perspective: 900px
+    }
+
+    .score span {
+      display: inline-block;
+      color: var(--ink);
+      text-shadow: 1px 1px 0 #2F7FC4, 2px 2px 0 #2B76B8, 3px 3px 0 #276DAB, 4px 4px 0 #23649E, 5px 5px 0 #1F5B91, 6px 6px 0 #1B5284, 7px 7px 0 #174977, 8px 8px 0 #13406A, 9px 9px 0 #10375D, 10px 10px 0 #0D2F50, 22px 30px 36px rgba(10, 31, 51, .35)
+    }
+
+    .stars {
+      position: relative;
+      display: inline-block;
+      font-size: 40px;
+      letter-spacing: 6px;
+      line-height: 1;
+      margin: 24px 0 8px
+    }
+
+    .stars .base {
+      color: #B8CBDC
+    }
+
+    .stars .fill {
+      position: absolute;
+      inset: 0;
+      width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      color: #E9A800;
+      transition: width 1.8s cubic-bezier(.3, .8, .3, 1) .3s
+    }
+
+    .rating.in .stars .fill {
+      width: 84%
+    }
+
+    .rating .count {
+      color: #44607A;
+      font-size: 18px
+    }
+
+    .rating .btn {
+      margin-top: 30px;
+      background: var(--ink);
+      color: var(--foam)
+    }
+
+    .rating .btn:hover {
+      transform: translateY(-2px)
+    }
+
+    /* ---------- VISIT ---------- */
+    .visit-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 60px;
+      align-items: stretch
+    }
+
+    .details {
+      list-style: none;
+      margin: 40px 0 36px
+    }
+
+    .details li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1.5px solid #D2E0EC
+    }
+
+    .details svg {
+      width: 22px;
+      height: 22px;
+      color: var(--spray);
+      margin-top: 3px
+    }
+
+    .details b {
+      display: block;
+      font-weight: 600
+    }
+
+    .details span {
+      color: #5A7690
+    }
+
+    .details a {
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--spray)
+    }
+
+    .mapbox {
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 440px;
+      height: 100%;
+      background: #cfdde9;
+      border: 8px solid #fff;
+      box-shadow: 0 10px 0 #C6D7E6, 0 12px 0 #B3C8DA, 0 50px 70px -30px rgba(10, 31, 51, .45)
+    }
+
+    .mapbox iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      border: 0;
+      display: block
+    }
+
+    .visit .btn-wax {
+      margin-right: 10px
+    }
+
+    .visit .btn-line {
+      background: transparent;
+      color: var(--ink);
+      box-shadow: inset 0 0 0 1.5px var(--ink)
+    }
+
+    .visit .btn-line:hover {
+      background: var(--ink);
+      color: var(--foam)
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--ink);
+      color: var(--mist);
+      padding: 60px 0 110px;
+      font-size: 15px
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+
+    footer .big {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: -.045em;
+      color: var(--foam);
+      line-height: 1
+    }
+
+    .dock {
+      display: none
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:960px) {
+
+      .hero-grid,
+      .ba-grid,
+      .visit-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero {
+        padding: 120px 0 80px
+      }
+
+      .hero-car {
+        height: clamp(340px, 62vw, 520px);
+        margin-right: 0
+      }
+
+      .menu {
+        grid-template-columns: 1fr
+      }
+
+      .rating .wrap {
+        grid-template-columns: 1fr;
+        gap: 10px
+      }
+    }
+
+    @media (max-width:680px) {
+      body {
+        font-size: 16px
+      }
+
+      section {
+        padding: 80px 0
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 34px
+      }
+
+      .road {
+        display: none
+      }
+
+      .nav .btn {
+        display: none
+      }
+
+      .dock {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 60;
+        transform: translateY(120%);
+        transition: transform .4s cubic-bezier(.2, .8, .2, 1)
+      }
+
+      .dock.show {
+        transform: none
+      }
+
+      .dock .btn {
+        justify-content: center;
+        padding: 15px;
+        box-shadow: 0 10px 30px rgba(10, 31, 51, .35)
+      }
+
+      .dock .btn-dark {
+        background: var(--ink);
+        color: var(--foam)
+      }
+
+      .menu h3 {
+        font-size: 21px
+      }
+
+      .menu {
+        padding: 6px 22px 16px
+      }
+
+      .menu li {
+        grid-template-columns: 1fr auto
+      }
+
+      .menu .dots {
+        display: none
+      }
+    }
+
+    @media (max-width:380px) {
+      .menu {
+        padding: 4px 16px 12px
+      }
+
+      .menu h3 {
+        font-size: 19px
+      }
+
+      .menu .price {
+        font-size: 20px;
+        padding: 5px 11px 6px
+      }
+
+      .menu li:nth-last-child(2) {
+        border-bottom: 1.5px solid #D2E0EC
+      }
+
+      .stage {
+        padding: 30px 14px 20px
+      }
+
+      .stage .clean-layer {
+        inset: 30px 14px 20px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important
+      }
+
+      .bubbles {
+        display: none
+      }
+
+      .wipe .clean,
+      .wipe .depth {
+        clip-path: none
+      }
+
+      .reveal,
+      .menu {
+        opacity: 1;
+        transform: none
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Shared car drawing -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="paintClean" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#5DBBFF"/>
-      <stop offset=".45" stop-color="#1F78D6"/>
-      <stop offset="1" stop-color="#0E3F7A"/>
-    </linearGradient>
-    <linearGradient id="paintDirty" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#9A9384"/>
-      <stop offset=".6" stop-color="#7F7666"/>
-      <stop offset="1" stop-color="#5B4E3E"/>
-    </linearGradient>
-    <linearGradient id="glassClean" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#CDEBFF"/>
-      <stop offset=".5" stop-color="#6FA9D6"/>
-      <stop offset="1" stop-color="#274E73"/>
-    </linearGradient>
-    <linearGradient id="glintGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
-      <stop offset=".5" stop-color="#fff" stop-opacity=".75"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <path id="bodyPath" d="M40 196 C36 168 52 150 92 144 L176 132 C214 94 252 78 304 76 L392 76 C432 78 458 98 490 128 L546 138 C572 143 582 165 580 196 C580 204 574 208 566 208 L518 208 C518 180 498 160 470 160 C442 160 422 180 422 208 L198 208 C198 180 178 160 150 160 C122 160 102 180 102 208 L54 208 C46 208 40 204 40 196 Z"/>
-    <clipPath id="bodyClip"><use href="#bodyPath"/></clipPath>
-    <symbol id="car" viewBox="0 0 620 260">
-      <ellipse cx="310" cy="246" rx="270" ry="9" fill="rgba(0,0,0,.35)"/>
-      <use href="#bodyPath" style="fill:var(--paint)"/>
-      <path d="M206 130 C230 104 258 92 300 90 L330 90 L330 130 Z" style="fill:var(--glass)"/>
-      <path d="M344 90 L390 90 C420 92 440 106 466 130 L344 130 Z" style="fill:var(--glass)"/>
-      <path d="M337 86 L337 204 M202 134 L202 200" stroke="rgba(0,0,0,.25)" stroke-width="2"/>
-      <path d="M360 150 h26 M226 150 h26" stroke="rgba(0,0,0,.35)" stroke-width="4" stroke-linecap="round"/>
-      <path d="M548 150 L575 157 L575 170 L552 167 Z" style="fill:var(--lamp)"/>
-      <path d="M44 160 L62 158 L62 173 L42 175 Z" fill="#D94A4A"/>
-      <path d="M110 150 C220 140 400 136 528 142" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" style="opacity:var(--shine)"/>
-      <g>
-        <circle cx="150" cy="208" r="40" fill="#0B1520"/>
-        <circle cx="150" cy="208" r="24" style="fill:var(--rim)"/>
-        <circle cx="150" cy="208" r="6" fill="#0B1520"/>
-        <circle cx="470" cy="208" r="40" fill="#0B1520"/>
-        <circle cx="470" cy="208" r="24" style="fill:var(--rim)"/>
-        <circle cx="470" cy="208" r="6" fill="#0B1520"/>
-      </g>
-    </symbol>
-  </defs>
-</svg>
+  <!-- Shared car drawing -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="paintClean" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5DBBFF" />
+        <stop offset=".45" stop-color="#1F78D6" />
+        <stop offset="1" stop-color="#0E3F7A" />
+      </linearGradient>
+      <linearGradient id="paintDirty" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#9A9384" />
+        <stop offset=".6" stop-color="#7F7666" />
+        <stop offset="1" stop-color="#5B4E3E" />
+      </linearGradient>
+      <linearGradient id="glassClean" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#CDEBFF" />
+        <stop offset=".5" stop-color="#6FA9D6" />
+        <stop offset="1" stop-color="#274E73" />
+      </linearGradient>
+      <linearGradient id="glintGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#fff" stop-opacity="0" />
+        <stop offset=".5" stop-color="#fff" stop-opacity=".75" />
+        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+      </linearGradient>
+      <path id="bodyPath"
+        d="M40 196 C36 168 52 150 92 144 L176 132 C214 94 252 78 304 76 L392 76 C432 78 458 98 490 128 L546 138 C572 143 582 165 580 196 C580 204 574 208 566 208 L518 208 C518 180 498 160 470 160 C442 160 422 180 422 208 L198 208 C198 180 178 160 150 160 C122 160 102 180 102 208 L54 208 C46 208 40 204 40 196 Z" />
+      <clipPath id="bodyClip">
+        <use href="#bodyPath" />
+      </clipPath>
+      <symbol id="car" viewBox="0 0 620 260">
+        <ellipse cx="310" cy="246" rx="270" ry="9" fill="rgba(0,0,0,.35)" />
+        <use href="#bodyPath" style="fill:var(--paint)" />
+        <path d="M206 130 C230 104 258 92 300 90 L330 90 L330 130 Z" style="fill:var(--glass)" />
+        <path d="M344 90 L390 90 C420 92 440 106 466 130 L344 130 Z" style="fill:var(--glass)" />
+        <path d="M337 86 L337 204 M202 134 L202 200" stroke="rgba(0,0,0,.25)" stroke-width="2" />
+        <path d="M360 150 h26 M226 150 h26" stroke="rgba(0,0,0,.35)" stroke-width="4" stroke-linecap="round" />
+        <path d="M548 150 L575 157 L575 170 L552 167 Z" style="fill:var(--lamp)" />
+        <path d="M44 160 L62 158 L62 173 L42 175 Z" fill="#D94A4A" />
+        <path d="M110 150 C220 140 400 136 528 142" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+          style="opacity:var(--shine)" />
+        <g>
+          <circle cx="150" cy="208" r="40" fill="#0B1520" />
+          <circle cx="150" cy="208" r="24" style="fill:var(--rim)" />
+          <circle cx="150" cy="208" r="6" fill="#0B1520" />
+          <circle cx="470" cy="208" r="40" fill="#0B1520" />
+          <circle cx="470" cy="208" r="24" style="fill:var(--rim)" />
+          <circle cx="470" cy="208" r="6" fill="#0B1520" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
 
-<header class="nav" id="nav">
-  <div class="wrap">
-    <a href="#top" class="logo" aria-label="Wash & Glow home">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="16" cy="22" r="12" fill="none" stroke="#3FA7F5" stroke-width="3"/><circle cx="29" cy="12" r="7" fill="none" stroke="#F5C451" stroke-width="3"/><circle cx="12" cy="18" r="2.5" fill="#EEF5FA"/></svg>
-      Wash &amp; Glow
-    </a>
-    <a class="btn btn-wax" href="tel:+447483124950">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-      Call us
-    </a>
-  </div>
-</header>
-
-<main id="top">
-  <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
-    <div class="wrap hero-grid">
-      <div>
-        <h1 class="wipe" id="hero-title">
-          <span class="dirty" aria-hidden="true">Dirty in.<br>Glowing out.</span>
-          <span class="depth" aria-hidden="true">Dirty in.<br>Glowing out.</span>
-          <span class="clean">Dirty in.<br>Glowing out.</span>
-          <span class="squeegee" aria-hidden="true"></span>
-        </h1>
-        <p class="lede">Hand car wash and valeting on Cheetham Hill Road, just up from Manchester city centre.</p>
-        <div class="ctas">
-          <a class="btn btn-wax" href="tel:+447483124950">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-            Call 07483 124950
-          </a>
-          <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Get directions</a>
-        </div>
-        <div class="facts">
-          <span><span class="star" aria-hidden="true">★</span><strong>4.2</strong> from 408 Google reviews</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Closes <strong>6:30pm</strong></span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>M8 8LW</span>
-        </div>
-      </div>
-
-      <div class="hero-car" id="car3d">
-        <svg class="fallback" viewBox="0 0 620 300" aria-hidden="true">
-          <g class="spray" fill="none" stroke="#9FD4FF" stroke-width="3" stroke-linecap="round" opacity=".8">
-            <path d="M330 -10 C 300 40 290 70 300 100"/>
-            <path d="M360 -10 C 350 40 350 70 360 100"/>
-            <path d="M390 -10 C 400 40 410 70 420 110"/>
-          </g>
-          <g transform="translate(0,40)">
-            <use href="#car" width="620" height="260" style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.6"/>
-            <g clip-path="url(#bodyClip)">
-              <rect class="glintbar" x="0" y="60" width="90" height="170" fill="url(#glintGrad)" transform="skewX(-20)"/>
-            </g>
-            <g fill="#fff" opacity=".92">
-              <circle class="foamdot" cx="250" cy="86" r="14"/>
-              <circle class="foamdot" cx="272" cy="80" r="10" style="animation-delay:.3s"/>
-              <circle class="foamdot" cx="290" cy="84" r="16" style="animation-delay:.6s"/>
-              <circle class="foamdot" cx="314" cy="78" r="11" style="animation-delay:.9s"/>
-              <circle class="foamdot" cx="336" cy="82" r="13" style="animation-delay:.2s"/>
-              <circle class="foamdot" cx="360" cy="78" r="9" style="animation-delay:.5s"/>
-              <circle class="foamdot" cx="380" cy="84" r="12" style="animation-delay:.8s"/>
-              <circle class="foamdot" cx="404" cy="90" r="8" style="animation-delay:1.1s"/>
-            </g>
-          </g>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a href="#top" class="logo" aria-label="Wash & Glow home">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="16" cy="22" r="12" fill="none" stroke="#3FA7F5" stroke-width="3" />
+          <circle cx="29" cy="12" r="7" fill="none" stroke="#F5C451" stroke-width="3" />
+          <circle cx="12" cy="18" r="2.5" fill="#EEF5FA" />
         </svg>
-        <div class="spin-hint" id="spinHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg>Drag to spin</div>
-      </div>
+        Wash &amp; Glow
+      </a>
+      <a class="btn btn-wax" href="tel:+447483124950">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path
+            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
+        </svg>
+        Call us
+      </a>
     </div>
-  </section>
+  </header>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="track">
-      <span>Hand wash <i></i> Snow foam <i></i> Interior valet <i></i> Alloy &amp; tyre shine <i></i> Hand wax <i></i> Vans &amp; SUVs welcome <i></i></span>
-      <span>Hand wash <i></i> Snow foam <i></i> Interior valet <i></i> Alloy &amp; tyre shine <i></i> Hand wax <i></i> Vans &amp; SUVs welcome <i></i></span>
-    </div>
-  </div>
-
-  <!-- SERVICES -->
-  <section id="services" aria-labelledby="svc-title">
-    <div class="wrap">
-      <div class="menu-head reveal">
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
         <div>
-          <h2 id="svc-title">Pick your wash</h2>
-          <p class="intro">Every wash is done by hand. Choose your vehicle size to see prices.</p>
+          <h1 class="wipe" id="hero-title">
+            <span class="dirty" aria-hidden="true">Dirty in.<br>Glowing out.</span>
+            <span class="depth" aria-hidden="true">Dirty in.<br>Glowing out.</span>
+            <span class="clean">Dirty in.<br>Glowing out.</span>
+            <span class="squeegee" aria-hidden="true"></span>
+          </h1>
+          <p class="lede">Hand car wash and valeting on Cheetham Hill Road, just up from Manchester city centre.</p>
+          <div class="ctas">
+            <a class="btn btn-wax" href="tel:+447483124950">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
+              </svg>
+              Call 07483 124950
+            </a>
+            <a class="btn btn-ghost" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Get
+              directions</a>
+          </div>
+          <div class="facts">
+            <span><span class="star" aria-hidden="true">★</span><strong>4.2</strong> from 408 Google reviews</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>Closes <strong>6:30pm</strong></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+                <circle cx="12" cy="9.5" r="2.5" />
+              </svg>M8 8LW</span>
+          </div>
         </div>
-        <div class="sizes" role="group" aria-label="Vehicle size">
-          <span class="pill" id="pill"></span>
-          <button type="button" data-m="1" aria-pressed="true">Car</button>
-          <button type="button" data-m="1.25" aria-pressed="false">SUV / 4x4</button>
-          <button type="button" data-m="1.5" aria-pressed="false">Van</button>
-        </div>
-      </div>
-      <div class="board-wrap"><ul class="menu" id="menu">
-        <li><h3>Outside hand wash</h3><span class="dots"></span><span class="price" data-base="10"><small>from</small>£10</span>
-          <p>Snow foam pre-wash, two-bucket hand wash, rinse and hand dry.</p></li>
-        <li><h3>Inside &amp; out</h3><span class="dots"></span><span class="price" data-base="18"><small>from</small>£18</span>
-          <p>Outside hand wash plus hoover, dashboard wipe and windows inside.</p></li>
-        <li><h3>Wash &amp; wax</h3><span class="dots"></span><span class="price" data-base="25"><small>from</small>£25</span>
-          <p>Full hand wash finished with a layer of wax for a deep, lasting shine.</p></li>
-        <li><h3>Interior valet</h3><span class="dots"></span><span class="price" data-base="35"><small>from</small>£35</span>
-          <p>Seats, carpets, mats, door cards and boot, deep cleaned.</p></li>
-        <li><h3>Full valet</h3><span class="dots"></span><span class="price" data-base="60"><small>from</small>£60</span>
-          <p>Our complete top-to-bottom clean, inside and out, with wax.</p></li>
-        <li><h3>Alloy &amp; tyre shine</h3><span class="dots"></span><span class="price" data-base="6"><small>from</small>£6</span>
-          <p>Brake dust off the wheels and a dressing that makes tyres look new.</p></li>
-      </ul></div>
-    </div>
-  </section>
 
-  <!-- BEFORE / AFTER -->
-  <section class="ba" id="results" aria-labelledby="ba-title">
-    <div class="wrap ba-grid">
-      <div class="reveal">
-        <h2 id="ba-title">See the difference for yourself</h2>
-        <p class="intro">Months of Manchester rain, road salt and motorway grime, gone in one visit. Drag the squeegee across the car.</p>
-      </div>
-      <div class="reveal"><div class="stage tilt" id="stage" data-tilt="7">
-        <span class="tag l">Before</span><span class="tag r">After</span>
-        <div class="layer" aria-hidden="true">
-          <svg viewBox="0 0 620 260">
-            <use href="#car" width="620" height="260" style="--paint:url(#paintDirty);--glass:#6C767B;--lamp:#9d9a86;--rim:#6f6a60;--shine:0"/>
-            <g clip-path="url(#bodyClip)" fill="#4E4032" opacity=".8">
-              <ellipse cx="120" cy="190" rx="60" ry="22"/>
-              <ellipse cx="300" cy="200" rx="120" ry="16"/>
-              <ellipse cx="520" cy="190" rx="55" ry="20"/>
-              <circle cx="240" cy="165" r="9"/><circle cx="270" cy="175" r="6"/><circle cx="410" cy="168" r="11"/>
-              <circle cx="455" cy="150" r="5"/><circle cx="180" cy="158" r="7"/><circle cx="360" cy="180" r="8"/>
-              <path d="M220 184 q4 14 0 22 q-4-8 0-22z M390 186 q4 12 0 20 q-4-8 0-20z"/>
+        <div class="hero-car" id="car3d">
+          <svg class="fallback" viewBox="0 0 620 300" aria-hidden="true">
+            <g class="spray" fill="none" stroke="#9FD4FF" stroke-width="3" stroke-linecap="round" opacity=".8">
+              <path d="M330 -10 C 300 40 290 70 300 100" />
+              <path d="M360 -10 C 350 40 350 70 360 100" />
+              <path d="M390 -10 C 400 40 410 70 420 110" />
             </g>
-            <g fill="#5a4b3b" opacity=".55">
-              <circle cx="260" cy="112" r="5"/><circle cx="300" cy="104" r="3"/><circle cx="372" cy="110" r="4"/><circle cx="420" cy="118" r="3"/>
-            </g>
-          </svg>
-        </div>
-        <div class="layer clean-layer" aria-hidden="true">
-          <svg viewBox="0 0 620 260">
-            <use href="#car" width="620" height="260" style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.65"/>
-            <g fill="#fff">
-              <path d="M140 60 l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
-              <path d="M480 70 l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
-              <path d="M330 40 l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+            <g transform="translate(0,40)">
+              <use href="#car" width="620" height="260"
+                style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.6" />
+              <g clip-path="url(#bodyClip)">
+                <rect class="glintbar" x="0" y="60" width="90" height="170" fill="url(#glintGrad)"
+                  transform="skewX(-20)" />
+              </g>
+              <g fill="#fff" opacity=".92">
+                <circle class="foamdot" cx="250" cy="86" r="14" />
+                <circle class="foamdot" cx="272" cy="80" r="10" style="animation-delay:.3s" />
+                <circle class="foamdot" cx="290" cy="84" r="16" style="animation-delay:.6s" />
+                <circle class="foamdot" cx="314" cy="78" r="11" style="animation-delay:.9s" />
+                <circle class="foamdot" cx="336" cy="82" r="13" style="animation-delay:.2s" />
+                <circle class="foamdot" cx="360" cy="78" r="9" style="animation-delay:.5s" />
+                <circle class="foamdot" cx="380" cy="84" r="12" style="animation-delay:.8s" />
+                <circle class="foamdot" cx="404" cy="90" r="8" style="animation-delay:1.1s" />
+              </g>
             </g>
           </svg>
+          <div class="spin-hint" id="spinHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5" />
+            </svg>Drag to spin</div>
         </div>
-        <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Drag to compare before and after">
-        <span class="handle" aria-hidden="true"></span>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- STEPS -->
-  <section aria-labelledby="how-title">
-    <div class="wrap">
-      <h2 class="reveal" id="how-title">How a visit works</h2>
-      <div class="road" id="road" aria-hidden="true">
-        <div class="line"></div>
-        <svg class="mini" viewBox="0 0 620 260"><use href="#car" width="620" height="260" style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.6"/></svg>
       </div>
-      <ol class="steps">
-        <li class="reveal"><div class="n">1</div><h3>Pull in</h3><p>Drive onto Cheetham Hill Road and tell us which wash you'd like.</p></li>
-        <li class="reveal"><div class="n">2</div><h3>We get to work</h3><p>Our team foams, hand washes and dries your car with care.</p></li>
-        <li class="reveal"><div class="n">3</div><h3>Drive away glowing</h3><p>Check it over, pay, and head off in a car that looks brand new.</p></li>
-      </ol>
-    </div>
-  </section>
+    </section>
 
-  <!-- RATING -->
-  <section class="rating" id="reviews" aria-labelledby="rev-title">
-    <div class="wrap">
-      <div class="score reveal" aria-hidden="true"><span class="tilt" data-tilt="16">4.2</span></div>
-      <div class="reveal">
-        <h2 id="rev-title">Trusted by drivers across north Manchester</h2>
-        <div class="stars" role="img" aria-label="Rated 4.2 out of 5">
-          <span class="base">★★★★★</span><span class="fill">★★★★★</span>
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>Hand wash <i></i> Snow foam <i></i> Interior valet <i></i> Alloy &amp; tyre shine <i></i> Hand wax <i></i>
+          Vans &amp; SUVs welcome <i></i></span>
+        <span>Hand wash <i></i> Snow foam <i></i> Interior valet <i></i> Alloy &amp; tyre shine <i></i> Hand wax <i></i>
+          Vans &amp; SUVs welcome <i></i></span>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="svc-title">
+      <div class="wrap">
+        <div class="menu-head reveal">
+          <div>
+            <h2 id="svc-title">Pick your wash</h2>
+            <p class="intro">Every wash is done by hand. Choose your vehicle size to see prices.</p>
+          </div>
+          <div class="sizes" role="group" aria-label="Vehicle size">
+            <span class="pill" id="pill"></span>
+            <button type="button" data-m="1" aria-pressed="true">Car</button>
+            <button type="button" data-m="1.25" aria-pressed="false">SUV / 4x4</button>
+            <button type="button" data-m="1.5" aria-pressed="false">Van</button>
+          </div>
         </div>
-        <p class="count">Rated 4.2 out of 5 from 408 reviews on Google.</p>
-        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Wash+%26+Glow+210+Cheetham+Hill+Rd+Manchester+M8+8LW">Read reviews on Google</a>
+        <div class="board-wrap">
+          <ul class="menu" id="menu">
+            <li>
+              <h3>Outside hand wash</h3><span class="dots"></span><span class="price"
+                data-base="10"><small>from</small>£10</span>
+              <p>Snow foam pre-wash, two-bucket hand wash, rinse and hand dry.</p>
+            </li>
+            <li>
+              <h3>Inside &amp; out</h3><span class="dots"></span><span class="price"
+                data-base="18"><small>from</small>£18</span>
+              <p>Outside hand wash plus hoover, dashboard wipe and windows inside.</p>
+            </li>
+            <li>
+              <h3>Wash &amp; wax</h3><span class="dots"></span><span class="price"
+                data-base="25"><small>from</small>£25</span>
+              <p>Full hand wash finished with a layer of wax for a deep, lasting shine.</p>
+            </li>
+            <li>
+              <h3>Interior valet</h3><span class="dots"></span><span class="price"
+                data-base="35"><small>from</small>£35</span>
+              <p>Seats, carpets, mats, door cards and boot, deep cleaned.</p>
+            </li>
+            <li>
+              <h3>Full valet</h3><span class="dots"></span><span class="price"
+                data-base="60"><small>from</small>£60</span>
+              <p>Our complete top-to-bottom clean, inside and out, with wax.</p>
+            </li>
+            <li>
+              <h3>Alloy &amp; tyre shine</h3><span class="dots"></span><span class="price"
+                data-base="6"><small>from</small>£6</span>
+              <p>Brake dust off the wheels and a dressing that makes tyres look new.</p>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- VISIT -->
-  <section class="visit" id="visit" aria-labelledby="visit-title">
-    <div class="wrap visit-grid">
-      <div class="reveal">
-        <h2 id="visit-title">Come and see us</h2>
-        <ul class="details">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            <div><b>210 Cheetham Hill Rd</b><span>Cheetham Hill, Manchester M8 8LW</span></div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <div><b>Open today</b><span>Closes at 6:30pm</span></div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-            <div><b><a href="tel:+447483124950">07483 124950</a></b><span>Call ahead for full valets</span></div>
-          </li>
-        </ul>
-        <a class="btn btn-wax" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Get directions</a>
-        <a class="btn btn-line" href="tel:+447483124950">Call now</a>
+    <!-- BEFORE / AFTER -->
+    <section class="ba" id="results" aria-labelledby="ba-title">
+      <div class="wrap ba-grid">
+        <div class="reveal">
+          <h2 id="ba-title">See the difference for yourself</h2>
+          <p class="intro">Months of Manchester rain, road salt and motorway grime, gone in one visit. Drag the squeegee
+            across the car.</p>
+        </div>
+        <div class="reveal">
+          <div class="stage tilt" id="stage" data-tilt="7">
+            <span class="tag l">Before</span><span class="tag r">After</span>
+            <div class="layer" aria-hidden="true">
+              <svg viewBox="0 0 620 260">
+                <use href="#car" width="620" height="260"
+                  style="--paint:url(#paintDirty);--glass:#6C767B;--lamp:#9d9a86;--rim:#6f6a60;--shine:0" />
+                <g clip-path="url(#bodyClip)" fill="#4E4032" opacity=".8">
+                  <ellipse cx="120" cy="190" rx="60" ry="22" />
+                  <ellipse cx="300" cy="200" rx="120" ry="16" />
+                  <ellipse cx="520" cy="190" rx="55" ry="20" />
+                  <circle cx="240" cy="165" r="9" />
+                  <circle cx="270" cy="175" r="6" />
+                  <circle cx="410" cy="168" r="11" />
+                  <circle cx="455" cy="150" r="5" />
+                  <circle cx="180" cy="158" r="7" />
+                  <circle cx="360" cy="180" r="8" />
+                  <path d="M220 184 q4 14 0 22 q-4-8 0-22z M390 186 q4 12 0 20 q-4-8 0-20z" />
+                </g>
+                <g fill="#5a4b3b" opacity=".55">
+                  <circle cx="260" cy="112" r="5" />
+                  <circle cx="300" cy="104" r="3" />
+                  <circle cx="372" cy="110" r="4" />
+                  <circle cx="420" cy="118" r="3" />
+                </g>
+              </svg>
+            </div>
+            <div class="layer clean-layer" aria-hidden="true">
+              <svg viewBox="0 0 620 260">
+                <use href="#car" width="620" height="260"
+                  style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.65" />
+                <g fill="#fff">
+                  <path d="M140 60 l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" />
+                  <path d="M480 70 l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" />
+                  <path d="M330 40 l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" />
+                </g>
+              </svg>
+            </div>
+            <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Drag to compare before and after">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+        </div>
       </div>
-      <div class="reveal"><div class="mapbox tilt" data-tilt="5">
-        <iframe title="Map showing Wash & Glow at 210 Cheetham Hill Rd, Manchester" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://maps.google.com/maps?q=Wash%20%26%20Glow%2C%20210%20Cheetham%20Hill%20Rd%2C%20Manchester%20M8%208LW&z=15&output=embed"></iframe>
-      </div></div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer>
-  <div class="wrap">
-    <div class="big">Wash &amp; Glow</div>
-    <div>210 Cheetham Hill Rd, Manchester M8 8LW<br><a href="tel:+447483124950">07483 124950</a> &nbsp;&copy; <span id="yr"></span></div>
+    <!-- STEPS -->
+    <section aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 class="reveal" id="how-title">How a visit works</h2>
+        <div class="road" id="road" aria-hidden="true">
+          <div class="line"></div>
+          <svg class="mini" viewBox="0 0 620 260">
+            <use href="#car" width="620" height="260"
+              style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.6" />
+          </svg>
+        </div>
+        <ol class="steps">
+          <li class="reveal">
+            <div class="n">1</div>
+            <h3>Pull in</h3>
+            <p>Drive onto Cheetham Hill Road and tell us which wash you'd like.</p>
+          </li>
+          <li class="reveal">
+            <div class="n">2</div>
+            <h3>We get to work</h3>
+            <p>Our team foams, hand washes and dries your car with care.</p>
+          </li>
+          <li class="reveal">
+            <div class="n">3</div>
+            <h3>Drive away glowing</h3>
+            <p>Check it over, pay, and head off in a car that looks brand new.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- RATING -->
+    <section class="rating" id="reviews" aria-labelledby="rev-title">
+      <div class="wrap">
+        <div class="score reveal" aria-hidden="true"><span class="tilt" data-tilt="16">4.2</span></div>
+        <div class="reveal">
+          <h2 id="rev-title">Trusted by drivers across north Manchester</h2>
+          <div class="stars" role="img" aria-label="Rated 4.2 out of 5">
+            <span class="base">★★★★★</span><span class="fill">★★★★★</span>
+          </div>
+          <p class="count">Rated 4.2 out of 5 from 408 reviews on Google.</p>
+          <a class="btn" target="_blank" rel="noopener"
+            href="https://www.google.com/maps/search/?api=1&query=Wash+%26+Glow+210+Cheetham+Hill+Rd+Manchester+M8+8LW">Read
+            reviews on Google</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="wrap visit-grid">
+        <div class="reveal">
+          <h2 id="visit-title">Come and see us</h2>
+          <ul class="details">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+                <circle cx="12" cy="9.5" r="2.5" />
+              </svg>
+              <div><b>210 Cheetham Hill Rd</b><span>Cheetham Hill, Manchester M8 8LW</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+              <div><b>Open today</b><span>Closes at 6:30pm</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
+              </svg>
+              <div><b><a href="tel:+447483124950">07483 124950</a></b><span>Call ahead for full valets</span></div>
+            </li>
+          </ul>
+          <a class="btn btn-wax" target="_blank" rel="noopener"
+            href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Get
+            directions</a>
+          <a class="btn btn-line" href="tel:+447483124950">Call now</a>
+        </div>
+        <div class="reveal">
+          <div class="mapbox tilt" data-tilt="5">
+            <iframe title="Map showing Wash & Glow at 210 Cheetham Hill Rd, Manchester" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Wash%20%26%20Glow%2C%20210%20Cheetham%20Hill%20Rd%2C%20Manchester%20M8%208LW&z=15&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="big">Wash &amp; Glow</div>
+      <div>210 Cheetham Hill Rd, Manchester M8 8LW<br><a href="tel:+447483124950">07483 124950</a> &nbsp;&copy; <span
+          id="yr"></span></div>
+    </div>
+  </footer>
+
+  <div class="dock" id="dock">
+    <a class="btn btn-wax" href="tel:+447483124950">Call</a>
+    <a class="btn btn-dark" target="_blank" rel="noopener"
+      href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Directions</a>
   </div>
-</footer>
 
-<div class="dock" id="dock">
-  <a class="btn btn-wax" href="tel:+447483124950">Call</a>
-  <a class="btn btn-dark" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Directions</a>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    (() => {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-(() => {
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Bubbles in the hero
-  const bw = document.getElementById('bubbles');
-  if (!reduce) {
-    const count = innerWidth < 700 ? 14 : 28;
-    for (let i = 0; i < count; i++) {
-      const b = document.createElement('span');
-      const s = 8 + Math.random() * 46;
-      b.className = 'bubble';
-      b.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${9+Math.random()*12}s;animation-delay:${-Math.random()*18}s;--drift:${(Math.random()*80-40).toFixed(0)}px`;
-      bw.appendChild(b);
-    }
-  }
-
-  // Nav background + mobile dock
-  const nav = document.getElementById('nav'), dock = document.getElementById('dock');
-  const onScroll = () => {
-    nav.classList.toggle('solid', scrollY > 40);
-    dock.classList.toggle('show', scrollY > innerHeight * .6);
-  };
-  addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-  // Scroll reveals
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  }), {threshold:.2});
-  document.querySelectorAll('.reveal, #road, .rating, #menu').forEach(el => io.observe(el));
-
-  // Vehicle size toggle
-  const btns = [...document.querySelectorAll('.sizes button')], pill = document.getElementById('pill');
-  const movePill = b => { pill.style.width = b.offsetWidth + 'px'; pill.style.transform = `translateX(${b.offsetLeft - 5}px)`; };
-  btns.forEach(b => b.addEventListener('click', () => {
-    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
-    movePill(b);
-    const m = parseFloat(b.dataset.m);
-    document.querySelectorAll('.price').forEach((p, i) => {
-      p.classList.remove('flip'); void p.offsetWidth; p.classList.add('flip');
-      setTimeout(() => { p.innerHTML = `<small>from</small>£${Math.round(p.dataset.base * m)}`; }, 200 + i * 20);
-    });
-  }));
-  const setPill = () => movePill(btns.find(b => b.getAttribute('aria-pressed') === 'true'));
-  document.fonts ? document.fonts.ready.then(setPill) : setPill();
-  addEventListener('resize', setPill);
-
-  // Before / after slider
-  const stage = document.getElementById('stage'), range = document.getElementById('baRange');
-  range.addEventListener('input', () => stage.style.setProperty('--pos', range.value + '%'));
-  // Gentle nudge the first time it comes into view
-  if (!reduce) {
-    const nudge = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return; nudge.disconnect();
-      let t0; const run = t => { t0 ??= t; const k = Math.min((t - t0) / 1600, 1);
-        const v = 50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k);
-        stage.style.setProperty('--pos', v + '%'); range.value = v;
-        if (k < 1) requestAnimationFrame(run); };
-      requestAnimationFrame(run);
-    }, {threshold:.6});
-    nudge.observe(stage);
-  }
-
-
-  // 3D tilt on panels
-  if (!reduce && matchMedia('(hover:hover)').matches) {
-    document.querySelectorAll('[data-tilt]').forEach(el => {
-      const max = parseFloat(el.dataset.tilt) || 6;
-      el.addEventListener('pointermove', e => {
-        const r = el.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
-        el.style.transform = `perspective(1100px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg)`;
-        el.style.setProperty('--gx', (px + .5) * 100 + '%'); el.style.setProperty('--gy', (py + .5) * 100 + '%');
-      });
-      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-    });
-  }
-
-  // ---------- 3D car wash scene ----------
-  const host = document.getElementById('car3d');
-  if (window.THREE && host) try { buildScene(); } catch (err) { console.warn('3D unavailable', err); }
-
-  function buildScene() {
-    const T = THREE;
-    const renderer = new T.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    renderer.outputEncoding = T.sRGBEncoding;
-    renderer.toneMapping = T.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = T.PCFSoftShadowMap;
-    host.prepend(renderer.domElement);
-
-    const scene = new T.Scene();
-    const camera = new T.PerspectiveCamera(30, 1, .1, 100);
-    const camBase = new T.Vector3(7.9, 3.7, 9.0), target = new T.Vector3(0, .6, 0);
-
-    // Reflections: a tiny "car wash tunnel" rendered into an environment map
-    const pmrem = new T.PMREMGenerator(renderer);
-    const env = new T.Scene(); env.background = new T.Color(0x06121f).convertSRGBToLinear();
-    const panel = (w, h, hex, k, pos, rot) => {
-      const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: new T.Color(hex).convertSRGBToLinear().multiplyScalar(k), side: T.DoubleSide }));
-      m.position.set(...pos); m.rotation.set(...rot); env.add(m);
-    };
-    for (let i = -2; i <= 2; i++) panel(.5, 10, 0xffffff, 3, [i * 2.2, 6, 0], [Math.PI / 2, 0, 0]);
-    panel(10, 2, 0x3fa7f5, 2, [0, 2, -9], [0, 0, 0]);
-    panel(8, 2, 0xf5c451, 1.5, [0, 2, 9], [0, Math.PI, 0]);
-    panel(6, 3, 0x9db6cc, 1, [9, 2, 0], [0, -Math.PI / 2, 0]);
-    panel(30, 30, 0x07121e, 1, [0, -3, 0], [Math.PI / 2, 0, 0]);
-    scene.environment = pmrem.fromScene(env, .03).texture;
-
-    scene.add(new T.HemisphereLight(0xcfe8ff, 0x0a1f33, .6));
-    const key = new T.DirectionalLight(0xffffff, 1.9);
-    key.position.set(3, 9, 5); key.castShadow = true;
-    key.shadow.mapSize.set(2048, 2048);
-    Object.assign(key.shadow.camera, { left: -4.5, right: 4.5, top: 4.5, bottom: -4.5, near: 1, far: 20 });
-    key.shadow.radius = 5; key.shadow.bias = -.0005;
-    scene.add(key);
-    const blueL = new T.PointLight(0x3fa7f5, 2.5, 12); blueL.position.set(-4.5, 2.5, -3); scene.add(blueL);
-    const goldL = new T.PointLight(0xf5c451, 1.2, 10); goldL.position.set(4, 1.2, 4.5); scene.add(goldL);
-
-    const world = new T.Group(); scene.add(world);
-    const car = new T.Group(); world.add(car);
-
-    // Materials
-    const paint = new T.MeshPhysicalMaterial({ color: 0x1f78d6, metalness: .5, roughness: .28, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: 1.2 });
-    const glass = new T.MeshPhysicalMaterial({ color: 0x0a1726, metalness: .3, roughness: .04, clearcoat: 1, envMapIntensity: 1.8 });
-    const chrome = new T.MeshStandardMaterial({ color: 0xe6eef5, metalness: 1, roughness: .15 });
-    const dark = new T.MeshStandardMaterial({ color: 0x0c1520, metalness: .4, roughness: .55 });
-    const tyreM = new T.MeshStandardMaterial({ color: 0x121519, roughness: .9 });
-    const wax = new T.MeshStandardMaterial({ color: 0xf5c451, roughness: .35, metalness: .2 });
-    const glow = (hex, i) => new T.MeshStandardMaterial({ color: hex, emissive: hex, emissiveIntensity: i });
-
-    // Body: the same side profile as the site's illustration, extruded with a soft bevel
-    const P = (x, y) => [(x - 310) / 100, (230 - y) / 100];
-    const shape = cmds => {
-      const s = new T.Shape();
-      cmds.forEach(([op, ...a]) => {
-        const p = []; for (let i = 0; i < a.length; i += 2) p.push(...P(a[i], a[i + 1]));
-        op === 'M' ? s.moveTo(...p) : op === 'L' ? s.lineTo(...p) : s.bezierCurveTo(...p);
-      });
-      return s;
-    };
-    const extrude = (sh, depth, bevel, mat) => {
-      const g = new T.ExtrudeGeometry(sh, { depth, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel * .8, bevelSegments: 8, curveSegments: 40 });
-      g.translate(0, 0, -depth / 2);
-      return new T.Mesh(g, mat);
-    };
-    const bodyShape = shape([['M', 40, 196], ['C', 36, 168, 52, 150, 92, 144], ['L', 176, 132], ['L', 490, 128], ['C', 510, 131, 530, 134, 546, 138],
-      ['C', 572, 143, 582, 165, 580, 196], ['C', 580, 206, 574, 214, 566, 216], ['L', 524, 216], ['L', 524, 208],
-      ['C', 524, 178, 500, 154, 470, 154], ['C', 440, 154, 416, 178, 416, 208], ['L', 416, 216], ['L', 204, 216], ['L', 204, 208],
-      ['C', 204, 178, 180, 154, 150, 154], ['C', 120, 154, 96, 178, 96, 208], ['L', 96, 216], ['L', 54, 216], ['C', 46, 216, 40, 206, 40, 196]]);
-    car.add(extrude(bodyShape, 1.66, .14, paint));
-
-    const cabin = extrude(shape([['M', 186, 136], ['C', 214, 96, 252, 80, 304, 78], ['L', 392, 78], ['C', 430, 80, 456, 100, 486, 134], ['L', 186, 136]]), 1.28, .13, glass);
-    car.add(cabin);
-    // Roof rails + side sill trims
-    [-1, 1].forEach(sd => {
-      const rail = new T.Mesh(new T.BoxGeometry(1.5, .035, .04), chrome); rail.position.set(.36, 1.66, sd * .62); car.add(rail);
-      const sill = new T.Mesh(new T.BoxGeometry(3.1, .06, .03), dark); sill.position.set(0, .12, sd * .98); car.add(sill);
-      const belt = new T.Mesh(new T.BoxGeometry(2.9, .02, .02), chrome); belt.position.set(.1, .98, sd * .8); car.add(belt);
-    });
-    // Mirrors, handles, lights, grille, plates
-    const box = (w, h, d, mat, x, y, z, rz = 0) => { const m = new T.Mesh(new T.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.rotation.z = rz; car.add(m); return m; };
-    [-1, 1].forEach(sd => {
-      box(.2, .11, .16, paint, 1.62, 1.02, sd * 1.0);
-      box(.04, .09, .02, glass, 1.53, 1.02, sd * 1.08);
-      box(.18, .03, .02, chrome, .55, .82, sd * .97);
-      box(.18, .03, .02, chrome, -.75, .82, sd * .97);
-      box(.06, .11, .44, glow(0xfff3c2, 2.4), 2.62, .72, sd * .55, -.35);
-      box(.03, .025, .5, glow(0xbfe6ff, 3), 2.63, .63, sd * .55, -.35);
-      box(.06, .12, .42, glow(0xff3b3b, 2), -2.66, .7, sd * .56, .3);
-    });
-    box(.05, .03, .7, glow(0xff3b3b, 1.4), -2.69, .62, 0, .3);
-    box(.08, .2, 1.0, dark, 2.73, .36, 0);
-    for (let i = 0; i < 4; i++) box(.02, .015, .92, chrome, 2.775, .29 + i * .045, 0);
-    box(.03, .12, .5, new T.MeshStandardMaterial({ color: 0xf2f2f2, roughness: .4 }), 2.78, .12, 0);
-    box(.03, .12, .5, wax, -2.77, .4, 0);
-
-    // Wheels
-    function wheel() {
-      const g = new T.Group();
-      const tyre = new T.Mesh(new T.TorusGeometry(.31, .1, 24, 64), tyreM); tyre.scale.z = 1.55; g.add(tyre);
-      const barrel = new T.Mesh(new T.CylinderGeometry(.3, .3, .26, 48, 1, true), dark); barrel.rotation.x = Math.PI / 2; g.add(barrel);
-      const disc = new T.Mesh(new T.CylinderGeometry(.22, .22, .03, 48), new T.MeshStandardMaterial({ color: 0x6a7178, metalness: .9, roughness: .45 }));
-      disc.rotation.x = Math.PI / 2; disc.position.z = .02; g.add(disc);
-      const cal = new T.Mesh(new T.BoxGeometry(.11, .2, .07), wax); cal.position.set(.15, .1, .06); cal.rotation.z = -.55; g.add(cal);
-      const spokes = new T.Group();
-      for (let i = 0; i < 5; i++) {
-        const h = new T.Group(); h.rotation.z = i * Math.PI * 2 / 5;
-        const sp = new T.Mesh(new T.BoxGeometry(.075, .24, .035), chrome); sp.position.y = .15; h.add(sp);
-        const sp2 = sp.clone(); sp2.rotation.z = .35; sp2.position.set(-.04, .15, -.005); h.add(sp2);
-        spokes.add(h);
+      // Bubbles in the hero
+      const bw = document.getElementById('bubbles');
+      if (!reduce) {
+        const count = innerWidth < 700 ? 14 : 28;
+        for (let i = 0; i < count; i++) {
+          const b = document.createElement('span');
+          const s = 8 + Math.random() * 46;
+          b.className = 'bubble';
+          b.style.cssText = `width:${s}px;height:${s}px;left:${Math.random() * 100}%;animation-duration:${9 + Math.random() * 12}s;animation-delay:${-Math.random() * 18}s;--drift:${(Math.random() * 80 - 40).toFixed(0)}px`;
+          bw.appendChild(b);
+        }
       }
-      spokes.position.z = .11; g.add(spokes);
-      const hub = new T.Mesh(new T.CylinderGeometry(.075, .075, .07, 32), chrome); hub.rotation.x = Math.PI / 2; hub.position.z = .12; g.add(hub);
-      const cap = new T.Mesh(new T.CylinderGeometry(.04, .04, .075, 24), wax); cap.rotation.x = Math.PI / 2; cap.position.z = .125; g.add(cap);
-      const lip = new T.Mesh(new T.TorusGeometry(.295, .02, 12, 64), chrome); lip.position.z = .12; g.add(lip);
-      return g;
-    }
-    [[-1.6, 1], [1.6, 1], [-1.6, -1], [1.6, -1]].forEach(([x, sd]) => {
-      const w = wheel(); w.position.set(x, .22, sd * .8); if (sd < 0) w.rotation.y = Math.PI; car.add(w);
-    });
-    car.traverse(o => { if (o.isMesh) o.castShadow = true; });
 
-    // Platform with glowing edge
-    const deck = new T.Mesh(new T.CylinderGeometry(3.4, 3.5, .16, 128), new T.MeshPhysicalMaterial({ color: 0x10263d, metalness: .5, roughness: .25, clearcoat: 1, envMapIntensity: .9 }));
-    deck.position.y = -.27; deck.receiveShadow = true; world.add(deck);
-    const ring = new T.Mesh(new T.TorusGeometry(3.42, .03, 12, 160), glow(0x3fa7f5, 2.5)); ring.rotation.x = Math.PI / 2; ring.position.y = -.19; world.add(ring);
-    const ring2 = new T.Mesh(new T.TorusGeometry(3.0, .008, 8, 160), glow(0x3fa7f5, 1)); ring2.rotation.x = Math.PI / 2; ring2.position.y = -.185; world.add(ring2);
+      // Nav background + mobile dock
+      const nav = document.getElementById('nav'), dock = document.getElementById('dock');
+      const onScroll = () => {
+        nav.classList.toggle('solid', scrollY > 40);
+        dock.classList.toggle('show', scrollY > innerHeight * .6);
+      };
+      addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-    // Wash gantry that travels along the car
-    const gantry = new T.Group(); world.add(gantry);
-    const steel = new T.MeshStandardMaterial({ color: 0x1b2f45, metalness: .75, roughness: .3 });
-    [-1, 1].forEach(sd => {
-      const post = new T.Mesh(new T.BoxGeometry(.2, 2.55, .2), steel); post.position.set(0, 1.07, sd * 1.6); gantry.add(post);
-      for (let i = 0; i < 5; i++) { const st = new T.Mesh(new T.BoxGeometry(.21, .12, .21), wax); st.position.set(0, .1 + i * .42, sd * 1.6); gantry.add(st); }
-      const brush = new T.Mesh(new T.CylinderGeometry(.16, .16, 1.9, 24, 6), new T.MeshStandardMaterial({ color: 0x3fa7f5, roughness: .9, transparent: true, opacity: .85 }));
-      brush.position.set(0, .95, sd * 1.32); brush.userData.brush = true; gantry.add(brush);
-    });
-    const beam = new T.Mesh(new T.BoxGeometry(.32, .26, 3.5), steel); beam.position.y = 2.38; gantry.add(beam);
-    const led = new T.Mesh(new T.BoxGeometry(.06, .03, 3.1), glow(0x9fd4ff, 3)); led.position.set(.17, 2.3, 0); gantry.add(led);
-    for (let i = -3; i <= 3; i++) { const n = new T.Mesh(new T.CylinderGeometry(.025, .04, .1, 12), chrome); n.position.set(0, 2.2, i * .4); gantry.add(n); }
-    gantry.traverse(o => { if (o.isMesh) o.castShadow = true; });
+      // Scroll reveals
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }), { threshold: .2 });
+      document.querySelectorAll('.reveal, #road, .rating, #menu').forEach(el => io.observe(el));
 
-    // Foam on the roof and bonnet
-    const FN = 110, foam = new T.InstancedMesh(new T.SphereGeometry(1, 16, 12), new T.MeshStandardMaterial({ color: 0xffffff, roughness: .5, emissive: 0x000000, emissiveIntensity: 0 }), FN);
-    const fd = [], dummy = new T.Object3D();
-    for (let i = 0; i < FN; i++) {
-      const roof = i < FN * .62;
-      const x = roof ? -.35 + Math.random() * 1.3 : 1.85 + Math.random() * .6;
-      const y = roof ? 1.66 : 1.1 - (x - 1.85) * .18;
-      fd.push({ x, y, z: (Math.random() - .5) * (roof ? 1.15 : 1.4), r: .05 + Math.random() * .11, ph: Math.random() * 6 });
-    }
-    car.add(foam);
+      // Vehicle size toggle
+      const btns = [...document.querySelectorAll('.sizes button')], pill = document.getElementById('pill');
+      const movePill = b => { pill.style.width = b.offsetWidth + 'px'; pill.style.transform = `translateX(${b.offsetLeft - 5}px)`; };
+      btns.forEach(b => b.addEventListener('click', () => {
+        btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+        movePill(b);
+        const m = parseFloat(b.dataset.m);
+        document.querySelectorAll('.price').forEach((p, i) => {
+          p.classList.remove('flip'); void p.offsetWidth; p.classList.add('flip');
+          setTimeout(() => { p.innerHTML = `<small>from</small>£${Math.round(p.dataset.base * m)}`; }, 200 + i * 20);
+        });
+      }));
+      const setPill = () => movePill(btns.find(b => b.getAttribute('aria-pressed') === 'true'));
+      document.fonts ? document.fonts.ready.then(setPill) : setPill();
+      addEventListener('resize', setPill);
 
-    // Water drops
-    const DN = 700, dpos = new Float32Array(DN * 3), dvel = new Float32Array(DN);
-    const cv = document.createElement('canvas'); cv.width = cv.height = 64;
-    const cx = cv.getContext('2d'), gr = cx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.35, 'rgba(190,230,255,.8)'); gr.addColorStop(1, 'rgba(160,210,255,0)');
-    cx.fillStyle = gr; cx.fillRect(0, 0, 64, 64);
-    const dgeo = new T.BufferGeometry(); dgeo.setAttribute('position', new T.BufferAttribute(dpos, 3));
-    const drops = new T.Points(dgeo, new T.PointsMaterial({ size: .07, map: new T.CanvasTexture(cv), transparent: true, depthWrite: false, blending: T.AdditiveBlending, color: 0xaedcff }));
-    world.add(drops);
-    let gx = 0;
-    const spawn = (i, anyY) => {
-      dpos[i * 3] = gx + (Math.random() - .5) * .3;
-      dpos[i * 3 + 1] = anyY ? Math.random() * 2.2 : 2.15 - Math.random() * .1;
-      dpos[i * 3 + 2] = (Math.random() - .5) * 2.8;
-      dvel[i] = 2.5 + Math.random() * 2.5;
-    };
-    for (let i = 0; i < DN; i++) spawn(i, true);
-    const surface = (x, z) => Math.abs(z) < .95 ? (x > -.6 && x < 1.1 ? 1.62 : (x > -2.7 && x < 2.75 ? 1.02 : -.18)) : -.18;
-
-    // Floating soap bubbles
-    const bubMat = new T.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0, metalness: .1, transparent: true, opacity: .2, clearcoat: 1, envMapIntensity: 3, depthWrite: false });
-    const bubs = [];
-    for (let i = 0; i < 16; i++) {
-      const b = new T.Mesh(new T.SphereGeometry(.08 + Math.random() * .16, 24, 16), bubMat);
-      b.userData = { a: Math.random() * 6.28, rad: 2.2 + Math.random() * 1.6, sp: .15 + Math.random() * .25, y: Math.random() * 3.5 };
-      bubs.push(b); world.add(b);
-    }
-
-    // Interaction
-    let zoom = 1, rotY = .35, vel = 0, dragging = false, lastX = 0, mx = 0, my = 0, t = 0, intro = 0, visible = true;
-    const hint = document.getElementById('spinHint');
-    const cvs = renderer.domElement;
-    cvs.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; cvs.setPointerCapture(e.pointerId); hint.classList.add('gone'); });
-    cvs.addEventListener('pointermove', e => {
-      const r = cvs.getBoundingClientRect();
-      mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5;
-      if (dragging) { const d = (e.clientX - lastX) * .008; rotY += d; vel = d; lastX = e.clientX; }
-    });
-    const end = () => { dragging = false; };
-    cvs.addEventListener('pointerup', end); cvs.addEventListener('pointercancel', end);
-    cvs.addEventListener('pointerleave', () => { mx = my = 0; });
-
-    const resize = () => {
-      const w = host.clientWidth, h = host.clientHeight;
-      renderer.setSize(w, h, false); camera.aspect = w / h;
-      camera.fov = w / h < 1 ? 34 : 30; zoom = w / h < 1 ? 1.02 : 1; camera.updateProjectionMatrix();
-    };
-    resize(); addEventListener('resize', resize);
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(host);
-
-    const clock = new T.Clock();
-    const speed = reduce ? 0 : 1;
-    function frame() {
-      requestAnimationFrame(frame);
-      const dt = Math.min(clock.getDelta(), .05);
-      if (!visible) return;
-      t += dt * speed; intro = Math.min(intro + dt * .7, 1);
-      const ease = 1 - Math.pow(1 - intro, 3);
-      if (!dragging) { vel *= .94; rotY += vel + dt * .16 * speed; }
-      world.rotation.y = rotY + (1 - ease) * -1.4 + scrollY * .0015;
-      world.scale.setScalar(.8 + .2 * ease);
-      camera.position.set(camBase.x * zoom + mx * .8, camBase.y * zoom - my * .6, camBase.z * zoom);
-      camera.lookAt(target);
-
-      gx = Math.sin(t * .45) * 2.3; gantry.position.x = gx;
-      gantry.children.forEach(c => { if (c.userData.brush) c.rotation.y += dt * 8 * speed; });
-
-      for (let i = 0; i < FN; i++) {
-        const f = fd[i], s = f.r * (1 + .1 * Math.sin(t * 2.2 + f.ph));
-        dummy.position.set(f.x, f.y + s * .35, f.z); dummy.scale.setScalar(s); dummy.updateMatrix(); foam.setMatrixAt(i, dummy.matrix);
+      // Before / after slider
+      const stage = document.getElementById('stage'), range = document.getElementById('baRange');
+      range.addEventListener('input', () => stage.style.setProperty('--pos', range.value + '%'));
+      // Gentle nudge the first time it comes into view
+      if (!reduce) {
+        const nudge = new IntersectionObserver(([e]) => {
+          if (!e.isIntersecting) return; nudge.disconnect();
+          let t0; const run = t => {
+            t0 ??= t; const k = Math.min((t - t0) / 1600, 1);
+            const v = 50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k);
+            stage.style.setProperty('--pos', v + '%'); range.value = v;
+            if (k < 1) requestAnimationFrame(run);
+          };
+          requestAnimationFrame(run);
+        }, { threshold: .6 });
+        nudge.observe(stage);
       }
-      foam.instanceMatrix.needsUpdate = true;
 
-      for (let i = 0; i < DN; i++) {
-        const k = i * 3;
-        dpos[k + 1] -= dvel[i] * dt * speed; dvel[i] += 9 * dt;
-        if (dpos[k + 1] < surface(dpos[k], dpos[k + 2])) spawn(i);
+
+      // 3D tilt on panels
+      if (!reduce && matchMedia('(hover:hover)').matches) {
+        document.querySelectorAll('[data-tilt]').forEach(el => {
+          const max = parseFloat(el.dataset.tilt) || 6;
+          el.addEventListener('pointermove', e => {
+            const r = el.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+            el.style.transform = `perspective(1100px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg)`;
+            el.style.setProperty('--gx', (px + .5) * 100 + '%'); el.style.setProperty('--gy', (py + .5) * 100 + '%');
+          });
+          el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+        });
       }
-      dgeo.attributes.position.needsUpdate = true;
 
-      bubs.forEach(b => {
-        const u = b.userData; u.y += dt * u.sp * speed; u.a += dt * .12 * speed; if (u.y > 4) u.y = -.1;
-        b.position.set(Math.cos(u.a) * u.rad, u.y, Math.sin(u.a) * u.rad);
-      });
-      renderer.render(scene, camera);
-    }
-    // Colours are written as normal hex (sRGB); convert once so the render matches the brand palette
-    const done = new Set();
-    scene.traverse(o => {
-      if (o.isLight && o.color) o.color.convertSRGBToLinear();
-      if (o.isHemisphereLight) o.groundColor.convertSRGBToLinear();
-      [].concat(o.material || []).forEach(m => {
-        if (done.has(m)) return; done.add(m);
-        m.color && m.color.convertSRGBToLinear(); m.emissive && m.emissive.convertSRGBToLinear();
-      });
-    });
-    frame();
-    host.classList.add('has3d');
-  }
+      // ---------- 3D car wash scene ----------
+      const host = document.getElementById('car3d');
+      if (window.THREE && host) try { buildScene(); } catch (err) { console.warn('3D unavailable', err); }
 
-  document.getElementById('yr').textContent = new Date().getFullYear();
-})();
-</script>
+      function buildScene() {
+        const T = THREE;
+        const renderer = new T.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        renderer.outputEncoding = T.sRGBEncoding;
+        renderer.toneMapping = T.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.15;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = T.PCFSoftShadowMap;
+        host.prepend(renderer.domElement);
+
+        const scene = new T.Scene();
+        const camera = new T.PerspectiveCamera(30, 1, .1, 100);
+        const camBase = new T.Vector3(7.9, 3.7, 9.0), target = new T.Vector3(0, .6, 0);
+
+        // Reflections: a tiny "car wash tunnel" rendered into an environment map
+        const pmrem = new T.PMREMGenerator(renderer);
+        const env = new T.Scene(); env.background = new T.Color(0x06121f).convertSRGBToLinear();
+        const panel = (w, h, hex, k, pos, rot) => {
+          const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: new T.Color(hex).convertSRGBToLinear().multiplyScalar(k), side: T.DoubleSide }));
+          m.position.set(...pos); m.rotation.set(...rot); env.add(m);
+        };
+        for (let i = -2; i <= 2; i++) panel(.5, 10, 0xffffff, 3, [i * 2.2, 6, 0], [Math.PI / 2, 0, 0]);
+        panel(10, 2, 0x3fa7f5, 2, [0, 2, -9], [0, 0, 0]);
+        panel(8, 2, 0xf5c451, 1.5, [0, 2, 9], [0, Math.PI, 0]);
+        panel(6, 3, 0x9db6cc, 1, [9, 2, 0], [0, -Math.PI / 2, 0]);
+        panel(30, 30, 0x07121e, 1, [0, -3, 0], [Math.PI / 2, 0, 0]);
+        scene.environment = pmrem.fromScene(env, .03).texture;
+
+        scene.add(new T.HemisphereLight(0xcfe8ff, 0x0a1f33, .6));
+        const key = new T.DirectionalLight(0xffffff, 1.9);
+        key.position.set(3, 9, 5); key.castShadow = true;
+        key.shadow.mapSize.set(2048, 2048);
+        Object.assign(key.shadow.camera, { left: -4.5, right: 4.5, top: 4.5, bottom: -4.5, near: 1, far: 20 });
+        key.shadow.radius = 5; key.shadow.bias = -.0005;
+        scene.add(key);
+        const blueL = new T.PointLight(0x3fa7f5, 2.5, 12); blueL.position.set(-4.5, 2.5, -3); scene.add(blueL);
+        const goldL = new T.PointLight(0xf5c451, 1.2, 10); goldL.position.set(4, 1.2, 4.5); scene.add(goldL);
+
+        const world = new T.Group(); scene.add(world);
+        const car = new T.Group(); world.add(car);
+
+        // Materials
+        const paint = new T.MeshPhysicalMaterial({ color: 0x1f78d6, metalness: .5, roughness: .28, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: 1.2 });
+        const glass = new T.MeshPhysicalMaterial({ color: 0x0a1726, metalness: .3, roughness: .04, clearcoat: 1, envMapIntensity: 1.8 });
+        const chrome = new T.MeshStandardMaterial({ color: 0xe6eef5, metalness: 1, roughness: .15 });
+        const dark = new T.MeshStandardMaterial({ color: 0x0c1520, metalness: .4, roughness: .55 });
+        const tyreM = new T.MeshStandardMaterial({ color: 0x121519, roughness: .9 });
+        const wax = new T.MeshStandardMaterial({ color: 0xf5c451, roughness: .35, metalness: .2 });
+        const glow = (hex, i) => new T.MeshStandardMaterial({ color: hex, emissive: hex, emissiveIntensity: i });
+
+        // Body: the same side profile as the site's illustration, extruded with a soft bevel
+        const P = (x, y) => [(x - 310) / 100, (230 - y) / 100];
+        const shape = cmds => {
+          const s = new T.Shape();
+          cmds.forEach(([op, ...a]) => {
+            const p = []; for (let i = 0; i < a.length; i += 2) p.push(...P(a[i], a[i + 1]));
+            op === 'M' ? s.moveTo(...p) : op === 'L' ? s.lineTo(...p) : s.bezierCurveTo(...p);
+          });
+          return s;
+        };
+        const extrude = (sh, depth, bevel, mat) => {
+          const g = new T.ExtrudeGeometry(sh, { depth, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel * .8, bevelSegments: 8, curveSegments: 40 });
+          g.translate(0, 0, -depth / 2);
+          return new T.Mesh(g, mat);
+        };
+        const bodyShape = shape([['M', 40, 196], ['C', 36, 168, 52, 150, 92, 144], ['L', 176, 132], ['L', 490, 128], ['C', 510, 131, 530, 134, 546, 138],
+        ['C', 572, 143, 582, 165, 580, 196], ['C', 580, 206, 574, 214, 566, 216], ['L', 524, 216], ['L', 524, 208],
+        ['C', 524, 178, 500, 154, 470, 154], ['C', 440, 154, 416, 178, 416, 208], ['L', 416, 216], ['L', 204, 216], ['L', 204, 208],
+        ['C', 204, 178, 180, 154, 150, 154], ['C', 120, 154, 96, 178, 96, 208], ['L', 96, 216], ['L', 54, 216], ['C', 46, 216, 40, 206, 40, 196]]);
+        car.add(extrude(bodyShape, 1.66, .14, paint));
+
+        const cabin = extrude(shape([['M', 186, 136], ['C', 214, 96, 252, 80, 304, 78], ['L', 392, 78], ['C', 430, 80, 456, 100, 486, 134], ['L', 186, 136]]), 1.28, .13, glass);
+        car.add(cabin);
+        // Roof rails + side sill trims
+        [-1, 1].forEach(sd => {
+          const rail = new T.Mesh(new T.BoxGeometry(1.5, .035, .04), chrome); rail.position.set(.36, 1.66, sd * .62); car.add(rail);
+          const sill = new T.Mesh(new T.BoxGeometry(3.1, .06, .03), dark); sill.position.set(0, .12, sd * .98); car.add(sill);
+          const belt = new T.Mesh(new T.BoxGeometry(2.9, .02, .02), chrome); belt.position.set(.1, .98, sd * .8); car.add(belt);
+        });
+        // Mirrors, handles, lights, grille, plates
+        const box = (w, h, d, mat, x, y, z, rz = 0) => { const m = new T.Mesh(new T.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.rotation.z = rz; car.add(m); return m; };
+        [-1, 1].forEach(sd => {
+          box(.2, .11, .16, paint, 1.62, 1.02, sd * 1.0);
+          box(.04, .09, .02, glass, 1.53, 1.02, sd * 1.08);
+          box(.18, .03, .02, chrome, .55, .82, sd * .97);
+          box(.18, .03, .02, chrome, -.75, .82, sd * .97);
+          box(.06, .11, .44, glow(0xfff3c2, 2.4), 2.62, .72, sd * .55, -.35);
+          box(.03, .025, .5, glow(0xbfe6ff, 3), 2.63, .63, sd * .55, -.35);
+          box(.06, .12, .42, glow(0xff3b3b, 2), -2.66, .7, sd * .56, .3);
+        });
+        box(.05, .03, .7, glow(0xff3b3b, 1.4), -2.69, .62, 0, .3);
+        box(.08, .2, 1.0, dark, 2.73, .36, 0);
+        for (let i = 0; i < 4; i++) box(.02, .015, .92, chrome, 2.775, .29 + i * .045, 0);
+        box(.03, .12, .5, new T.MeshStandardMaterial({ color: 0xf2f2f2, roughness: .4 }), 2.78, .12, 0);
+        box(.03, .12, .5, wax, -2.77, .4, 0);
+
+        // Wheels
+        function wheel() {
+          const g = new T.Group();
+          const tyre = new T.Mesh(new T.TorusGeometry(.31, .1, 24, 64), tyreM); tyre.scale.z = 1.55; g.add(tyre);
+          const barrel = new T.Mesh(new T.CylinderGeometry(.3, .3, .26, 48, 1, true), dark); barrel.rotation.x = Math.PI / 2; g.add(barrel);
+          const disc = new T.Mesh(new T.CylinderGeometry(.22, .22, .03, 48), new T.MeshStandardMaterial({ color: 0x6a7178, metalness: .9, roughness: .45 }));
+          disc.rotation.x = Math.PI / 2; disc.position.z = .02; g.add(disc);
+          const cal = new T.Mesh(new T.BoxGeometry(.11, .2, .07), wax); cal.position.set(.15, .1, .06); cal.rotation.z = -.55; g.add(cal);
+          const spokes = new T.Group();
+          for (let i = 0; i < 5; i++) {
+            const h = new T.Group(); h.rotation.z = i * Math.PI * 2 / 5;
+            const sp = new T.Mesh(new T.BoxGeometry(.075, .24, .035), chrome); sp.position.y = .15; h.add(sp);
+            const sp2 = sp.clone(); sp2.rotation.z = .35; sp2.position.set(-.04, .15, -.005); h.add(sp2);
+            spokes.add(h);
+          }
+          spokes.position.z = .11; g.add(spokes);
+          const hub = new T.Mesh(new T.CylinderGeometry(.075, .075, .07, 32), chrome); hub.rotation.x = Math.PI / 2; hub.position.z = .12; g.add(hub);
+          const cap = new T.Mesh(new T.CylinderGeometry(.04, .04, .075, 24), wax); cap.rotation.x = Math.PI / 2; cap.position.z = .125; g.add(cap);
+          const lip = new T.Mesh(new T.TorusGeometry(.295, .02, 12, 64), chrome); lip.position.z = .12; g.add(lip);
+          return g;
+        }
+        [[-1.6, 1], [1.6, 1], [-1.6, -1], [1.6, -1]].forEach(([x, sd]) => {
+          const w = wheel(); w.position.set(x, .22, sd * .8); if (sd < 0) w.rotation.y = Math.PI; car.add(w);
+        });
+        car.traverse(o => { if (o.isMesh) o.castShadow = true; });
+
+        // Platform with glowing edge
+        const deck = new T.Mesh(new T.CylinderGeometry(3.4, 3.5, .16, 128), new T.MeshPhysicalMaterial({ color: 0x10263d, metalness: .5, roughness: .25, clearcoat: 1, envMapIntensity: .9 }));
+        deck.position.y = -.27; deck.receiveShadow = true; world.add(deck);
+        const ring = new T.Mesh(new T.TorusGeometry(3.42, .03, 12, 160), glow(0x3fa7f5, 2.5)); ring.rotation.x = Math.PI / 2; ring.position.y = -.19; world.add(ring);
+        const ring2 = new T.Mesh(new T.TorusGeometry(3.0, .008, 8, 160), glow(0x3fa7f5, 1)); ring2.rotation.x = Math.PI / 2; ring2.position.y = -.185; world.add(ring2);
+
+        // Wash gantry that travels along the car
+        const gantry = new T.Group(); world.add(gantry);
+        const steel = new T.MeshStandardMaterial({ color: 0x1b2f45, metalness: .75, roughness: .3 });
+        [-1, 1].forEach(sd => {
+          const post = new T.Mesh(new T.BoxGeometry(.2, 2.55, .2), steel); post.position.set(0, 1.07, sd * 1.6); gantry.add(post);
+          for (let i = 0; i < 5; i++) { const st = new T.Mesh(new T.BoxGeometry(.21, .12, .21), wax); st.position.set(0, .1 + i * .42, sd * 1.6); gantry.add(st); }
+          const brush = new T.Mesh(new T.CylinderGeometry(.16, .16, 1.9, 24, 6), new T.MeshStandardMaterial({ color: 0x3fa7f5, roughness: .9, transparent: true, opacity: .85 }));
+          brush.position.set(0, .95, sd * 1.32); brush.userData.brush = true; gantry.add(brush);
+        });
+        const beam = new T.Mesh(new T.BoxGeometry(.32, .26, 3.5), steel); beam.position.y = 2.38; gantry.add(beam);
+        const led = new T.Mesh(new T.BoxGeometry(.06, .03, 3.1), glow(0x9fd4ff, 3)); led.position.set(.17, 2.3, 0); gantry.add(led);
+        for (let i = -3; i <= 3; i++) { const n = new T.Mesh(new T.CylinderGeometry(.025, .04, .1, 12), chrome); n.position.set(0, 2.2, i * .4); gantry.add(n); }
+        gantry.traverse(o => { if (o.isMesh) o.castShadow = true; });
+
+        // Foam on the roof and bonnet
+        const FN = 110, foam = new T.InstancedMesh(new T.SphereGeometry(1, 16, 12), new T.MeshStandardMaterial({ color: 0xffffff, roughness: .5, emissive: 0x000000, emissiveIntensity: 0 }), FN);
+        const fd = [], dummy = new T.Object3D();
+        for (let i = 0; i < FN; i++) {
+          const roof = i < FN * .62;
+          const x = roof ? -.35 + Math.random() * 1.3 : 1.85 + Math.random() * .6;
+          const y = roof ? 1.66 : 1.1 - (x - 1.85) * .18;
+          fd.push({ x, y, z: (Math.random() - .5) * (roof ? 1.15 : 1.4), r: .05 + Math.random() * .11, ph: Math.random() * 6 });
+        }
+        car.add(foam);
+
+        // Water drops
+        const DN = 700, dpos = new Float32Array(DN * 3), dvel = new Float32Array(DN);
+        const cv = document.createElement('canvas'); cv.width = cv.height = 64;
+        const cx = cv.getContext('2d'), gr = cx.createRadialGradient(32, 32, 0, 32, 32, 32);
+        gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.35, 'rgba(190,230,255,.8)'); gr.addColorStop(1, 'rgba(160,210,255,0)');
+        cx.fillStyle = gr; cx.fillRect(0, 0, 64, 64);
+        const dgeo = new T.BufferGeometry(); dgeo.setAttribute('position', new T.BufferAttribute(dpos, 3));
+        const drops = new T.Points(dgeo, new T.PointsMaterial({ size: .07, map: new T.CanvasTexture(cv), transparent: true, depthWrite: false, blending: T.AdditiveBlending, color: 0xaedcff }));
+        world.add(drops);
+        let gx = 0;
+        const spawn = (i, anyY) => {
+          dpos[i * 3] = gx + (Math.random() - .5) * .3;
+          dpos[i * 3 + 1] = anyY ? Math.random() * 2.2 : 2.15 - Math.random() * .1;
+          dpos[i * 3 + 2] = (Math.random() - .5) * 2.8;
+          dvel[i] = 2.5 + Math.random() * 2.5;
+        };
+        for (let i = 0; i < DN; i++) spawn(i, true);
+        const surface = (x, z) => Math.abs(z) < .95 ? (x > -.6 && x < 1.1 ? 1.62 : (x > -2.7 && x < 2.75 ? 1.02 : -.18)) : -.18;
+
+        // Floating soap bubbles
+        const bubMat = new T.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0, metalness: .1, transparent: true, opacity: .2, clearcoat: 1, envMapIntensity: 3, depthWrite: false });
+        const bubs = [];
+        for (let i = 0; i < 16; i++) {
+          const b = new T.Mesh(new T.SphereGeometry(.08 + Math.random() * .16, 24, 16), bubMat);
+          b.userData = { a: Math.random() * 6.28, rad: 2.2 + Math.random() * 1.6, sp: .15 + Math.random() * .25, y: Math.random() * 3.5 };
+          bubs.push(b); world.add(b);
+        }
+
+        // Interaction
+        let zoom = 1, rotY = .35, vel = 0, dragging = false, lastX = 0, mx = 0, my = 0, t = 0, intro = 0, visible = true;
+        const hint = document.getElementById('spinHint');
+        const cvs = renderer.domElement;
+        cvs.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; cvs.setPointerCapture(e.pointerId); hint.classList.add('gone'); });
+        cvs.addEventListener('pointermove', e => {
+          const r = cvs.getBoundingClientRect();
+          mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5;
+          if (dragging) { const d = (e.clientX - lastX) * .008; rotY += d; vel = d; lastX = e.clientX; }
+        });
+        const end = () => { dragging = false; };
+        cvs.addEventListener('pointerup', end); cvs.addEventListener('pointercancel', end);
+        cvs.addEventListener('pointerleave', () => { mx = my = 0; });
+
+        const resize = () => {
+          const w = host.clientWidth, h = host.clientHeight;
+          renderer.setSize(w, h, false); camera.aspect = w / h;
+          camera.fov = w / h < 1 ? 34 : 30; zoom = w / h < 1 ? 1.02 : 1; camera.updateProjectionMatrix();
+        };
+        resize(); addEventListener('resize', resize);
+        new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(host);
+
+        const clock = new T.Clock();
+        const speed = reduce ? 0 : 1;
+        function frame() {
+          requestAnimationFrame(frame);
+          const dt = Math.min(clock.getDelta(), .05);
+          if (!visible) return;
+          t += dt * speed; intro = Math.min(intro + dt * .7, 1);
+          const ease = 1 - Math.pow(1 - intro, 3);
+          if (!dragging) { vel *= .94; rotY += vel + dt * .16 * speed; }
+          world.rotation.y = rotY + (1 - ease) * -1.4 + scrollY * .0015;
+          world.scale.setScalar(.8 + .2 * ease);
+          camera.position.set(camBase.x * zoom + mx * .8, camBase.y * zoom - my * .6, camBase.z * zoom);
+          camera.lookAt(target);
+
+          gx = Math.sin(t * .45) * 2.3; gantry.position.x = gx;
+          gantry.children.forEach(c => { if (c.userData.brush) c.rotation.y += dt * 8 * speed; });
+
+          for (let i = 0; i < FN; i++) {
+            const f = fd[i], s = f.r * (1 + .1 * Math.sin(t * 2.2 + f.ph));
+            dummy.position.set(f.x, f.y + s * .35, f.z); dummy.scale.setScalar(s); dummy.updateMatrix(); foam.setMatrixAt(i, dummy.matrix);
+          }
+          foam.instanceMatrix.needsUpdate = true;
+
+          for (let i = 0; i < DN; i++) {
+            const k = i * 3;
+            dpos[k + 1] -= dvel[i] * dt * speed; dvel[i] += 9 * dt;
+            if (dpos[k + 1] < surface(dpos[k], dpos[k + 2])) spawn(i);
+          }
+          dgeo.attributes.position.needsUpdate = true;
+
+          bubs.forEach(b => {
+            const u = b.userData; u.y += dt * u.sp * speed; u.a += dt * .12 * speed; if (u.y > 4) u.y = -.1;
+            b.position.set(Math.cos(u.a) * u.rad, u.y, Math.sin(u.a) * u.rad);
+          });
+          renderer.render(scene, camera);
+        }
+        // Colours are written as normal hex (sRGB); convert once so the render matches the brand palette
+        const done = new Set();
+        scene.traverse(o => {
+          if (o.isLight && o.color) o.color.convertSRGBToLinear();
+          if (o.isHemisphereLight) o.groundColor.convertSRGBToLinear();
+          [].concat(o.material || []).forEach(m => {
+            if (done.has(m)) return; done.add(m);
+            m.color && m.color.convertSRGBToLinear(); m.emissive && m.emissive.convertSRGBToLinear();
+          });
+        });
+        frame();
+        host.classList.add('has3d');
+      }
+
+      document.getElementById('yr').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
+
 </html>
