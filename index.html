@@ -1,1985 +1,896 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wash & Glow — Hand Car Wash, Cheetham Hill, Manchester</title>
-  <meta name="description"
-    content="Hand car wash and valeting at 210 Cheetham Hill Rd, Manchester M8 8LW. Rated 4.2 from 408 Google reviews. Call 000000000.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --ink: #0A1F33;
-      --deep: #12304D;
-      --foam: #EEF5FA;
-      --spray: #3FA7F5;
-      --wax: #F5C451;
-      --mist: #9DB6CC;
-      --mud: #6E5E4C;
-      --display: "Bricolage Grotesque", system-ui, sans-serif;
-      --body: "Instrument Sans", system-ui, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      overflow-x: clip
-    }
-
-    section,
-    .hero,
-    footer {
-      overflow-x: clip
-    }
-
-    body {
-      font-family: var(--body);
-      background: var(--foam);
-      color: var(--ink);
-      font-size: 17px;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden
-    }
-
-    a {
-      color: inherit
-    }
-
-    img,
-    svg {
-      display: block
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--wax);
-      outline-offset: 3px;
-      border-radius: 6px
-    }
-
-    .wrap {
-      width: min(1180px, 100% - 48px);
-      margin-inline: auto
-    }
-
-    /* ---------- NAV ---------- */
-    .nav {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 50;
-      transition: background .35s, box-shadow .35s
-    }
-
-    .nav.solid {
-      background: rgba(10, 31, 51, .92);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, .08)
-    }
-
-    .nav .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 74px
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--foam);
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: -.02em
-    }
-
-    .logo svg {
-      width: 34px;
-      height: 34px
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--body);
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
-      border-radius: 999px;
-      padding: 14px 24px;
-      border: 0;
-      cursor: pointer;
-      transition: transform .2s, background .2s, color .2s
-    }
-
-    .btn svg {
-      width: 18px;
-      height: 18px
-    }
-
-    .btn-wax {
-      background: linear-gradient(180deg, #FFD877, var(--wax));
-      color: var(--ink);
-      box-shadow: 0 5px 0 #B98A1E, 0 14px 24px -8px rgba(245, 196, 81, .55), inset 0 1px 0 rgba(255, 255, 255, .6)
-    }
-
-    .btn-wax:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 7px 0 #B98A1E, 0 18px 28px -8px rgba(245, 196, 81, .6), inset 0 1px 0 rgba(255, 255, 255, .6)
-    }
-
-    .btn-wax:active {
-      transform: translateY(4px);
-      box-shadow: 0 1px 0 #B98A1E, inset 0 1px 0 rgba(255, 255, 255, .6)
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--foam);
-      box-shadow: inset 0 0 0 1.5px rgba(238, 245, 250, .35)
-    }
-
-    .btn-ghost:hover {
-      box-shadow: inset 0 0 0 1.5px var(--foam)
-    }
-
-    .nav .btn {
-      padding: 10px 18px;
-      font-size: 15px
-    }
-
-    /* ---------- HERO ---------- */
-    .hero {
-      position: relative;
-      background: radial-gradient(120% 90% at 80% 20%, #173E63 0%, var(--ink) 60%);
-      color: var(--foam);
-      padding: 150px 0 110px;
-      overflow: hidden;
-      isolation: isolate
-    }
-
-    .bubbles {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none
-    }
-
-    .bubble {
-      position: absolute;
-      bottom: -60px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, .85) 0 8%, rgba(255, 255, 255, .12) 22%, rgba(157, 182, 204, .08) 60%, rgba(255, 255, 255, .35) 100%);
-      box-shadow: inset 0 0 6px rgba(255, 255, 255, .35);
-      animation: rise linear infinite
-    }
-
-    @keyframes rise {
-      0% {
-        transform: translate(0, 0) scale(.7);
-        opacity: 0
-      }
-
-      10% {
-        opacity: .9
-      }
-
-      50% {
-        transform: translate(var(--drift), -55vh) scale(1)
-      }
-
-      100% {
-        transform: translate(0, -115vh) scale(1.1);
-        opacity: 0
-      }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center
-    }
-
-    .wipe {
-      position: relative;
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(46px, 7vw, 100px);
-      line-height: .92;
-      letter-spacing: -.045em;
-      display: inline-block;
-      padding-right: .05em
-    }
-
-    .wipe .dirty,
-    .wipe .clean {
-      display: block
-    }
-
-    .wipe .dirty {
-      position: absolute;
-      inset: 0;
-      color: transparent;
-      background:
-        radial-gradient(circle at 12% 30%, #4b3f33 0 2px, transparent 3px) 0 0/23px 19px,
-        radial-gradient(circle at 70% 60%, #3e342a 0 1.5px, transparent 2.5px) 0 0/17px 21px,
-        linear-gradient(180deg, #8a7a66, #5e5040);
-      -webkit-background-clip: text;
-      background-clip: text
-    }
-
-    .wipe .clean {
-      position: relative;
-      color: transparent;
-      background: linear-gradient(100deg, #ffffff 0%, #dff0ff 38%, #ffffff 46%, #bfe0fb 60%, #ffffff 100%);
-      background-size: 250% 100%;
-      background-position: 100% 0;
-      -webkit-background-clip: text;
-      background-clip: text;
-      clip-path: inset(0 100% 0 0);
-      animation: clean 1.7s cubic-bezier(.65, 0, .35, 1) .6s forwards, glint 2.4s ease-in-out 2.5s forwards
-    }
-
-    .wipe .depth {
-      position: absolute;
-      inset: 0;
-      display: block;
-      color: #1E5388;
-      text-shadow: 1px 1px 0 #2A66A0, 2px 2px 0 #245C94, 3px 3px 0 #1F5388, 4px 4px 0 #1A4A7C, 5px 5px 0 #164270, 6px 6px 0 #123A63, 7px 7px 0 #0E3157, 9px 12px 14px rgba(0, 0, 0, .4);
-      clip-path: inset(-20% 100% -30% 0);
-      animation: cleanD 1.7s cubic-bezier(.65, 0, .35, 1) .6s forwards
-    }
-
-    .squeegee {
-      position: absolute;
-      top: -6%;
-      height: 112%;
-      width: 12px;
-      left: 0;
-      border-radius: 6px;
-      background: linear-gradient(90deg, #1b1b1b, #3a3a3a 40%, #111);
-      box-shadow: -18px 0 30px rgba(63, 167, 245, .45), 0 0 0 2px rgba(255, 255, 255, .08);
-      opacity: 0;
-      animation: sweep 1.7s cubic-bezier(.65, 0, .35, 1) .6s forwards
-    }
-
-    .squeegee::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 46px;
-      height: 12px;
-      border-radius: 6px;
-      background: var(--wax);
-      transform: translate(-2px, -50%)
-    }
-
-    @keyframes clean {
-      to {
-        clip-path: inset(0 0 0 0)
-      }
-    }
-
-    @keyframes cleanD {
-      to {
-        clip-path: inset(-20% -10% -30% 0)
-      }
-    }
-
-    @keyframes sweep {
-      0% {
-        left: -2%;
-        opacity: 1
-      }
-
-      92% {
-        opacity: 1
-      }
-
-      100% {
-        left: 100%;
-        opacity: 0
-      }
-    }
-
-    @keyframes glint {
-      to {
-        background-position: 0 0
-      }
-    }
-
-    .hero p.lede {
-      font-size: clamp(18px, 1.6vw, 21px);
-      color: #C9D9E8;
-      max-width: 30ch;
-      margin: 28px 0 34px;
-      opacity: 0;
-      animation: up .8s ease 2.1s forwards
-    }
-
-    .hero .ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      opacity: 0;
-      animation: up .8s ease 2.3s forwards
-    }
-
-    .facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 28px;
-      margin-top: 44px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(157, 182, 204, .2);
-      font-size: 15px;
-      color: var(--mist);
-      opacity: 0;
-      animation: up .8s ease 2.5s forwards
-    }
-
-    .facts span {
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .facts strong {
-      color: var(--foam);
-      font-weight: 600
-    }
-
-    .facts svg {
-      width: 17px;
-      height: 17px;
-      flex: none
-    }
-
-    .star {
-      color: var(--wax)
-    }
-
-    @keyframes up {
-      from {
-        opacity: 0;
-        transform: translateY(18px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .hero-car {
-      position: relative;
-      opacity: 0;
-      animation: drive 1.3s cubic-bezier(.2, .8, .2, 1) .2s forwards
-    }
-
-    @keyframes drive {
-      from {
-        opacity: 0;
-        transform: translateX(-80px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .hero-car {
-      height: clamp(360px, 46vw, 600px)
-    }
-
-    .hero-car canvas {
-      position: absolute;
-      inset: 0;
-      width: 100% !important;
-      height: 100% !important;
-      cursor: grab;
-      touch-action: pan-y;
-      opacity: 0;
-      transition: opacity 1s ease
-    }
-
-    .hero-car canvas:active {
-      cursor: grabbing
-    }
-
-    .hero-car.has3d canvas {
-      opacity: 1
-    }
-
-    .hero-car .fallback {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      height: auto;
-      overflow: visible;
-      transition: opacity .6s
-    }
-
-    .hero-car.has3d .fallback {
-      opacity: 0
-    }
-
-    .spin-hint {
-      position: absolute;
-      left: 50%;
-      bottom: 4%;
-      transform: translateX(-50%);
-      display: none;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--foam);
-      background: rgba(10, 31, 51, .6);
-      backdrop-filter: blur(6px);
-      padding: 8px 14px;
-      border-radius: 999px;
-      box-shadow: inset 0 0 0 1px rgba(157, 182, 204, .25);
-      pointer-events: none;
-      transition: opacity .5s;
-      white-space: nowrap
-    }
-
-    .spin-hint svg {
-      width: 15px;
-      height: 15px
-    }
-
-    .has3d .spin-hint {
-      display: flex
-    }
-
-    .spin-hint.gone {
-      opacity: 0
-    }
-
-    .hero-car .glintbar {
-      animation: carglint 3.2s ease-in-out 2.4s infinite
-    }
-
-    @keyframes carglint {
-      0% {
-        transform: translateX(-200px)
-      }
-
-      45%,
-      100% {
-        transform: translateX(760px)
-      }
-    }
-
-    .spray path {
-      stroke-dasharray: 6 14;
-      animation: spray 1s linear infinite
-    }
-
-    @keyframes spray {
-      to {
-        stroke-dashoffset: -40
-      }
-    }
-
-    .foamdot {
-      animation: pop 2.6s ease-in-out infinite;
-      transform-box: fill-box;
-      transform-origin: center
-    }
-
-    @keyframes pop {
-
-      0%,
-      100% {
-        transform: scale(1)
-      }
-
-      50% {
-        transform: scale(1.12)
-      }
-    }
-
-    /* ---------- MARQUEE ---------- */
-    .marquee {
-      background: var(--wax);
-      color: var(--ink);
-      overflow: hidden;
-      padding: 16px 0;
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 22px;
-      letter-spacing: -.01em
-    }
-
-    .track {
-      display: flex;
-      width: max-content;
-      animation: scroll 32s linear infinite
-    }
-
-    .track span {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      padding-right: 26px;
-      white-space: nowrap
-    }
-
-    .track i {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid var(--ink);
-      display: inline-block
-    }
-
-    @keyframes scroll {
-      to {
-        transform: translateX(-50%)
-      }
-    }
-
-    /* ---------- SECTIONS ---------- */
-    section {
-      padding: 110px 0
-    }
-
-    h2 {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(38px, 5vw, 64px);
-      line-height: 1;
-      letter-spacing: -.035em;
-      max-width: 16ch
-    }
-
-    .intro {
-      color: #44607A;
-      max-width: 52ch;
-      margin-top: 18px;
-      font-size: 18px
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .8s ease, transform .8s cubic-bezier(.2, .8, .2, 1)
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none
-    }
-
-    /* ---------- MENU ---------- */
-    .menu-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-bottom: 50px
-    }
-
-    .sizes {
-      display: inline-flex;
-      background: #D3E2EE;
-      border-radius: 999px;
-      padding: 5px;
-      position: relative;
-      box-shadow: inset 0 3px 6px rgba(10, 31, 51, .15), 0 1px 0 #fff
-    }
-
-    .sizes button {
-      position: relative;
-      z-index: 1;
-      border: 0;
-      background: none;
-      font: 600 15px var(--body);
-      color: #44607A;
-      padding: 10px 20px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: color .3s
-    }
-
-    .sizes button[aria-pressed="true"] {
-      color: var(--foam)
-    }
-
-    .pill {
-      position: absolute;
-      top: 5px;
-      bottom: 5px;
-      left: 5px;
-      background: linear-gradient(180deg, #1A3F63, var(--ink));
-      box-shadow: 0 3px 0 #04101C, 0 8px 14px -4px rgba(10, 31, 51, .5);
-      border-radius: 999px;
-      transition: transform .45s cubic-bezier(.3, 1.4, .5, 1), width .45s
-    }
-
-    .board-wrap {
-      perspective: 1600px
-    }
-
-    .menu {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 70px;
-      background: linear-gradient(180deg, #fff, #F6FAFD);
-      border-radius: 30px;
-      padding: 14px 48px 26px;
-      box-shadow: inset 0 1px 0 #fff, 0 10px 0 #C6D7E6, 0 12px 0 #B3C8DA, 0 50px 70px -30px rgba(10, 31, 51, .45);
-      transform-origin: 50% 0;
-      transform: rotateX(28deg) translateY(40px);
-      opacity: 0;
-      transition: transform 1.2s cubic-bezier(.2, .8, .2, 1), opacity .8s
-    }
-
-    .menu.in {
-      transform: none;
-      opacity: 1
-    }
-
-    .menu li:last-child,
-    .menu li:nth-last-child(2) {
-      border-bottom: 0
-    }
-
-    .menu li {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: baseline;
-      gap: 14px;
-      padding: 26px 0;
-      border-bottom: 1.5px solid #D2E0EC
-    }
-
-    .menu h3 {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 24px;
-      letter-spacing: -.02em
-    }
-
-    .menu .dots {
-      border-bottom: 2px dotted #A9C0D4;
-      transform: translateY(-6px)
-    }
-
-    .menu .price {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 24px;
-      letter-spacing: -.02em;
-      text-align: right;
-      display: inline-block;
-      background: linear-gradient(180deg, #1A3F63, var(--ink));
-      color: var(--foam);
-      padding: 6px 14px 7px;
-      border-radius: 14px;
-      box-shadow: 0 4px 0 #04101C, 0 10px 16px -6px rgba(10, 31, 51, .5), inset 0 1px 0 rgba(255, 255, 255, .15)
-    }
-
-    .menu .price small {
-      color: var(--mist) !important
-    }
-
-    .menu .price small {
-      font: 500 13px var(--body);
-      color: #6C869E;
-      margin-right: 4px;
-      letter-spacing: 0
-    }
-
-    .menu .price.flip {
-      animation: flip .45s ease
-    }
-
-    @keyframes flip {
-      0% {
-        transform: translateY(0);
-        opacity: 1
-      }
-
-      45% {
-        transform: translateY(-12px);
-        opacity: 0
-      }
-
-      55% {
-        transform: translateY(12px);
-        opacity: 0
-      }
-
-      100% {
-        transform: none;
-        opacity: 1
-      }
-    }
-
-    .menu p {
-      grid-column: 1/-1;
-      color: #5A7690;
-      font-size: 15.5px;
-      margin-top: 4px
-    }
-
-    /* ---------- BEFORE / AFTER ---------- */
-    .ba {
-      background: var(--ink);
-      color: var(--foam)
-    }
-
-    .ba .intro {
-      color: var(--mist)
-    }
-
-    .ba-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 60px;
-      align-items: center
-    }
-
-    .tilt {
-      transition: transform .25s ease-out;
-      will-change: transform
-    }
-
-    .stage::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(420px circle at var(--gx, 70%) var(--gy, 20%), rgba(255, 255, 255, .14), transparent 60%)
-    }
-
-    .stage {
-      box-shadow: 0 12px 0 #07182A, 0 14px 0 #04101C, 0 60px 80px -30px rgba(0, 0, 0, .7), inset 0 1px 0 rgba(255, 255, 255, .1);
-      position: relative;
-      border-radius: 28px;
-      background: linear-gradient(180deg, #183A5C 0%, #10273F 70%, #0C2034 100%);
-      padding: 40px 30px 30px;
-      overflow: hidden;
-      --pos: 50%
-    }
-
-    .stage .layer svg {
-      width: 100%;
-      height: auto
-    }
-
-    .stage .clean-layer {
-      position: absolute;
-      inset: 40px 30px 30px;
-      clip-path: inset(0 0 0 var(--pos))
-    }
-
-    .stage .handle {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: var(--pos);
-      width: 0;
-      pointer-events: none
-    }
-
-    .stage .handle::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: -5px;
-      width: 10px;
-      background: #1a1a1a;
-      box-shadow: 0 0 24px rgba(63, 167, 245, .6)
-    }
-
-    .stage .handle::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: -28px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--wax) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A1F33' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l-6 6 6 6M15 6l6 6-6 6'/%3E%3C/svg%3E") center/26px no-repeat;
-      transform: translateY(-50%);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .35)
-    }
-
-    .stage input {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: ew-resize;
-      margin: 0
-    }
-
-    .stage input:focus-visible+.handle::after {
-      outline: 3px solid var(--foam);
-      outline-offset: 4px
-    }
-
-    .tag {
-      position: absolute;
-      top: 18px;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(10, 31, 51, .7)
-    }
-
-    .tag.l {
-      left: 18px;
-      color: #CDB9A0
-    }
-
-    .tag.r {
-      right: 18px;
-      color: var(--foam)
-    }
-
-    .hint {
-      margin-top: 18px;
-      color: var(--mist);
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    /* ---------- STEPS ---------- */
-    .road {
-      position: relative;
-      margin: 60px 0 10px;
-      height: 70px
-    }
-
-    .road .line {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50px;
-      height: 4px;
-      background: repeating-linear-gradient(90deg, #A9C0D4 0 26px, transparent 26px 44px)
-    }
-
-    .road .mini {
-      position: absolute;
-      top: 8px;
-      left: 0;
-      width: 90px;
-      transition: left 2.6s cubic-bezier(.45, 0, .2, 1)
-    }
-
-    .road.in .mini {
-      left: calc(100% - 90px)
-    }
-
-    .steps {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px
-    }
-
-    .steps li {
-      counter-increment: s
-    }
-
-    .steps .n {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 72px;
-      line-height: 1;
-      letter-spacing: -.05em;
-      color: var(--spray);
-      text-shadow: 1px 1px 0 #3198E6, 2px 2px 0 #2A89D4, 3px 3px 0 #237AC0, 4px 4px 0 #1D6BAB, 5px 5px 0 #185D96, 6px 6px 0 #134F81, 7px 7px 0 #0F416C, 14px 18px 22px rgba(10, 31, 51, .3)
-    }
-
-    .steps h3 {
-      font-family: var(--display);
-      font-size: 26px;
-      letter-spacing: -.02em;
-      margin: 12px 0 8px
-    }
-
-    .steps p {
-      color: #5A7690;
-      max-width: 32ch
-    }
-
-    .steps li:nth-child(2) {
-      transition-delay: .15s
-    }
-
-    .steps li:nth-child(3) {
-      transition-delay: .3s
-    }
-
-    /* ---------- RATING ---------- */
-    .rating {
-      background: #DCE8F2
-    }
-
-    .rating .wrap {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 70px;
-      align-items: center
-    }
-
-    .score {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(120px, 17vw, 220px);
-      line-height: .85;
-      letter-spacing: -.06em;
-      perspective: 900px
-    }
-
-    .score span {
-      display: inline-block;
-      color: var(--ink);
-      text-shadow: 1px 1px 0 #2F7FC4, 2px 2px 0 #2B76B8, 3px 3px 0 #276DAB, 4px 4px 0 #23649E, 5px 5px 0 #1F5B91, 6px 6px 0 #1B5284, 7px 7px 0 #174977, 8px 8px 0 #13406A, 9px 9px 0 #10375D, 10px 10px 0 #0D2F50, 22px 30px 36px rgba(10, 31, 51, .35)
-    }
-
-    .stars {
-      position: relative;
-      display: inline-block;
-      font-size: 40px;
-      letter-spacing: 6px;
-      line-height: 1;
-      margin: 24px 0 8px
-    }
-
-    .stars .base {
-      color: #B8CBDC
-    }
-
-    .stars .fill {
-      position: absolute;
-      inset: 0;
-      width: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      color: #E9A800;
-      transition: width 1.8s cubic-bezier(.3, .8, .3, 1) .3s
-    }
-
-    .rating.in .stars .fill {
-      width: 84%
-    }
-
-    .rating .count {
-      color: #44607A;
-      font-size: 18px
-    }
-
-    .rating .btn {
-      margin-top: 30px;
-      background: var(--ink);
-      color: var(--foam)
-    }
-
-    .rating .btn:hover {
-      transform: translateY(-2px)
-    }
-
-    /* ---------- VISIT ---------- */
-    .visit-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 60px;
-      align-items: stretch
-    }
-
-    .details {
-      list-style: none;
-      margin: 40px 0 36px
-    }
-
-    .details li {
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 16px;
-      padding: 18px 0;
-      border-bottom: 1.5px solid #D2E0EC
-    }
-
-    .details svg {
-      width: 22px;
-      height: 22px;
-      color: var(--spray);
-      margin-top: 3px
-    }
-
-    .details b {
-      display: block;
-      font-weight: 600
-    }
-
-    .details span {
-      color: #5A7690
-    }
-
-    .details a {
-      text-decoration: none;
-      border-bottom: 1.5px solid var(--spray)
-    }
-
-    .mapbox {
-      border-radius: 28px;
-      overflow: hidden;
-      min-height: 440px;
-      height: 100%;
-      background: #cfdde9;
-      border: 8px solid #fff;
-      box-shadow: 0 10px 0 #C6D7E6, 0 12px 0 #B3C8DA, 0 50px 70px -30px rgba(10, 31, 51, .45)
-    }
-
-    .mapbox iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 440px;
-      border: 0;
-      display: block
-    }
-
-    .visit .btn-wax {
-      margin-right: 10px
-    }
-
-    .visit .btn-line {
-      background: transparent;
-      color: var(--ink);
-      box-shadow: inset 0 0 0 1.5px var(--ink)
-    }
-
-    .visit .btn-line:hover {
-      background: var(--ink);
-      color: var(--foam)
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      background: var(--ink);
-      color: var(--mist);
-      padding: 60px 0 110px;
-      font-size: 15px
-    }
-
-    footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      flex-wrap: wrap;
-      align-items: center
-    }
-
-    footer .big {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(40px, 6vw, 72px);
-      letter-spacing: -.045em;
-      color: var(--foam);
-      line-height: 1
-    }
-
-    .dock {
-      display: none
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width:960px) {
-
-      .hero-grid,
-      .ba-grid,
-      .visit-grid {
-        grid-template-columns: 1fr
-      }
-
-      .hero {
-        padding: 120px 0 80px
-      }
-
-      .hero-car {
-        height: clamp(340px, 62vw, 520px);
-        margin-right: 0
-      }
-
-      .menu {
-        grid-template-columns: 1fr
-      }
-
-      .rating .wrap {
-        grid-template-columns: 1fr;
-        gap: 10px
-      }
-    }
-
-    @media (max-width:680px) {
-      body {
-        font-size: 16px
-      }
-
-      section {
-        padding: 80px 0
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-        gap: 34px
-      }
-
-      .road {
-        display: none
-      }
-
-      .nav .btn {
-        display: none
-      }
-
-      .dock {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        position: fixed;
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        z-index: 60;
-        transform: translateY(120%);
-        transition: transform .4s cubic-bezier(.2, .8, .2, 1)
-      }
-
-      .dock.show {
-        transform: none
-      }
-
-      .dock .btn {
-        justify-content: center;
-        padding: 15px;
-        box-shadow: 0 10px 30px rgba(10, 31, 51, .35)
-      }
-
-      .dock .btn-dark {
-        background: var(--ink);
-        color: var(--foam)
-      }
-
-      .menu h3 {
-        font-size: 21px
-      }
-
-      .menu {
-        padding: 6px 22px 16px
-      }
-
-      .menu li {
-        grid-template-columns: 1fr auto
-      }
-
-      .menu .dots {
-        display: none
-      }
-    }
-
-    @media (max-width:380px) {
-      .menu {
-        padding: 4px 16px 12px
-      }
-
-      .menu h3 {
-        font-size: 19px
-      }
-
-      .menu .price {
-        font-size: 20px;
-        padding: 5px 11px 6px
-      }
-
-      .menu li:nth-last-child(2) {
-        border-bottom: 1.5px solid #D2E0EC
-      }
-
-      .stage {
-        padding: 30px 14px 20px
-      }
-
-      .stage .clean-layer {
-        inset: 30px 14px 20px
-      }
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-delay: 0s !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important
-      }
-
-      .bubbles {
-        display: none
-      }
-
-      .wipe .clean,
-      .wipe .depth {
-        clip-path: none
-      }
-
-      .reveal,
-      .menu {
-        opacity: 1;
-        transform: none
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RG Car Body Repair — Accident Repair & Resprays, Manchester</title>
+<meta name="description" content="Accident repair, dent removal, scratches and full resprays in Cheetham Hill, Manchester. Rated 4.8 from 346 Google reviews. Free quotes, usually the same working day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --graphite:#121316;
+    --booth:#1B1D21;
+    --line:#2A2D33;
+    --primer:#8B8F94;
+    --steel:#C9CDD2;
+    --paper:#F3F0EA;
+    --bone:#E7E3DB;
+    --red:#E3120B;
+    --red-deep:#A50D08;
+    --tape:#E9DCAF;
+    --ink:#16171A;
+    --muted:#5E6168;
+    --sans:"Archivo", system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  section,footer,.hero{overflow-x:clip}
+  a{color:inherit}
+  svg{display:block}
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:6px}
+  .wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+  .display{font-stretch:118%;font-weight:850;letter-spacing:-.03em;line-height:.95}
+  .tape{display:inline-block;background:var(--tape);color:#3B3527;font:600 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;transform:rotate(-2deg);clip-path:polygon(2% 8%,0 50%,2% 92%,98% 100%,100% 60%,97% 0);box-shadow:0 2px 0 rgba(0,0,0,.06)}
+
+  /* ---------- NAV ---------- */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .35s, box-shadow .35s}
+  .nav.solid{background:rgba(18,19,22,.9);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+  .logo .mark{display:grid;place-items:center;width:46px;height:34px;background:var(--red);color:#fff;font:900 19px/1 var(--sans);font-stretch:125%;letter-spacing:-.02em;border-radius:5px;box-shadow:0 3px 0 var(--red-deep), inset 0 1px 0 rgba(255,255,255,.25);transform:skewX(-8deg)}
+  .logo .mark span{transform:skewX(8deg)}
+  .logo .word{font-weight:750;font-size:17px;font-stretch:110%;letter-spacing:-.01em;line-height:1.05}
+  .logo .word small{display:block;font:500 11px var(--mono);color:var(--primer);letter-spacing:.08em;text-transform:uppercase}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:650 16px var(--sans);text-decoration:none;border-radius:12px;padding:15px 24px;border:0;cursor:pointer;transition:transform .18s, box-shadow .18s, background .2s}
+  .btn svg{width:19px;height:19px;flex:none}
+  .btn-red{background:linear-gradient(180deg,#F2302A,var(--red));color:#fff;box-shadow:0 5px 0 var(--red-deep), 0 16px 30px -10px rgba(227,18,11,.6), inset 0 1px 0 rgba(255,255,255,.3)}
+  .btn-red:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--red-deep), 0 20px 34px -10px rgba(227,18,11,.65), inset 0 1px 0 rgba(255,255,255,.3)}
+  .btn-red:active{transform:translateY(4px);box-shadow:0 1px 0 var(--red-deep), inset 0 1px 0 rgba(255,255,255,.3)}
+  .btn-steel{background:linear-gradient(180deg,#34373D,#25272C);color:#fff;box-shadow:0 5px 0 #0B0C0E, inset 0 1px 0 rgba(255,255,255,.12)}
+  .btn-steel:hover{transform:translateY(-2px);box-shadow:0 7px 0 #0B0C0E, inset 0 1px 0 rgba(255,255,255,.12)}
+  .btn-steel:active{transform:translateY(4px);box-shadow:0 1px 0 #0B0C0E}
+  .btn-paper{background:linear-gradient(180deg,#fff,#EEEAE2);color:var(--ink);box-shadow:0 5px 0 #BDB6A8, inset 0 1px 0 #fff}
+  .btn-paper:hover{transform:translateY(-2px);box-shadow:0 7px 0 #BDB6A8}
+  .btn-paper:active{transform:translateY(4px);box-shadow:0 1px 0 #BDB6A8}
+  .nav .btn{padding:11px 18px;font-size:15px}
+
+  /* ---------- HERO (full-bleed 3D booth) ---------- */
+  .hero{position:relative;min-height:max(720px,min(100vh,940px));background:radial-gradient(90% 80% at 70% 45%, #24272D 0%, var(--graphite) 70%);color:#fff;isolation:isolate;display:flex;align-items:center}
+  .stage3d{position:absolute;inset:0;z-index:0}
+  .stage3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;cursor:grab;touch-action:pan-y;opacity:0;transition:opacity 1.2s ease}
+  .stage3d canvas:active{cursor:grabbing}
+  .stage3d.has3d canvas{opacity:1}
+  .stage3d .fallback{position:absolute;right:4%;top:50%;width:52%;transform:translateY(-50%);transition:opacity .6s}
+  .stage3d.has3d .fallback{opacity:0;pointer-events:none}
+  .hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg, rgba(18,19,22,.92) 0%, rgba(18,19,22,.7) 30%, rgba(18,19,22,0) 58%), linear-gradient(0deg, rgba(18,19,22,.85) 0%, rgba(18,19,22,0) 22%)}
+  .hero-content{position:relative;z-index:2;padding:130px 0 150px;pointer-events:none}
+  .hero-content > *{pointer-events:auto}
+  .hero h1{font-size:clamp(46px,6.3vw,94px);max-width:9.5ch;margin:22px 0 26px}
+  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+  .hero h1 .ln span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+  .hero h1 .ln:nth-child(2) span{animation-delay:.12s}
+  .hero h1 .ln:nth-child(3) span{animation-delay:.24s}
+  @keyframes rise{to{transform:none}}
+  .hero .lede{font-size:clamp(17px,1.4vw,20px);color:#C3C6CC;max-width:34ch;opacity:0;animation:fade .9s ease .6s forwards}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;opacity:0;animation:fade .9s ease .75s forwards}
+  .facts{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:40px;font-size:14.5px;color:#A9ADB4;opacity:0;animation:fade .9s ease .9s forwards;max-width:560px}
+  .facts span{display:flex;align-items:center;gap:8px}
+  .facts b{color:#fff;font-weight:650}
+  .facts svg{width:16px;height:16px;flex:none;color:var(--red)}
+  .hero .tape{opacity:0;animation:fade .6s ease .1s forwards}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .paint-dock{position:absolute;z-index:3;right:max(24px,calc((100% - 1240px)/2));bottom:64px;background:rgba(27,29,33,.72);backdrop-filter:blur(14px);border-radius:18px;padding:16px 18px 16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08), 0 30px 50px -20px rgba(0,0,0,.6);width:min(430px,calc(100% - 48px));opacity:0;animation:fade .9s ease 1.1s forwards}
+  .dock-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+  .status{font:500 12.5px var(--mono);color:#B6BAC1;letter-spacing:.02em;display:flex;align-items:center;gap:8px;min-height:18px}
+  .status i{width:8px;height:8px;border-radius:50%;background:var(--primer);flex:none;transition:background .3s}
+  .status.painting i{background:var(--red);box-shadow:0 0 0 0 rgba(227,18,11,.6);animation:ping 1s infinite}
+  .status.done i{background:#3DDC84}
+  @keyframes ping{to{box-shadow:0 0 0 8px rgba(227,18,11,0)}}
+  .replay{white-space:nowrap;flex:none;background:none;border:0;color:#fff;font:600 13px var(--sans);display:flex;align-items:center;gap:6px;cursor:pointer;opacity:.8;padding:4px}
+  .replay:hover{opacity:1}
+  .replay svg{width:15px;height:15px}
+  .swatches{display:flex;gap:10px;flex-wrap:wrap}
+  .sw{width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;position:relative;background:var(--c);box-shadow:inset 0 -6px 10px rgba(0,0,0,.35), inset 0 5px 8px rgba(255,255,255,.35), 0 4px 0 rgba(0,0,0,.45);transition:transform .2s}
+  .sw::after{content:"";position:absolute;inset:-5px;border-radius:50%;box-shadow:0 0 0 2px transparent;transition:box-shadow .2s}
+  .sw[aria-pressed="true"]::after{box-shadow:0 0 0 2px #fff}
+  .sw:hover{transform:translateY(-3px)}
+  .sw:disabled{cursor:wait}
+  .dock-label{font-size:13.5px;color:#D4D6DA;margin-top:12px}
+  .dock-label b{color:#fff}
+  .spin-tip{position:absolute;z-index:3;left:44%;bottom:70px;font:500 12px var(--mono);color:#8D9199;display:none;align-items:center;gap:8px;pointer-events:none;transition:opacity .5s}
+  .has3d ~ .spin-tip{display:flex}
+  .spin-tip.gone{opacity:0}
+
+  /* ---------- TAPE MARQUEE ---------- */
+  .tapeband{position:relative;z-index:4;margin-top:-26px;transform:rotate(-1.4deg);background:var(--tape);overflow:hidden;padding:14px 0;box-shadow:0 10px 20px -8px rgba(0,0,0,.35)}
+  .tapeband .track{display:flex;width:max-content;animation:scroll 36s linear infinite}
+  .tapeband span{display:flex;align-items:center;gap:22px;padding-right:22px;white-space:nowrap;font:600 17px var(--mono);letter-spacing:.04em;text-transform:uppercase;color:#3B3527}
+  .tapeband i{width:9px;height:9px;background:var(--red);transform:rotate(45deg);display:inline-block}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- SHARED ---------- */
+  section{padding:120px 0}
+  h2{font-size:clamp(38px,5vw,68px);max-width:14ch;margin-top:18px}
+  .intro{color:var(--muted);max-width:50ch;margin-top:18px;font-size:18px}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .tilt{transition:transform .25s ease-out;will-change:transform}
+
+  /* ---------- SERVICES: paint-chip fan deck ---------- */
+  .svc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;margin-top:30px}
+  .fan{position:relative;height:440px;perspective:1600px}
+  .chip[aria-pressed="true"] .swatch{box-shadow:inset 0 -30px 40px rgba(0,0,0,.18), inset 0 20px 30px rgba(255,255,255,.18), inset 0 0 0 3px rgba(255,255,255,.55)}
+  .chip{position:absolute;left:50%;bottom:10px;width:150px;height:300px;margin-left:-75px;border:0;padding:0;cursor:pointer;border-radius:14px;background:#fff;text-align:left;font:inherit;color:inherit;transform-origin:50% 93%;transform:rotate(0deg);transition:transform 1s cubic-bezier(.2,.9,.25,1), box-shadow .3s;box-shadow:0 1px 0 rgba(0,0,0,.05), 0 20px 30px -18px rgba(22,23,26,.5), inset 0 0 0 1px rgba(0,0,0,.06);overflow:hidden}
+  .fan.in .chip{transform:rotate(var(--r)) translateY(0)}
+  .fan.in .chip[aria-pressed="true"]{transform:rotate(var(--r)) translateY(-38px);box-shadow:0 40px 50px -24px rgba(22,23,26,.6), inset 0 0 0 1px rgba(0,0,0,.06)}
+  .chip .swatch{height:72%;background:var(--c);position:relative;box-shadow:inset 0 -30px 40px rgba(0,0,0,.18), inset 0 20px 30px rgba(255,255,255,.18)}
+  .chip .swatch::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.28) 45%,transparent 60%)}
+  .chip .code{position:absolute;top:14px;right:14px;font:600 11px var(--mono);letter-spacing:.08em;color:var(--t,#fff);opacity:.85}
+  .chip .nm{position:absolute;left:12px;top:14px;writing-mode:vertical-rl;transform:rotate(180deg);font-weight:800;font-stretch:108%;font-size:19px;line-height:1;letter-spacing:-.01em;color:var(--t,#fff);white-space:nowrap}
+  .chip .meta{padding:14px 16px;font:500 11.5px var(--mono);color:var(--muted);letter-spacing:.02em}
+  .chip .pin{position:absolute;left:50%;bottom:14px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #fff, #9EA3AA 45%, #52565C);box-shadow:0 1px 2px rgba(0,0,0,.4)}
+  .detail{background:#fff;border-radius:24px;padding:38px 36px;box-shadow:0 10px 0 #D8D2C6, 0 12px 0 #C9C2B4, 0 50px 60px -30px rgba(22,23,26,.35)}
+  .detail .bar{height:10px;border-radius:5px;background:var(--c,var(--red));margin-bottom:26px;box-shadow:inset 0 -2px 3px rgba(0,0,0,.25);transition:background .5s}
+  .detail h3{font-size:34px;font-weight:850;font-stretch:115%;letter-spacing:-.025em;line-height:1}
+  .detail p{color:var(--muted);margin:16px 0 26px;font-size:17.5px}
+  .detail ul{list-style:none;margin:0 0 30px;display:grid;gap:10px}
+  .detail li{display:flex;gap:10px;align-items:flex-start;font-size:16px}
+  .detail li::before{content:"";width:16px;height:16px;flex:none;margin-top:4px;border-radius:4px;background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat}
+  .detail .swap{transition:opacity .25s, transform .25s}
+  .detail .swap.out{opacity:0;transform:translateY(8px)}
+
+  /* ---------- TRACKER ---------- */
+  .dark{background:var(--graphite);color:#fff}
+  .dark .intro{color:#A9ADB4}
+  .trk-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .phone-wrap{perspective:1400px;display:grid;place-items:center;padding:30px 0}
+  .phone{width:330px;border-radius:46px;padding:14px;background:linear-gradient(145deg,#3A3D43,#17181B);box-shadow:inset 0 0 0 1.5px #4B4F56, 18px 18px 0 -2px #0A0B0C, 30px 50px 60px -10px rgba(0,0,0,.7);transform:rotateY(-24deg) rotateX(10deg) rotateZ(2deg);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in .phone{transform:rotateY(-14deg) rotateX(6deg) rotateZ(1deg)}
+  .screen{border-radius:34px;background:#F5F3EF;color:var(--ink);padding:26px 20px 24px;min-height:560px;position:relative;overflow:hidden}
+  .notch{width:96px;height:24px;border-radius:14px;background:#0D0E10;margin:-12px auto 18px}
+  .scr-top{display:flex;justify-content:space-between;align-items:center;font:600 11px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .plate{margin:18px 0 6px;display:inline-block;background:#F5CB00;border-radius:6px;padding:6px 14px 6px 34px;position:relative;font:800 24px/1 var(--sans);font-stretch:80%;letter-spacing:.06em;box-shadow:inset 0 0 0 2px #1a1a1a}
+  .plate::before{content:"UK";position:absolute;left:0;top:0;bottom:0;width:24px;border-radius:6px 0 0 6px;background:#1D4E89;color:#fff;font:700 9px/1 var(--mono);display:grid;place-items:end center;padding-bottom:6px}
+  .job{font-weight:700;font-size:17px;margin-top:4px}
+  .job small{display:block;font-weight:500;font-size:13.5px;color:var(--muted)}
+  .prog{height:10px;border-radius:5px;background:#E2DED6;margin:20px 0 22px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.15)}
+  .prog b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#FF5A4F);border-radius:5px;transition:width 2.4s cubic-bezier(.3,.8,.3,1) .5s}
+  .reveal.in .prog b{width:62%}
+  .stages{list-style:none;display:grid;gap:4px}
+  .stages li{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;font-size:15px;font-weight:600;opacity:.4;transition:opacity .5s, background .5s}
+  .stages .dot{width:22px;height:22px;border-radius:50%;border:2px solid #C9C4BA;display:grid;place-items:center}
+  .stages .t{font:500 11.5px var(--mono);color:var(--muted)}
+  .reveal.in .stages li.done{opacity:1}
+  .reveal.in .stages li.done .dot{background:#1F9D55;border-color:#1F9D55}
+  .reveal.in .stages li.done .dot::after{content:"";width:9px;height:5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+  .reveal.in .stages li.now{opacity:1;background:#fff;box-shadow:0 2px 0 #E2DED6}
+  .reveal.in .stages li.now .dot{border-color:var(--red);box-shadow:0 0 0 0 rgba(227,18,11,.5);animation:ping 1.2s infinite .6s}
+  .stages li:nth-child(1){transition-delay:.5s}.stages li:nth-child(2){transition-delay:1s}.stages li:nth-child(3){transition-delay:1.5s}
+  .trk-points{list-style:none;margin-top:34px;display:grid;gap:18px}
+  .trk-points li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+  .trk-points .ic{width:44px;height:44px;border-radius:12px;background:#24262B;display:grid;place-items:center;box-shadow:0 3px 0 #0A0B0C, inset 0 1px 0 rgba(255,255,255,.08)}
+  .trk-points .ic svg{width:22px;height:22px;color:var(--red)}
+  .trk-points b{display:block;font-size:18px}
+  .trk-points span{color:#A9ADB4}
+
+  /* ---------- INSURANCE + RECOVERY slabs ---------- */
+  .slabs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:56px}
+  .slab{border-radius:26px;padding:44px 40px 40px;position:relative;overflow:hidden}
+  .slab.light{background:#fff;box-shadow:0 12px 0 #D8D2C6, 0 14px 0 #C9C2B4, 0 60px 60px -34px rgba(22,23,26,.35)}
+  .slab.redslab{background:linear-gradient(160deg,#F0241D,var(--red) 50%,#B90E09);color:#fff;box-shadow:0 12px 0 var(--red-deep), 0 14px 0 #7C0A06, 0 60px 60px -30px rgba(165,13,8,.6)}
+  .slab .big-ic{width:78px;height:78px;border-radius:20px;display:grid;place-items:center;margin-bottom:28px;transform:perspective(400px) rotateX(18deg) rotateY(-18deg)}
+  .slab.light .big-ic{background:var(--graphite);box-shadow:6px 8px 0 #000, 0 20px 20px -6px rgba(0,0,0,.35)}
+  .slab.redslab .big-ic{background:#fff;box-shadow:6px 8px 0 #7C0A06, 0 20px 20px -6px rgba(0,0,0,.35)}
+  .slab .big-ic svg{width:38px;height:38px}
+  .slab h3{font-size:clamp(28px,2.6vw,36px);font-weight:850;font-stretch:115%;letter-spacing:-.025em;line-height:1.02;max-width:16ch}
+  .slab p{margin-top:16px;font-size:17.5px;max-width:40ch}
+  .slab.light p{color:var(--muted)}
+  .slab.redslab p{color:#FFE1DE}
+  .slab .ghost{position:absolute;right:-20px;bottom:-40px;font-weight:900;font-stretch:125%;font-size:190px;line-height:1;letter-spacing:-.06em;opacity:.06;pointer-events:none}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{background:var(--bone)}
+  .rev-grid{display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:center}
+  .score{font-weight:900;font-stretch:125%;font-size:clamp(130px,17vw,240px);line-height:.82;letter-spacing:-.06em;perspective:900px}
+  .score span{display:inline-block;color:var(--ink);text-shadow:1px 1px 0 #C8100A,2px 2px 0 #C00F0A,3px 3px 0 #B70E09,4px 4px 0 #AE0E09,5px 5px 0 #A50D08,6px 6px 0 #9C0C08,7px 7px 0 #930C07,8px 8px 0 #8A0B07,9px 9px 0 #810A06,10px 10px 0 #780A06,24px 30px 36px rgba(22,23,26,.3)}
+  .stars{position:relative;display:inline-block;font-size:38px;letter-spacing:6px;line-height:1;margin:22px 0 10px}
+  .stars .base{color:#C9C3B7}
+  .stars .fill{position:absolute;inset:0;width:0;overflow:hidden;white-space:nowrap;color:#E9A800;transition:width 1.8s cubic-bezier(.3,.8,.3,1) .3s}
+  .reviews .in .stars .fill{width:96%}
+  .themes{display:flex;flex-wrap:wrap;gap:14px 12px;margin:26px 0 34px}
+  .themes .tape:nth-child(2n){transform:rotate(1.5deg)}
+  .themes .tape:nth-child(3n){transform:rotate(-1deg)}
+
+  /* ---------- QUOTE BAND ---------- */
+  .quote{background:var(--red);color:#fff;padding:100px 0;position:relative}
+  .quote::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 2px,transparent 2px 22px);pointer-events:none}
+  .quote .wrap{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center}
+  .quote h2{max-width:12ch}
+  .quote p{color:#FFE1DE;font-size:19px;margin-top:18px;max-width:40ch}
+  .quote .acts{display:grid;gap:14px}
+  .quote .acts .btn{justify-content:flex-start;padding:20px 26px;font-size:18px}
+  .quote .acts .btn small{margin-left:auto;font:500 13px var(--mono);opacity:.7}
+  .btn-dark{background:linear-gradient(180deg,#2A2C31,#16171A);color:#fff;box-shadow:0 5px 0 #000, inset 0 1px 0 rgba(255,255,255,.12)}
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:0 7px 0 #000}
+  .btn-dark:active{transform:translateY(4px);box-shadow:0 1px 0 #000}
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:stretch}
+  .details{list-style:none;margin:38px 0 34px}
+  .details li{display:grid;grid-template-columns:28px 1fr;gap:16px;padding:18px 0;border-bottom:1.5px solid #DDD7CC}
+  .details svg{width:22px;height:22px;color:var(--red);margin-top:3px}
+  .details b{display:block;font-weight:650}
+  .details span{color:var(--muted)}
+  .details a{text-decoration:none;border-bottom:1.5px solid var(--red)}
+  .mapbox{border-radius:26px;overflow:hidden;min-height:460px;height:100%;background:#DDD7CC;border:8px solid #fff;box-shadow:0 12px 0 #D8D2C6, 0 14px 0 #C9C2B4, 0 60px 60px -34px rgba(22,23,26,.35)}
+  .mapbox iframe{width:100%;height:100%;min-height:444px;border:0;display:block;filter:grayscale(.35) contrast(1.05)}
+  .visit .acts{display:flex;flex-wrap:wrap;gap:12px}
+
+  footer{background:var(--graphite);color:#8D9199;padding:70px 0 110px;font-size:15px}
+  footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-end}
+  footer .big{font-weight:900;font-stretch:125%;font-size:clamp(38px,6vw,84px);letter-spacing:-.05em;color:#fff;line-height:.9}
+  footer .big em{font-style:normal;color:var(--red)}
+
+  .dock{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1000px){
+    .hero{flex-direction:column;align-items:stretch;min-height:0}
+    .hero-content{padding:120px 0 10px;order:1}
+    .hero-shade{display:none}
+    .stage3d{position:relative;order:2;height:clamp(360px,70vw,560px);margin-top:10px}
+    .stage3d .fallback{width:88%;right:6%}
+    .paint-dock{position:relative;order:3;right:auto;bottom:auto;margin:0 24px 60px;width:auto}
+    .spin-tip{display:none!important}
+    .svc-grid,.trk-grid,.quote .wrap,.visit-grid{grid-template-columns:1fr}
+    .rev-grid{grid-template-columns:1fr;gap:10px}
+    .slabs{grid-template-columns:1fr}
+    .phone-wrap{order:-1}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    section{padding:84px 0}
+    .nav .btn{display:none}
+    .fan{height:430px}
+    .fan{height:auto;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:46px 4px 22px;margin:0 -24px;padding-left:24px;padding-right:24px;perspective:none;scrollbar-width:none}
+    .fan::-webkit-scrollbar{display:none}
+    .chip,.fan.in .chip{position:relative;left:auto;bottom:auto;margin:0;flex:none;width:118px;height:230px;transform:none;scroll-snap-align:start}
+    .fan.in .chip[aria-pressed="true"]{transform:translateY(-26px)}
+    .chip .nm{font-size:16px}
+    .detail{padding:30px 24px}
+    .detail h3{font-size:28px}
+    .slab{padding:34px 26px 30px}
+    .phone{width:290px}
+    .screen{min-height:520px}
+    .quote .acts .btn small{display:none}
+    .dock{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;transform:translateY(130%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+    .dock.show{transform:none}
+    .dock .btn{padding:15px}
+    .sw{width:38px;height:38px}
+    .swatches{gap:9px}
+    .status{font-size:11.5px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- Shared car drawing -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="paintClean" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#5DBBFF" />
-        <stop offset=".45" stop-color="#1F78D6" />
-        <stop offset="1" stop-color="#0E3F7A" />
-      </linearGradient>
-      <linearGradient id="paintDirty" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#9A9384" />
-        <stop offset=".6" stop-color="#7F7666" />
-        <stop offset="1" stop-color="#5B4E3E" />
-      </linearGradient>
-      <linearGradient id="glassClean" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#CDEBFF" />
-        <stop offset=".5" stop-color="#6FA9D6" />
-        <stop offset="1" stop-color="#274E73" />
-      </linearGradient>
-      <linearGradient id="glintGrad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#fff" stop-opacity="0" />
-        <stop offset=".5" stop-color="#fff" stop-opacity=".75" />
-        <stop offset="1" stop-color="#fff" stop-opacity="0" />
-      </linearGradient>
-      <path id="bodyPath"
-        d="M40 196 C36 168 52 150 92 144 L176 132 C214 94 252 78 304 76 L392 76 C432 78 458 98 490 128 L546 138 C572 143 582 165 580 196 C580 204 574 208 566 208 L518 208 C518 180 498 160 470 160 C442 160 422 180 422 208 L198 208 C198 180 178 160 150 160 C122 160 102 180 102 208 L54 208 C46 208 40 204 40 196 Z" />
-      <clipPath id="bodyClip">
-        <use href="#bodyPath" />
-      </clipPath>
-      <symbol id="car" viewBox="0 0 620 260">
-        <ellipse cx="310" cy="246" rx="270" ry="9" fill="rgba(0,0,0,.35)" />
-        <use href="#bodyPath" style="fill:var(--paint)" />
-        <path d="M206 130 C230 104 258 92 300 90 L330 90 L330 130 Z" style="fill:var(--glass)" />
-        <path d="M344 90 L390 90 C420 92 440 106 466 130 L344 130 Z" style="fill:var(--glass)" />
-        <path d="M337 86 L337 204 M202 134 L202 200" stroke="rgba(0,0,0,.25)" stroke-width="2" />
-        <path d="M360 150 h26 M226 150 h26" stroke="rgba(0,0,0,.35)" stroke-width="4" stroke-linecap="round" />
-        <path d="M548 150 L575 157 L575 170 L552 167 Z" style="fill:var(--lamp)" />
-        <path d="M44 160 L62 158 L62 173 L42 175 Z" fill="#D94A4A" />
-        <path d="M110 150 C220 140 400 136 528 142" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-          style="opacity:var(--shine)" />
-        <g>
-          <circle cx="150" cy="208" r="40" fill="#0B1520" />
-          <circle cx="150" cy="208" r="24" style="fill:var(--rim)" />
-          <circle cx="150" cy="208" r="6" fill="#0B1520" />
-          <circle cx="470" cy="208" r="40" fill="#0B1520" />
-          <circle cx="470" cy="208" r="24" style="fill:var(--rim)" />
-          <circle cx="470" cy="208" r="6" fill="#0B1520" />
-        </g>
-      </symbol>
-    </defs>
-  </svg>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="RG Car Body Repair home">
+      <span class="mark"><span>RG</span></span>
+      <span class="word">Car Body Repair<small>Manchester</small></span>
+    </a>
+    <a class="btn btn-red" href="tel:+447550231714">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      Call 07550 231714
+    </a>
+  </div>
+</header>
 
-  <header class="nav" id="nav">
-    <div class="wrap">
-      <a href="#top" class="logo" aria-label="Wash & Glow home">
-        <svg viewBox="0 0 40 40" aria-hidden="true">
-          <circle cx="16" cy="22" r="12" fill="none" stroke="#3FA7F5" stroke-width="3" />
-          <circle cx="29" cy="12" r="7" fill="none" stroke="#F5C451" stroke-width="3" />
-          <circle cx="12" cy="18" r="2.5" fill="#EEF5FA" />
-        </svg>
-        Wash &amp; Glow
-      </a>
-      <a class="btn btn-wax" href="tel:+447483124950">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-          stroke-linejoin="round" aria-hidden="true">
-          <path
-            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
-        </svg>
-        Call us
-      </a>
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title" style="padding:0">
+    <div class="stage3d" id="stage3d">
+      <svg class="fallback" viewBox="0 0 620 260" aria-hidden="true">
+        <ellipse cx="310" cy="246" rx="270" ry="9" fill="rgba(0,0,0,.45)"/>
+        <path id="fbBody" fill="#E3120B" d="M34 190 C32 166 46 152 84 146 L180 136 L478 132 C512 134 540 138 560 144 C582 150 590 170 588 194 C588 206 580 214 570 216 L526 216 L526 208 C526 177 501 152 470 152 C439 152 414 177 414 208 L414 216 L206 216 L206 208 C206 177 181 152 150 152 C119 152 94 177 94 208 L94 216 L48 216 C40 216 34 204 34 190 Z"/>
+        <path fill="#15171B" d="M170 138 C214 100 262 86 316 84 L376 84 C416 86 446 106 476 136 Z"/>
+        <circle cx="150" cy="208" r="40" fill="#0B0C0E"/><circle cx="150" cy="208" r="24" fill="#9EA3AA"/>
+        <circle cx="470" cy="208" r="40" fill="#0B0C0E"/><circle cx="470" cy="208" r="24" fill="#9EA3AA"/>
+      </svg>
     </div>
-  </header>
-
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="bubbles" id="bubbles" aria-hidden="true"></div>
-      <div class="wrap hero-grid">
-        <div>
-          <h1 class="wipe" id="hero-title">
-            <span class="dirty" aria-hidden="true">Dirty in.<br>Glowing out.</span>
-            <span class="depth" aria-hidden="true">Dirty in.<br>Glowing out.</span>
-            <span class="clean">Dirty in.<br>Glowing out.</span>
-            <span class="squeegee" aria-hidden="true"></span>
-          </h1>
-          <p class="lede">Hand car wash and valeting on Cheetham Hill Road, just up from Manchester city centre.</p>
-          <div class="ctas">
-            <a class="btn btn-wax" href="tel:+447483124950">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path
-                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
-              </svg>
-              Call 07483 124950
-            </a>
-            <a class="btn btn-ghost" target="_blank" rel="noopener"
-              href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Get
-              directions</a>
-          </div>
-          <div class="facts">
-            <span><span class="star" aria-hidden="true">★</span><strong>4.2</strong> from 408 Google reviews</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 2" />
-              </svg>Closes <strong>6:30pm</strong></span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
-                <circle cx="12" cy="9.5" r="2.5" />
-              </svg>M8 8LW</span>
-          </div>
-        </div>
-
-        <div class="hero-car" id="car3d">
-          <svg class="fallback" viewBox="0 0 620 300" aria-hidden="true">
-            <g class="spray" fill="none" stroke="#9FD4FF" stroke-width="3" stroke-linecap="round" opacity=".8">
-              <path d="M330 -10 C 300 40 290 70 300 100" />
-              <path d="M360 -10 C 350 40 350 70 360 100" />
-              <path d="M390 -10 C 400 40 410 70 420 110" />
-            </g>
-            <g transform="translate(0,40)">
-              <use href="#car" width="620" height="260"
-                style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.6" />
-              <g clip-path="url(#bodyClip)">
-                <rect class="glintbar" x="0" y="60" width="90" height="170" fill="url(#glintGrad)"
-                  transform="skewX(-20)" />
-              </g>
-              <g fill="#fff" opacity=".92">
-                <circle class="foamdot" cx="250" cy="86" r="14" />
-                <circle class="foamdot" cx="272" cy="80" r="10" style="animation-delay:.3s" />
-                <circle class="foamdot" cx="290" cy="84" r="16" style="animation-delay:.6s" />
-                <circle class="foamdot" cx="314" cy="78" r="11" style="animation-delay:.9s" />
-                <circle class="foamdot" cx="336" cy="82" r="13" style="animation-delay:.2s" />
-                <circle class="foamdot" cx="360" cy="78" r="9" style="animation-delay:.5s" />
-                <circle class="foamdot" cx="380" cy="84" r="12" style="animation-delay:.8s" />
-                <circle class="foamdot" cx="404" cy="90" r="8" style="animation-delay:1.1s" />
-              </g>
-            </g>
-          </svg>
-          <div class="spin-hint" id="spinHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" aria-hidden="true">
-              <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5" />
-            </svg>Drag to spin</div>
-        </div>
+    <div class="hero-shade"></div>
+    <div class="wrap hero-content">
+      <span class="tape">Accident repair specialists · M8</span>
+      <h1 class="display" id="hero-title">
+        <span class="ln"><span>We make</span></span>
+        <span class="ln"><span>the damage</span></span>
+        <span class="ln"><span>disappear.</span></span>
+      </h1>
+      <p class="lede">Accident repair, dents, scratches and full resprays, finished to factory standard. We deal with your insurer, so you don't have to.</p>
+      <div class="ctas">
+        <a class="btn btn-red" target="_blank" rel="noopener" href="https://wa.me/447550231714?text=Hi%20RG%2C%20I%27d%20like%20a%20quote%20for%20my%20car.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
+          Get a free quote
+        </a>
+        <a class="btn btn-steel" href="tel:+447550231714">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          07550 231714
+        </a>
       </div>
-    </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="track">
-        <span>Hand wash <i></i> Snow foam <i></i> Interior valet <i></i> Alloy &amp; tyre shine <i></i> Hand wax <i></i>
-          Vans &amp; SUVs welcome <i></i></span>
-        <span>Hand wash <i></i> Snow foam <i></i> Interior valet <i></i> Alloy &amp; tyre shine <i></i> Hand wax <i></i>
-          Vans &amp; SUVs welcome <i></i></span>
+      <div class="facts">
+        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><b>4.8</b> from 346 Google reviews</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Open today until <b>7:30pm</b></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Free quotes, usually <b>same day</b></span>
       </div>
     </div>
 
-    <!-- SERVICES -->
-    <section id="services" aria-labelledby="svc-title">
-      <div class="wrap">
-        <div class="menu-head reveal">
-          <div>
-            <h2 id="svc-title">Pick your wash</h2>
-            <p class="intro">Every wash is done by hand. Choose your vehicle size to see prices.</p>
-          </div>
-          <div class="sizes" role="group" aria-label="Vehicle size">
-            <span class="pill" id="pill"></span>
-            <button type="button" data-m="1" aria-pressed="true">Car</button>
-            <button type="button" data-m="1.25" aria-pressed="false">SUV / 4x4</button>
-            <button type="button" data-m="1.5" aria-pressed="false">Van</button>
-          </div>
-        </div>
-        <div class="board-wrap">
-          <ul class="menu" id="menu">
-            <li>
-              <h3>Outside hand wash</h3><span class="dots"></span><span class="price"
-                data-base="10"><small>from</small>£10</span>
-              <p>Snow foam pre-wash, two-bucket hand wash, rinse and hand dry.</p>
-            </li>
-            <li>
-              <h3>Inside &amp; out</h3><span class="dots"></span><span class="price"
-                data-base="18"><small>from</small>£18</span>
-              <p>Outside hand wash plus hoover, dashboard wipe and windows inside.</p>
-            </li>
-            <li>
-              <h3>Wash &amp; wax</h3><span class="dots"></span><span class="price"
-                data-base="25"><small>from</small>£25</span>
-              <p>Full hand wash finished with a layer of wax for a deep, lasting shine.</p>
-            </li>
-            <li>
-              <h3>Interior valet</h3><span class="dots"></span><span class="price"
-                data-base="35"><small>from</small>£35</span>
-              <p>Seats, carpets, mats, door cards and boot, deep cleaned.</p>
-            </li>
-            <li>
-              <h3>Full valet</h3><span class="dots"></span><span class="price"
-                data-base="60"><small>from</small>£60</span>
-              <p>Our complete top-to-bottom clean, inside and out, with wax.</p>
-            </li>
-            <li>
-              <h3>Alloy &amp; tyre shine</h3><span class="dots"></span><span class="price"
-                data-base="6"><small>from</small>£6</span>
-              <p>Brake dust off the wheels and a dressing that makes tyres look new.</p>
-            </li>
-          </ul>
-        </div>
+    <div class="paint-dock" id="paintDock">
+      <div class="dock-top">
+        <div class="status" id="status" role="status" aria-live="polite"><i></i><span>Bodywork &amp; primer</span></div>
+        <button type="button" class="replay" id="replay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          Replay repair
+        </button>
       </div>
-    </section>
-
-    <!-- BEFORE / AFTER -->
-    <section class="ba" id="results" aria-labelledby="ba-title">
-      <div class="wrap ba-grid">
-        <div class="reveal">
-          <h2 id="ba-title">See the difference for yourself</h2>
-          <p class="intro">Months of Manchester rain, road salt and motorway grime, gone in one visit. Drag the squeegee
-            across the car.</p>
-        </div>
-        <div class="reveal">
-          <div class="stage tilt" id="stage" data-tilt="7">
-            <span class="tag l">Before</span><span class="tag r">After</span>
-            <div class="layer" aria-hidden="true">
-              <svg viewBox="0 0 620 260">
-                <use href="#car" width="620" height="260"
-                  style="--paint:url(#paintDirty);--glass:#6C767B;--lamp:#9d9a86;--rim:#6f6a60;--shine:0" />
-                <g clip-path="url(#bodyClip)" fill="#4E4032" opacity=".8">
-                  <ellipse cx="120" cy="190" rx="60" ry="22" />
-                  <ellipse cx="300" cy="200" rx="120" ry="16" />
-                  <ellipse cx="520" cy="190" rx="55" ry="20" />
-                  <circle cx="240" cy="165" r="9" />
-                  <circle cx="270" cy="175" r="6" />
-                  <circle cx="410" cy="168" r="11" />
-                  <circle cx="455" cy="150" r="5" />
-                  <circle cx="180" cy="158" r="7" />
-                  <circle cx="360" cy="180" r="8" />
-                  <path d="M220 184 q4 14 0 22 q-4-8 0-22z M390 186 q4 12 0 20 q-4-8 0-20z" />
-                </g>
-                <g fill="#5a4b3b" opacity=".55">
-                  <circle cx="260" cy="112" r="5" />
-                  <circle cx="300" cy="104" r="3" />
-                  <circle cx="372" cy="110" r="4" />
-                  <circle cx="420" cy="118" r="3" />
-                </g>
-              </svg>
-            </div>
-            <div class="layer clean-layer" aria-hidden="true">
-              <svg viewBox="0 0 620 260">
-                <use href="#car" width="620" height="260"
-                  style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.65" />
-                <g fill="#fff">
-                  <path d="M140 60 l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" />
-                  <path d="M480 70 l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" />
-                  <path d="M330 40 l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" />
-                </g>
-              </svg>
-            </div>
-            <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Drag to compare before and after">
-            <span class="handle" aria-hidden="true"></span>
-          </div>
-        </div>
+      <div class="swatches" role="group" aria-label="Choose a paint colour">
+        <button type="button" class="sw" style="--c:#D5140E" data-hex="#D5140E" data-name="RG Red" data-m=".45" data-r=".26" aria-label="RG Red" aria-pressed="true"></button>
+        <button type="button" class="sw" style="--c:#16181C" data-hex="#16181C" data-name="Obsidian Black" data-m=".6" data-r=".22" aria-label="Obsidian Black" aria-pressed="false"></button>
+        <button type="button" class="sw" style="--c:#EEF0F2" data-hex="#EEF0F2" data-name="Glacier White" data-m=".1" data-r=".3" aria-label="Glacier White" aria-pressed="false"></button>
+        <button type="button" class="sw" style="--c:#50555D" data-hex="#50555D" data-name="Graphite Grey" data-m=".75" data-r=".3" aria-label="Graphite Grey" aria-pressed="false"></button>
+        <button type="button" class="sw" style="--c:#1C4F8F" data-hex="#1C4F8F" data-name="Ocean Blue" data-m=".55" data-r=".25" aria-label="Ocean Blue" aria-pressed="false"></button>
+        <button type="button" class="sw" style="--c:#1D4A37" data-hex="#1D4A37" data-name="Racing Green" data-m=".5" data-r=".26" aria-label="Racing Green" aria-pressed="false"></button>
       </div>
-    </section>
-
-    <!-- STEPS -->
-    <section aria-labelledby="how-title">
-      <div class="wrap">
-        <h2 class="reveal" id="how-title">How a visit works</h2>
-        <div class="road" id="road" aria-hidden="true">
-          <div class="line"></div>
-          <svg class="mini" viewBox="0 0 620 260">
-            <use href="#car" width="620" height="260"
-              style="--paint:url(#paintClean);--glass:url(#glassClean);--lamp:#FFF3C2;--rim:#C7D5E2;--shine:.6" />
-          </svg>
-        </div>
-        <ol class="steps">
-          <li class="reveal">
-            <div class="n">1</div>
-            <h3>Pull in</h3>
-            <p>Drive onto Cheetham Hill Road and tell us which wash you'd like.</p>
-          </li>
-          <li class="reveal">
-            <div class="n">2</div>
-            <h3>We get to work</h3>
-            <p>Our team foams, hand washes and dries your car with care.</p>
-          </li>
-          <li class="reveal">
-            <div class="n">3</div>
-            <h3>Drive away glowing</h3>
-            <p>Check it over, pay, and head off in a car that looks brand new.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- RATING -->
-    <section class="rating" id="reviews" aria-labelledby="rev-title">
-      <div class="wrap">
-        <div class="score reveal" aria-hidden="true"><span class="tilt" data-tilt="16">4.2</span></div>
-        <div class="reveal">
-          <h2 id="rev-title">Trusted by drivers across north Manchester</h2>
-          <div class="stars" role="img" aria-label="Rated 4.2 out of 5">
-            <span class="base">★★★★★</span><span class="fill">★★★★★</span>
-          </div>
-          <p class="count">Rated 4.2 out of 5 from 408 reviews on Google.</p>
-          <a class="btn" target="_blank" rel="noopener"
-            href="https://www.google.com/maps/search/?api=1&query=Wash+%26+Glow+210+Cheetham+Hill+Rd+Manchester+M8+8LW">Read
-            reviews on Google</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- VISIT -->
-    <section class="visit" id="visit" aria-labelledby="visit-title">
-      <div class="wrap visit-grid">
-        <div class="reveal">
-          <h2 id="visit-title">Come and see us</h2>
-          <ul class="details">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
-                <circle cx="12" cy="9.5" r="2.5" />
-              </svg>
-              <div><b>210 Cheetham Hill Rd</b><span>Cheetham Hill, Manchester M8 8LW</span></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 2" />
-              </svg>
-              <div><b>Open today</b><span>Closes at 6:30pm</span></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path
-                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
-              </svg>
-              <div><b><a href="tel:+447483124950">07483 124950</a></b><span>Call ahead for full valets</span></div>
-            </li>
-          </ul>
-          <a class="btn btn-wax" target="_blank" rel="noopener"
-            href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Get
-            directions</a>
-          <a class="btn btn-line" href="tel:+447483124950">Call now</a>
-        </div>
-        <div class="reveal">
-          <div class="mapbox tilt" data-tilt="5">
-            <iframe title="Map showing Wash & Glow at 210 Cheetham Hill Rd, Manchester" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=Wash%20%26%20Glow%2C%20210%20Cheetham%20Hill%20Rd%2C%20Manchester%20M8%208LW&z=15&output=embed"></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="big">Wash &amp; Glow</div>
-      <div>210 Cheetham Hill Rd, Manchester M8 8LW<br><a href="tel:+447483124950">07483 124950</a> &nbsp;&copy; <span
-          id="yr"></span></div>
+      <p class="dock-label">Pick a colour and <b>watch us respray it</b>.</p>
     </div>
-  </footer>
+    <div class="spin-tip" id="spinTip">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg>
+      Drag the car to spin it
+    </div>
+  </section>
 
-  <div class="dock" id="dock">
-    <a class="btn btn-wax" href="tel:+447483124950">Call</a>
-    <a class="btn btn-dark" target="_blank" rel="noopener"
-      href="https://www.google.com/maps/dir/?api=1&destination=210+Cheetham+Hill+Rd+Manchester+M8+8LW">Directions</a>
+  <div class="tapeband" aria-hidden="true">
+    <div class="track">
+      <span>Accident repair <i></i> Full resprays <i></i> Dent removal <i></i> Scratches &amp; scuffs <i></i> Bumper repair <i></i> Insurance claims <i></i> Restoration <i></i> Recovery <i></i></span>
+      <span>Accident repair <i></i> Full resprays <i></i> Dent removal <i></i> Scratches &amp; scuffs <i></i> Bumper repair <i></i> Insurance claims <i></i> Restoration <i></i> Recovery <i></i></span>
+    </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script>
-    (() => {
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="tape">Colour-matched to your car</span>
+        <h2 class="display" id="svc-title">Every kind of damage. One workshop.</h2>
+        <p class="intro">Tap a paint chip to see what's involved.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="fan" id="fan" role="group" aria-label="Services">
+          <!-- chips inserted by script -->
+        </div>
+        <div class="detail reveal" id="detail" aria-live="polite">
+          <div class="bar" id="dBar"></div>
+          <div class="swap" id="dSwap">
+            <h3 id="dTitle">Accident repair</h3>
+            <p id="dText"></p>
+            <ul id="dList"></ul>
+          </div>
+          <a class="btn btn-red" target="_blank" rel="noopener" id="dCta" href="https://wa.me/447550231714">Get a quote for this</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      // Bubbles in the hero
-      const bw = document.getElementById('bubbles');
-      if (!reduce) {
-        const count = innerWidth < 700 ? 14 : 28;
-        for (let i = 0; i < count; i++) {
-          const b = document.createElement('span');
-          const s = 8 + Math.random() * 46;
-          b.className = 'bubble';
-          b.style.cssText = `width:${s}px;height:${s}px;left:${Math.random() * 100}%;animation-duration:${9 + Math.random() * 12}s;animation-delay:${-Math.random() * 18}s;--drift:${(Math.random() * 80 - 40).toFixed(0)}px`;
-          bw.appendChild(b);
-        }
+  <!-- TRACKER -->
+  <section class="dark" aria-labelledby="trk-title">
+    <div class="wrap trk-grid">
+      <div class="reveal">
+        <span class="tape">Online job tracker</span>
+        <h2 class="display" id="trk-title">Know exactly where your car is.</h2>
+        <p class="intro">Drop your keys off and follow your repair online, from first assessment to final detail. No chasing for updates.</p>
+        <ul class="trk-points">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Live progress</b><span>See each stage as it's completed.</span></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/><path d="M9 10l2 2 4-4"/></svg></span><div><b>Honest pricing up front</b><span>You'll know the cost before we start.</span></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><div><b>Ready when promised</b><span>Many smaller jobs are finished within a day.</span></div></li>
+        </ul>
+      </div>
+      <div class="phone-wrap reveal">
+        <div class="phone tilt" data-tilt="10">
+          <div class="screen">
+            <div class="notch"></div>
+            <div class="scr-top"><span>RG Job tracker</span><span>Live</span></div>
+            <div class="plate">YOUR CAR</div>
+            <div class="job">Front-end accident repair<small>Estimated ready: Thursday</small></div>
+            <div class="prog"><b></b></div>
+            <ol class="stages">
+              <li class="done"><span class="dot"></span>Assessment<span class="t">Done</span></li>
+              <li class="done"><span class="dot"></span>Bodywork<span class="t">Done</span></li>
+              <li class="now"><span class="dot"></span>Paint &amp; colour match<span class="t">In progress</span></li>
+              <li><span class="dot"></span>Detailing<span class="t">Next</span></li>
+              <li><span class="dot"></span>Ready to collect<span class="t">—</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSURANCE + RECOVERY -->
+  <section aria-labelledby="ins-title">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="tape">No hassle</span>
+        <h2 class="display" id="ins-title">Had an accident? Leave the rest to us.</h2>
+      </div>
+      <div class="slabs">
+        <div class="slab light reveal tilt" data-tilt="5">
+          <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+          <h3>We handle your insurance claim</h3>
+          <p>We work directly with the major UK insurers. Bring us your keys and we'll take it from there. It's your car, so you choose where it's repaired.</p>
+          <span class="ghost" aria-hidden="true">RG</span>
+        </div>
+        <div class="slab redslab reveal tilt" data-tilt="5">
+          <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3120B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16V8h10v8M13 11h4l4 3v2h-8"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
+          <h3>Can't drive it? We'll come to you.</h3>
+          <p>Broken down or too damaged to drive? Call us and we'll arrange to get your car to the workshop, with no hassle and no delay.</p>
+          <span class="ghost" aria-hidden="true">RG</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews" aria-labelledby="rev-title">
+    <div class="wrap rev-grid">
+      <div class="score reveal" aria-hidden="true"><span class="tilt" data-tilt="16">4.8</span></div>
+      <div class="reveal">
+        <h2 class="display" id="rev-title">Manchester drivers rate us highly.</h2>
+        <div class="stars" role="img" aria-label="Rated 4.8 out of 5"><span class="base">★★★★★</span><span class="fill">★★★★★</span></div>
+        <p style="color:var(--muted);font-size:18px">Rated 4.8 out of 5 from 346 reviews on Google. What customers mention most:</p>
+        <div class="themes">
+          <span class="tape">Fair, honest prices</span>
+          <span class="tape">Often done in a day</span>
+          <span class="tape">Flawless paintwork</span>
+          <span class="tape">Friendly &amp; clear</span>
+        </div>
+        <a class="btn btn-dark" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=RG+Car+Body+Repair+Honey+St+Manchester+M8+8RG">Read reviews on Google</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BAND -->
+  <section class="quote" aria-labelledby="q-title">
+    <div class="wrap">
+      <div class="reveal">
+        <h2 class="display" id="q-title">Send a photo. Get a price.</h2>
+        <p>WhatsApp us a few photos of the damage and we'll usually come back with a free, no-obligation quote the same working day.</p>
+      </div>
+      <div class="acts reveal">
+        <a class="btn btn-paper" target="_blank" rel="noopener" href="https://wa.me/447550231714?text=Hi%20RG%2C%20here%20are%20some%20photos%20of%20the%20damage%20to%20my%20car.">
+          <svg viewBox="0 0 24 24" fill="#1FA855" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
+          WhatsApp your photos <small>Fastest</small>
+        </a>
+        <a class="btn btn-dark" href="tel:+447550231714">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          Call 07550 231714
+        </a>
+        <a class="btn btn-dark" href="mailto:customerservice@rgcarbodyrepair.co.uk?subject=Quote%20request">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          Email us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="wrap visit-grid">
+      <div class="reveal">
+        <span class="tape">Find the workshop</span>
+        <h2 class="display" id="visit-title">Come and see us.</h2>
+        <ul class="details">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <div><b>27 Honey St, Cheetham Hill</b><span>Manchester M8 8RG</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div><b>Open today</b><span>Closes at 7:30pm</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div><b><a href="tel:+447550231714">07550 231714</a></b><span>Call or WhatsApp</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M12 4a13 13 0 0 1 0 16M12 4a13 13 0 0 0 0 16"/><circle cx="12" cy="12" r="8"/></svg>
+            <div><b>Wheelchair accessible</b><span>Step-free entrance</span></div></li>
+        </ul>
+        <div class="acts">
+          <a class="btn btn-red" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=RG+Car+Body+Repair+27+Honey+St+Manchester+M8+8RG">Get directions</a>
+          <a class="btn btn-steel" href="tel:+447550231714">Call now</a>
+        </div>
+      </div>
+      <div class="reveal"><div class="mapbox tilt" data-tilt="4">
+        <iframe title="Map showing RG Car Body Repair, 27 Honey St, Manchester" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=RG%20Car%20Body%20Repair%2C%20Honey%20St%2C%20Manchester%20M8%208RG&z=16&output=embed"></iframe>
+      </div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big">RG Car<br>Body Repair<em>.</em></div>
+    <div>27 Honey St, Cheetham Hill, Manchester M8 8RG<br><a href="tel:+447550231714">07550 231714</a> · RG Car Body Repair Limited &copy; <span id="yr"></span></div>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <a class="btn btn-red" href="tel:+447550231714">Call</a>
+  <a class="btn btn-dark" target="_blank" rel="noopener" href="https://wa.me/447550231714?text=Hi%20RG%2C%20I%27d%20like%20a%20quote%20for%20my%20car.">WhatsApp</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+
+  /* ---------- Nav + dock ---------- */
+  const nav = $('#nav'), dock = $('#dock');
+  const onScroll = () => { nav.classList.toggle('solid', scrollY > 40); dock.classList.toggle('show', scrollY > innerHeight * .7); };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* ---------- Services fan deck ---------- */
+  const services = [
+    { code: 'RG-01', name: 'Accident repair', c: '#D5140E', t: '#fff',
+      text: 'From minor bumps to heavy front-end damage, we restore your car\'s shape, structure and finish so it leaves looking like it never happened.',
+      list: ['Panel straightening and replacement', 'Structural and front-end damage', 'Insurance or private work'] },
+    { code: 'RG-02', name: 'Full resprays', c: '#16181C', t: '#fff',
+      text: 'Faded paint, damage or a complete colour change. Showroom-quality paintwork with precise, manufacturer-spec colour matching.',
+      list: ['Single panels or the whole car', 'Colour changes', 'Clearcoat finish for lasting shine'] },
+    { code: 'RG-03', name: 'Dent removal', c: '#EEF0F2', t: '#16171A',
+      text: 'Door dings, car-park knocks and deep panel dents, pulled out and finished so you would never know they were there.',
+      list: ['Small dings to large dents', 'Smooth, invisible finish', 'Often done the same day'] },
+    { code: 'RG-04', name: 'Scratches & scuffs', c: '#1C4F8F', t: '#fff',
+      text: 'Quick, cost-effective fixes for keyed paint, scuffs and minor marks, with no shortcuts on quality.',
+      list: ['Key scratches and scuffs', 'Paint chips and marks', 'Blended to match your paint'] },
+    { code: 'RG-05', name: 'Bumper repair', c: '#1D4A37', t: '#fff',
+      text: 'Cracked, scraped or hanging off, we repair or replace your bumper and colour-code it to match the rest of the car.',
+      list: ['Cracks, scrapes and splits', 'Repair or replacement', 'Colour-coded to match'] },
+    { code: 'RG-06', name: 'Restoration', c: '#50555D', t: '#fff',
+      text: 'Classic or modern, we bring cars back to life, restoring every curve, panel and detail with real care.',
+      list: ['Classic and modern cars', 'Rust and panel work', 'Full paint restoration'] },
+  ];
+  const fan = $('#fan');
+  const mobile = () => innerWidth < 680;
+  const angles = n => { const spread = 128; return Array.from({ length: n }, (_, i) => -spread / 2 + spread * i / (n - 1)); };
+  const chips = services.map((s, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip';
+    b.style.cssText = `--c:${s.c};--t:${s.t};z-index:${i + 1}`;
+    b.setAttribute('aria-pressed', i === 0);
+    b.innerHTML = `<div class="swatch"><span class="code">${s.code}</span><span class="nm">${s.name}</span></div><span class="pin" aria-hidden="true"></span>`;
+    b.addEventListener('click', () => select(i));
+    fan.appendChild(b); return b;
+  });
+  const setAngles = () => { const a = angles(chips.length); chips.forEach((c, i) => c.style.setProperty('--r', a[i] + 'deg')); };
+  setAngles(); addEventListener('resize', setAngles);
+  const dSwap = $('#dSwap');
+  function select(i, instant) {
+    const s = services[i];
+    chips.forEach((c, j) => { c.setAttribute('aria-pressed', i === j); });
+    $('#dBar').style.setProperty('--c', s.c === '#EEF0F2' ? '#C9CDD2' : s.c);
+    const fill = () => {
+      $('#dTitle').textContent = s.name; $('#dText').textContent = s.text;
+      $('#dList').innerHTML = s.list.map(l => `<li>${l}</li>`).join('');
+      $('#dCta').href = 'https://wa.me/447550231714?text=' + encodeURIComponent(`Hi RG, I'd like a quote for ${s.name.toLowerCase()}.`);
+    };
+    if (instant) return fill();
+    dSwap.classList.add('out'); setTimeout(() => { fill(); dSwap.classList.remove('out'); }, 220);
+  }
+  select(0, true);
+
+  /* ---------- Reveals ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .2 });
+  document.querySelectorAll('.reveal, #fan').forEach(el => io.observe(el));
+
+  /* ---------- 3D tilt panels ---------- */
+  if (!reduce && matchMedia('(hover:hover)').matches) {
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      const max = parseFloat(el.dataset.tilt) || 6;
+      const base = el.classList.contains('phone') ? 'rotateY(-14deg) rotateX(6deg) ' : '';
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(1100px) ${base}rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ---------- Paint dock (works with or without 3D) ---------- */
+  const swBtns = [...document.querySelectorAll('.sw')];
+  const statusEl = $('#status');
+  const setStatus = (cls, txt) => { statusEl.className = 'status ' + cls; statusEl.querySelector('span').textContent = txt; };
+  let paintApi = null;
+  const specOf = b => ({ hex: parseInt(b.dataset.hex.slice(1), 16), css: b.dataset.hex, name: b.dataset.name, m: +b.dataset.m, r: +b.dataset.r });
+  let chosen = specOf(swBtns[0]);
+  swBtns.forEach(b => b.addEventListener('click', () => {
+    if (paintApi && paintApi.busy()) return;
+    swBtns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    chosen = specOf(b);
+    if (paintApi) paintApi.respray(chosen);
+    else { $('#fbBody').setAttribute('fill', chosen.css); setStatus('done', 'Showroom finish · ' + chosen.name); }
+  }));
+  $('#replay').addEventListener('click', () => { if (paintApi && !paintApi.busy()) paintApi.repair(chosen); });
+
+  /* ---------- 3D spray booth ---------- */
+  const host = $('#stage3d');
+  if (window.THREE) { try { paintApi = buildBooth(); } catch (err) { console.warn('3D unavailable', err); } }
+  if (!paintApi) { $('#replay').style.display = 'none'; setStatus('done', 'Showroom finish · RG Red'); }
+
+  function buildBooth() {
+    const T = THREE, L = hex => new T.Color(hex).convertSRGBToLinear();
+    const renderer = new T.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.outputEncoding = T.sRGBEncoding;
+    renderer.toneMapping = T.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = .9;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = T.PCFSoftShadowMap;
+    renderer.localClippingEnabled = true;
+    host.prepend(renderer.domElement);
+
+    const scene = new T.Scene();
+    scene.fog = new T.Fog(L(0x16171a), 18, 42);
+    const camera = new T.PerspectiveCamera(28, 1, .1, 100);
+    const camBase = new T.Vector3(11.4, 3.8, 13), target = new T.Vector3(0, .6, 0);
+
+    /* Studio reflections: light strips of a paint booth baked into an environment map */
+    const pmrem = new T.PMREMGenerator(renderer);
+    const env = new T.Scene(); env.background = L(0x0a0b0d);
+    const strip = (w, h, hex, k, x, y, z, rx, ry) => {
+      const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: L(hex).multiplyScalar(k), side: T.DoubleSide }));
+      m.position.set(x, y, z); m.rotation.set(rx, ry, 0); env.add(m);
+    };
+    for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; strip(.35, 5, 0xffffff, 2.2, Math.cos(a) * 9, 2.5, Math.sin(a) * 9, 0, Math.atan2(-Math.cos(a), -Math.sin(a))); }
+    for (let i = -1; i <= 1; i++) strip(1.4, 12, 0xffffff, 3.2, i * 2.6, 7, 0, Math.PI / 2, 0);
+    strip(9, 1.2, 0xe3120b, 1.6, 0, .8, -9, 0, 0);
+    strip(30, 30, 0x1c1d21, 1, 0, -2, 0, Math.PI / 2, 0);
+    scene.environment = pmrem.fromScene(env, .025).texture;
+
+    scene.add(new T.HemisphereLight(L(0xe8eef5), L(0x121316), .25));
+    const key = new T.DirectionalLight(L(0xffffff), 1.25);
+    key.position.set(2.5, 9, 4); key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+    Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 22 });
+    key.shadow.radius = 6; key.shadow.bias = -.0004; scene.add(key);
+    const rim = new T.PointLight(L(0xff3b30), 1.6, 12); rim.position.set(-4.5, 1.6, -3.5); scene.add(rim);
+    const fill = new T.PointLight(L(0xcfe3ff), 1.2, 14); fill.position.set(5, 2.5, 5); scene.add(fill);
+
+    const world = new T.Group(); scene.add(world);
+    const turn = new T.Group(); world.add(turn);
+    const car = new T.Group(); turn.add(car);
+
+    /* Floor: booth grating with a red bay outline */
+    const gc = document.createElement('canvas'); gc.width = gc.height = 256;
+    const gx = gc.getContext('2d'); gx.fillStyle = '#2f3237'; gx.fillRect(0, 0, 256, 256);
+    gx.strokeStyle = '#1b1d21'; gx.lineWidth = 6; for (let i = 0; i <= 256; i += 64) { gx.beginPath(); gx.moveTo(i, 0); gx.lineTo(i, 256); gx.stroke(); gx.beginPath(); gx.moveTo(0, i); gx.lineTo(256, i); gx.stroke(); }
+    gx.strokeStyle = '#3a3d43'; gx.lineWidth = 1.5; for (let i = 8; i < 256; i += 16) { gx.beginPath(); gx.moveTo(i, 0); gx.lineTo(i, 256); gx.stroke(); }
+    const gtex = new T.CanvasTexture(gc); gtex.wrapS = gtex.wrapT = T.RepeatWrapping; gtex.repeat.set(14, 14); gtex.encoding = T.sRGBEncoding;
+    gtex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const floor = new T.Mesh(new T.PlaneGeometry(44, 44), new T.MeshStandardMaterial({ map: gtex, color: L(0x9a9ea6), roughness: .45, metalness: .55, envMapIntensity: .6 }));
+    floor.rotation.x = -Math.PI / 2; floor.position.y = -.19; floor.receiveShadow = true; world.add(floor);
+    const redGlow = new T.MeshStandardMaterial({ color: L(0xe3120b), emissive: L(0xe3120b), emissiveIntensity: 1.6 });
+    [[0, -2.1, 6.8, .05], [0, 2.1, 6.8, .05]].forEach(([x, z, w, d]) => { const m = new T.Mesh(new T.BoxGeometry(w, .012, d), redGlow); m.position.set(x, -.183, z); turn.add(m); });
+    [[-3.4], [3.4]].forEach(([x]) => { const m = new T.Mesh(new T.BoxGeometry(.05, .012, 4.25), redGlow); m.position.set(x, -.183, 0); turn.add(m); });
+    // Booth light tubes in the background
+    const tubeMat = new T.MeshStandardMaterial({ color: L(0xffffff), emissive: L(0xffffff), emissiveIntensity: 2.2 });
+    const camAng = Math.atan2(13, 11.4) + Math.PI;
+    for (let i = -6; i <= 6; i++) { const a = camAng + i * .16; const tb = new T.Mesh(new T.CylinderGeometry(.04, .04, 3.6, 12), tubeMat); tb.position.set(Math.cos(a) * 9, 2.2, Math.sin(a) * 9); world.add(tb); }
+
+    /* Paint system: two copies of each painted panel split by a moving clipping plane */
+    const planeA = new T.Plane(), planeB = new T.Plane(), nx = new T.Vector3();
+    const primer = { hex: 0x7d8186, m: 0, r: .85, clear: 0 };
+    const mkPaint = plane => new T.MeshPhysicalMaterial({ clippingPlanes: [plane], clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: 1.25 });
+    const matA = mkPaint(planeA), matB = mkPaint(planeB);
+    const applyPaint = (mat, s) => {
+      mat.color.copy(L(s.hex)); mat.metalness = s.m; mat.roughness = s.r;
+      mat.clearcoat = s.clear === 0 ? 0 : 1; mat.envMapIntensity = s.clear === 0 ? .35 : 1.25; mat.needsUpdate = true;
+    };
+
+    const P = (x, y) => [(x - 310) / 100, (230 - y) / 100];
+    const shape = cmds => {
+      const s = new T.Shape();
+      cmds.forEach(([op, ...a]) => { const p = []; for (let i = 0; i < a.length; i += 2) p.push(...P(a[i], a[i + 1])); op === 'M' ? s.moveTo(...p) : op === 'L' ? s.lineTo(...p) : s.bezierCurveTo(...p); });
+      return s;
+    };
+    const exGeo = (sh, depth, bevel) => { const g = new T.ExtrudeGeometry(sh, { depth, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel * .8, bevelSegments: 10, curveSegments: 48 }); g.translate(0, 0, -depth / 2); return g; };
+    const bodyGeo = exGeo(shape([['M', 34, 190], ['C', 32, 166, 46, 152, 84, 146], ['L', 180, 136], ['L', 478, 132], ['C', 512, 134, 540, 138, 560, 144], ['C', 582, 150, 590, 170, 588, 194], ['C', 588, 206, 580, 214, 570, 216],
+      ['L', 526, 216], ['L', 526, 208], ['C', 526, 177, 501, 152, 470, 152], ['C', 439, 152, 414, 177, 414, 208], ['L', 414, 216], ['L', 206, 216], ['L', 206, 208],
+      ['C', 206, 177, 181, 152, 150, 152], ['C', 119, 152, 94, 177, 94, 208], ['L', 94, 216], ['L', 48, 216], ['C', 40, 216, 34, 204, 34, 190]]), 1.66, .14);
+    const addPainted = (geo, pos) => [matA, matB].forEach(m => { const me = new T.Mesh(geo, m); if (pos) me.position.copy(pos); me.castShadow = true; car.add(me); });
+    addPainted(bodyGeo);
+
+    const glass = new T.MeshPhysicalMaterial({ color: L(0x0b0d10), metalness: .3, roughness: .03, clearcoat: 1, envMapIntensity: 1.9 });
+    const chrome = new T.MeshStandardMaterial({ color: L(0xe8edf2), metalness: 1, roughness: .14 });
+    const dark = new T.MeshStandardMaterial({ color: L(0x0d0e10), metalness: .35, roughness: .5 });
+    const seamM = new T.MeshBasicMaterial({ color: L(0x050506) });
+    const gun = new T.MeshStandardMaterial({ color: L(0x3a3d42), metalness: 1, roughness: .28 });
+    const tyreM = new T.MeshStandardMaterial({ color: L(0x121417), roughness: .92 });
+    const redM = new T.MeshStandardMaterial({ color: L(0xe3120b), roughness: .35, metalness: .2 });
+    const glow = (hex, i) => new T.MeshStandardMaterial({ color: L(hex), emissive: L(hex), emissiveIntensity: i });
+
+    const cabin = new T.Mesh(exGeo(shape([['M', 170, 138], ['C', 214, 100, 262, 86, 316, 84], ['L', 376, 84], ['C', 416, 86, 446, 106, 476, 136], ['L', 170, 138]]), 1.3, .13), glass);
+    car.add(cabin);
+    const box = (w, h, d, mat, x, y, z, rz = 0, ry = 0) => { const m = new T.Mesh(new T.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.rotation.set(0, ry, rz); car.add(m); return m; };
+    [-1, 1].forEach(sd => {
+      box(2.9, .022, .02, chrome, .15, .985, sd * .79);                 // window line
+      box(.012, .7, .006, seamM, .38, .6, sd * .973);                    // door seams
+      box(.012, .62, .006, seamM, -.92, .62, sd * .973);
+      box(.012, .5, .006, seamM, 1.55, .66, sd * .973, .35);
+      box(.18, .03, .02, chrome, .62, .8, sd * .978);                   // handles
+      box(.18, .03, .02, chrome, -.66, .8, sd * .978);
+      box(3.3, .07, .04, dark, 0, .12, sd * .96);                        // side skirt
+      box(.2, .1, .15, dark, 1.52, 1.02, sd * .98);                      // mirrors
+      box(.05, .03, .1, dark, 1.52, .97, sd * .88);
+      box(.05, .07, .46, glow(0xfff6d8, 2.6), 2.68, .72, sd * .52, -.55); // headlights
+      box(.025, .02, .5, glow(0xd8ecff, 3.2), 2.71, .64, sd * .52, -.55);
+      box(.06, .1, .42, glow(0xff2a1f, 2.2), -2.6, .72, sd * .58, .5);   // tail clusters
+      const ex = new T.Mesh(new T.CylinderGeometry(.05, .05, .14, 20), chrome); ex.rotation.z = Math.PI / 2; ex.position.set(-2.86, .2, sd * .45); car.add(ex);
+    });
+    box(.04, .035, 1.2, glow(0xff2a1f, 1.6), -2.63, .64, 0, .5);        // rear light bar
+    box(.07, .2, .92, dark, 2.84, .44, 0);                               // grille
+    for (let i = 0; i < 4; i++) box(.02, .012, .84, chrome, 2.885, .37 + i * .045, 0);
+    box(.3, .04, 1.72, dark, 2.74, .15, 0);                              // splitter
+    box(.32, .1, 1.4, dark, -2.72, .18, 0);                              // diffuser
+    // Number plates
+    const plateTex = (bg, fg) => { const c = document.createElement('canvas'); c.width = 256; c.height = 60; const x = c.getContext('2d'); x.fillStyle = bg; x.fillRect(0, 0, 256, 60); x.fillStyle = '#1D4E89'; x.fillRect(0, 0, 26, 60); x.fillStyle = fg; x.font = '800 38px Archivo, Arial Narrow, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('RG BODY', 140, 32); const t = new T.CanvasTexture(c); t.encoding = T.sRGBEncoding; return t; };
+    const pf = new T.Mesh(new T.PlaneGeometry(.52, .12), new T.MeshStandardMaterial({ map: plateTex('#f4f4f2', '#111'), roughness: .4 })); pf.position.set(2.905, .3, 0); pf.rotation.y = Math.PI / 2; car.add(pf);
+    const pr = new T.Mesh(new T.PlaneGeometry(.52, .12), new T.MeshStandardMaterial({ map: plateTex('#F5CB00', '#111'), roughness: .4 })); pr.position.set(-2.895, .42, 0); pr.rotation.y = -Math.PI / 2; car.add(pr);
+
+    /* Damage shown in the primer stage: filler patches and scratches, clipped away as the paint passes */
+    const fillerM = new T.MeshStandardMaterial({ color: L(0xa88f82), roughness: 1, clippingPlanes: [planeA] });
+    const scratchM = new T.MeshBasicMaterial({ color: L(0x3b3e43), clippingPlanes: [planeA] });
+    const damage = new T.Group(); car.add(damage);
+    [[2.0, .6, .2, .11], [.1, .5, .26, .12], [-1.95, .68, .17, .09]].forEach(([x, y, sx, sy]) => [-1, 1].forEach(sd => {
+      const p = new T.Mesh(new T.SphereGeometry(1, 24, 12), fillerM); p.scale.set(sx, sy, .012); p.position.set(x, y, sd * .972); damage.add(p);
+    }));
+    for (let i = 0; i < 5; i++) { const sc = new T.Mesh(new T.BoxGeometry(.4 + Math.random() * .3, .006, .004), scratchM); sc.position.set(-.55 + Math.random() * .3, .66 + i * .04, .975); sc.rotation.z = (Math.random() - .5) * .25; damage.add(sc); }
+
+    /* Wheels: 10-spoke alloys with red calipers */
+    function wheel() {
+      const g = new T.Group();
+      const tyre = new T.Mesh(new T.TorusGeometry(.31, .1, 28, 72), tyreM); tyre.scale.z = 1.6; g.add(tyre);
+      const barrel = new T.Mesh(new T.CylinderGeometry(.3, .3, .26, 56, 1, true), dark); barrel.rotation.x = Math.PI / 2; g.add(barrel);
+      const disc = new T.Mesh(new T.CylinderGeometry(.23, .23, .03, 56), new T.MeshStandardMaterial({ color: L(0x7a8087), metalness: .9, roughness: .4 }));
+      disc.rotation.x = Math.PI / 2; disc.position.z = .02; g.add(disc);
+      const cal = new T.Mesh(new T.BoxGeometry(.12, .22, .08), redM); cal.position.set(.16, .11, .06); cal.rotation.z = -.6; g.add(cal);
+      const spokes = new T.Group();
+      for (let i = 0; i < 10; i++) { const h = new T.Group(); h.rotation.z = i * Math.PI / 5; const sp = new T.Mesh(new T.BoxGeometry(.042, .24, .03), i % 2 ? gun : chrome); sp.position.set(0, .155, 0); sp.rotation.z = .12; h.add(sp); spokes.add(h); }
+      spokes.position.z = .11; g.add(spokes);
+      const hub = new T.Mesh(new T.CylinderGeometry(.08, .08, .07, 32), gun); hub.rotation.x = Math.PI / 2; hub.position.z = .12; g.add(hub);
+      const cap = new T.Mesh(new T.CylinderGeometry(.045, .045, .075, 24), redM); cap.rotation.x = Math.PI / 2; cap.position.z = .125; g.add(cap);
+      const lip = new T.Mesh(new T.TorusGeometry(.297, .018, 12, 72), chrome); lip.position.z = .12; g.add(lip);
+      return g;
+    }
+    [[-1.6, 1], [1.6, 1], [-1.6, -1], [1.6, -1]].forEach(([x, sd]) => { const w = wheel(); w.position.set(x, .22, sd * .8); if (sd < 0) w.rotation.y = Math.PI; car.add(w); });
+    car.traverse(o => { if (o.isMesh) o.castShadow = true; });
+
+    /* Spray arch that travels along the car */
+    const arch = new T.Group(); turn.add(arch);
+    const steel = new T.MeshStandardMaterial({ color: L(0x24272c), metalness: .8, roughness: .3 });
+    const archGlow = new T.MeshStandardMaterial({ color: L(0xe3120b), emissive: L(0xe3120b), emissiveIntensity: 3 });
+    [-1, 1].forEach(sd => {
+      const p = new T.Mesh(new T.BoxGeometry(.13, 2.35, .13), steel); p.position.set(0, .98, sd * 1.55); arch.add(p);
+      const g = new T.Mesh(new T.BoxGeometry(.035, 2.1, .035), archGlow); g.position.set(0, 1, sd * 1.47); arch.add(g);
+      for (let i = 0; i < 6; i++) { const n = new T.Mesh(new T.CylinderGeometry(.02, .035, .09, 10), chrome); n.rotation.x = Math.PI / 2 * sd; n.position.set(0, .2 + i * .36, sd * 1.43); arch.add(n); }
+    });
+    const beam = new T.Mesh(new T.BoxGeometry(.13, .13, 3.23), steel); beam.position.y = 2.16; arch.add(beam);
+    const topGlow = new T.Mesh(new T.BoxGeometry(.035, .035, 2.95), archGlow); topGlow.position.y = 2.08; arch.add(topGlow);
+    const archLight = new T.PointLight(L(0xe3120b), 0, 4); archLight.position.set(0, 1.2, 0); arch.add(archLight);
+    arch.visible = false;
+
+    /* Paint mist particles */
+    const soft = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.4, 'rgba(255,255,255,.5)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new T.CanvasTexture(c); })();
+    const MN = 600, mpos = new Float32Array(MN * 3), mvel = new Float32Array(MN * 3), mlife = new Float32Array(MN);
+    const mgeo = new T.BufferGeometry(); mgeo.setAttribute('position', new T.BufferAttribute(mpos, 3));
+    const mistMat = new T.PointsMaterial({ size: .09, map: soft, transparent: true, opacity: .55, depthWrite: false, color: L(0xe3120b) });
+    const mist = new T.Points(mgeo, mistMat); turn.add(mist);
+    for (let i = 0; i < MN; i++) mpos[i * 3 + 1] = -50;
+    /* Dust motes in the booth light */
+    const DN = 220, dpos = new Float32Array(DN * 3);
+    for (let i = 0; i < DN; i++) { dpos[i * 3] = (Math.random() - .5) * 12; dpos[i * 3 + 1] = Math.random() * 4; dpos[i * 3 + 2] = (Math.random() - .5) * 9; }
+    const dgeo = new T.BufferGeometry(); dgeo.setAttribute('position', new T.BufferAttribute(dpos, 3));
+    world.add(new T.Points(dgeo, new T.PointsMaterial({ size: .035, map: soft, transparent: true, opacity: .45, depthWrite: false, blending: T.AdditiveBlending, color: L(0xfff1dc) })));
+
+    /* Sweep state */
+    const S0 = -3.3, S1 = 3.3, DUR = 3.6;
+    let s = S0, sweeping = false, sweepT = 0, current = null, pending = null;
+    applyPaint(matA, primer); applyPaint(matB, primer);
+    function start(from, to, showDamage) {
+      applyPaint(matA, from); applyPaint(matB, to); pending = to;
+      damage.visible = showDamage; s = S0; sweepT = 0; sweeping = true; arch.visible = true;
+      const tint = L(to.hex).lerp(new T.Color(1, 1, 1), to.hex < 0x303030 ? .55 : .15);
+      archGlow.color.copy(tint); archGlow.emissive.copy(tint); archLight.color.copy(tint); mistMat.color.copy(tint);
+      setStatus('painting', (showDamage ? 'Repairing & painting · ' : 'Respraying · ') + to.name);
+      swBtns.forEach(b => b.disabled = true);
+    }
+    function finish() {
+      sweeping = false; current = pending; s = S1; arch.visible = false; archLight.intensity = 0;
+      setStatus('done', 'Showroom finish · ' + current.name); swBtns.forEach(b => b.disabled = false);
+    }
+    const api = {
+      busy: () => sweeping,
+      respray: to => { if (!current) return; start(current, to, false); },
+      repair: to => start(primer, to, true),
+    };
+    if (reduce) { applyPaint(matB, chosen); current = chosen; s = S1; damage.visible = false; setStatus('done', 'Showroom finish · ' + chosen.name); }
+    else { setStatus('', 'Bodywork & primer'); setTimeout(() => api.repair(chosen), 1600); }
+
+    /* Interaction */
+    let zoom = 1, rotY = .55, vel = 0, dragging = false, lastX = 0, mx = 0, my = 0, t = 0, intro = 0, visible = true, spinTouched = false;
+    const cvs = renderer.domElement, tip = $('#spinTip');
+    cvs.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; cvs.setPointerCapture(e.pointerId); if (!spinTouched) { spinTouched = true; tip.classList.add('gone'); } });
+    addEventListener('pointermove', e => {
+      const r = cvs.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5;
+      if (dragging) { const d = (e.clientX - lastX) * .008; rotY += d; vel = d; lastX = e.clientX; }
+    });
+    const end = () => { dragging = false; }; cvs.addEventListener('pointerup', end); cvs.addEventListener('pointercancel', end);
+
+    const resize = () => {
+      const w = host.clientWidth, h = host.clientHeight; renderer.setSize(w, h, false);
+      camera.aspect = w / h; const wide = innerWidth > 1000;
+      camera.fov = wide ? 27 : 30; zoom = wide ? 1 : (w / h < 1.3 ? .74 : .8);
+      if (wide) camera.setViewOffset(w, h, -w * .15, h * .03, w, h); else camera.clearViewOffset();
+      camera.updateProjectionMatrix();
+    };
+    resize(); addEventListener('resize', resize);
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(host);
+
+    const clock = new T.Clock(), ease = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    function frame() {
+      requestAnimationFrame(frame);
+      const dt = Math.min(clock.getDelta(), .05); if (!visible) return;
+      t += dt; intro = Math.min(intro + dt * .6, 1); const ie = 1 - Math.pow(1 - intro, 3);
+      if (!dragging) { vel *= .94; rotY += vel + (reduce ? 0 : dt * .09); }
+      turn.rotation.y = rotY + (1 - ie) * -1.2 + (reduce ? 0 : Math.sin(t * .35) * .06);
+      world.position.y = (1 - ie) * -.4;
+      camera.position.set(camBase.x * zoom + mx * .7, camBase.y * zoom - my * .5, camBase.z * zoom); camera.lookAt(target);
+
+      if (sweeping) {
+        sweepT += dt / DUR; const k = ease(Math.min(sweepT, 1)); s = S0 + (S1 - S0) * k;
+        arch.position.x = s; archLight.intensity = 2.5 * Math.sin(Math.PI * Math.min(sweepT, 1));
+        if (sweepT >= 1) finish();
       }
+      world.updateMatrixWorld();
+      nx.set(1, 0, 0); planeA.set(nx, -s).applyMatrix4(car.matrixWorld);
+      nx.set(-1, 0, 0); planeB.set(nx, s).applyMatrix4(car.matrixWorld);
 
-      // Nav background + mobile dock
-      const nav = document.getElementById('nav'), dock = document.getElementById('dock');
-      const onScroll = () => {
-        nav.classList.toggle('solid', scrollY > 40);
-        dock.classList.toggle('show', scrollY > innerHeight * .6);
-      };
-      addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-      // Scroll reveals
-      const io = new IntersectionObserver(es => es.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      }), { threshold: .2 });
-      document.querySelectorAll('.reveal, #road, .rating, #menu').forEach(el => io.observe(el));
-
-      // Vehicle size toggle
-      const btns = [...document.querySelectorAll('.sizes button')], pill = document.getElementById('pill');
-      const movePill = b => { pill.style.width = b.offsetWidth + 'px'; pill.style.transform = `translateX(${b.offsetLeft - 5}px)`; };
-      btns.forEach(b => b.addEventListener('click', () => {
-        btns.forEach(x => x.setAttribute('aria-pressed', x === b));
-        movePill(b);
-        const m = parseFloat(b.dataset.m);
-        document.querySelectorAll('.price').forEach((p, i) => {
-          p.classList.remove('flip'); void p.offsetWidth; p.classList.add('flip');
-          setTimeout(() => { p.innerHTML = `<small>from</small>£${Math.round(p.dataset.base * m)}`; }, 200 + i * 20);
-        });
-      }));
-      const setPill = () => movePill(btns.find(b => b.getAttribute('aria-pressed') === 'true'));
-      document.fonts ? document.fonts.ready.then(setPill) : setPill();
-      addEventListener('resize', setPill);
-
-      // Before / after slider
-      const stage = document.getElementById('stage'), range = document.getElementById('baRange');
-      range.addEventListener('input', () => stage.style.setProperty('--pos', range.value + '%'));
-      // Gentle nudge the first time it comes into view
-      if (!reduce) {
-        const nudge = new IntersectionObserver(([e]) => {
-          if (!e.isIntersecting) return; nudge.disconnect();
-          let t0; const run = t => {
-            t0 ??= t; const k = Math.min((t - t0) / 1600, 1);
-            const v = 50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k);
-            stage.style.setProperty('--pos', v + '%'); range.value = v;
-            if (k < 1) requestAnimationFrame(run);
-          };
-          requestAnimationFrame(run);
-        }, { threshold: .6 });
-        nudge.observe(stage);
+      for (let i = 0; i < MN; i++) {
+        const k3 = i * 3;
+        if (mlife[i] > 0) { mlife[i] -= dt * 1.4; mpos[k3] += mvel[k3] * dt; mpos[k3 + 1] += mvel[k3 + 1] * dt; mpos[k3 + 2] += mvel[k3 + 2] * dt; if (Math.abs(mpos[k3 + 2]) < .95 && mpos[k3 + 1] < 1.5) mlife[i] = 0; }
+        else if (sweeping && Math.random() < .5) {
+          const sd = Math.random() < .5 ? -1 : 1, top = Math.random() < .25;
+          mpos[k3] = s + (Math.random() - .5) * .15; mpos[k3 + 1] = top ? 2.05 : .2 + Math.random() * 1.8; mpos[k3 + 2] = top ? (Math.random() - .5) * 2.6 : sd * 1.42;
+          mvel[k3] = (Math.random() - .5) * .4; mvel[k3 + 1] = top ? -1.5 - Math.random() : (Math.random() - .5) * .4; mvel[k3 + 2] = top ? 0 : -sd * (1.2 + Math.random() * 1.2);
+          mlife[i] = .5 + Math.random() * .5;
+        } else mpos[k3 + 1] = -50;
       }
+      mgeo.attributes.position.needsUpdate = true;
+      for (let i = 0; i < DN; i++) { dpos[i * 3 + 1] += dt * .06; dpos[i * 3] += Math.sin(t + i) * dt * .02; if (dpos[i * 3 + 1] > 4) dpos[i * 3 + 1] = 0; }
+      dgeo.attributes.position.needsUpdate = true;
+      renderer.render(scene, camera);
+    }
+    frame();
+    host.classList.add('has3d');
+    return api;
+  }
 
-
-      // 3D tilt on panels
-      if (!reduce && matchMedia('(hover:hover)').matches) {
-        document.querySelectorAll('[data-tilt]').forEach(el => {
-          const max = parseFloat(el.dataset.tilt) || 6;
-          el.addEventListener('pointermove', e => {
-            const r = el.getBoundingClientRect();
-            const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
-            el.style.transform = `perspective(1100px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg)`;
-            el.style.setProperty('--gx', (px + .5) * 100 + '%'); el.style.setProperty('--gy', (py + .5) * 100 + '%');
-          });
-          el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-        });
-      }
-
-      // ---------- 3D car wash scene ----------
-      const host = document.getElementById('car3d');
-      if (window.THREE && host) try { buildScene(); } catch (err) { console.warn('3D unavailable', err); }
-
-      function buildScene() {
-        const T = THREE;
-        const renderer = new T.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-        renderer.outputEncoding = T.sRGBEncoding;
-        renderer.toneMapping = T.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.15;
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = T.PCFSoftShadowMap;
-        host.prepend(renderer.domElement);
-
-        const scene = new T.Scene();
-        const camera = new T.PerspectiveCamera(30, 1, .1, 100);
-        const camBase = new T.Vector3(7.9, 3.7, 9.0), target = new T.Vector3(0, .6, 0);
-
-        // Reflections: a tiny "car wash tunnel" rendered into an environment map
-        const pmrem = new T.PMREMGenerator(renderer);
-        const env = new T.Scene(); env.background = new T.Color(0x06121f).convertSRGBToLinear();
-        const panel = (w, h, hex, k, pos, rot) => {
-          const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: new T.Color(hex).convertSRGBToLinear().multiplyScalar(k), side: T.DoubleSide }));
-          m.position.set(...pos); m.rotation.set(...rot); env.add(m);
-        };
-        for (let i = -2; i <= 2; i++) panel(.5, 10, 0xffffff, 3, [i * 2.2, 6, 0], [Math.PI / 2, 0, 0]);
-        panel(10, 2, 0x3fa7f5, 2, [0, 2, -9], [0, 0, 0]);
-        panel(8, 2, 0xf5c451, 1.5, [0, 2, 9], [0, Math.PI, 0]);
-        panel(6, 3, 0x9db6cc, 1, [9, 2, 0], [0, -Math.PI / 2, 0]);
-        panel(30, 30, 0x07121e, 1, [0, -3, 0], [Math.PI / 2, 0, 0]);
-        scene.environment = pmrem.fromScene(env, .03).texture;
-
-        scene.add(new T.HemisphereLight(0xcfe8ff, 0x0a1f33, .6));
-        const key = new T.DirectionalLight(0xffffff, 1.9);
-        key.position.set(3, 9, 5); key.castShadow = true;
-        key.shadow.mapSize.set(2048, 2048);
-        Object.assign(key.shadow.camera, { left: -4.5, right: 4.5, top: 4.5, bottom: -4.5, near: 1, far: 20 });
-        key.shadow.radius = 5; key.shadow.bias = -.0005;
-        scene.add(key);
-        const blueL = new T.PointLight(0x3fa7f5, 2.5, 12); blueL.position.set(-4.5, 2.5, -3); scene.add(blueL);
-        const goldL = new T.PointLight(0xf5c451, 1.2, 10); goldL.position.set(4, 1.2, 4.5); scene.add(goldL);
-
-        const world = new T.Group(); scene.add(world);
-        const car = new T.Group(); world.add(car);
-
-        // Materials
-        const paint = new T.MeshPhysicalMaterial({ color: 0x1f78d6, metalness: .5, roughness: .28, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: 1.2 });
-        const glass = new T.MeshPhysicalMaterial({ color: 0x0a1726, metalness: .3, roughness: .04, clearcoat: 1, envMapIntensity: 1.8 });
-        const chrome = new T.MeshStandardMaterial({ color: 0xe6eef5, metalness: 1, roughness: .15 });
-        const dark = new T.MeshStandardMaterial({ color: 0x0c1520, metalness: .4, roughness: .55 });
-        const tyreM = new T.MeshStandardMaterial({ color: 0x121519, roughness: .9 });
-        const wax = new T.MeshStandardMaterial({ color: 0xf5c451, roughness: .35, metalness: .2 });
-        const glow = (hex, i) => new T.MeshStandardMaterial({ color: hex, emissive: hex, emissiveIntensity: i });
-
-        // Body: the same side profile as the site's illustration, extruded with a soft bevel
-        const P = (x, y) => [(x - 310) / 100, (230 - y) / 100];
-        const shape = cmds => {
-          const s = new T.Shape();
-          cmds.forEach(([op, ...a]) => {
-            const p = []; for (let i = 0; i < a.length; i += 2) p.push(...P(a[i], a[i + 1]));
-            op === 'M' ? s.moveTo(...p) : op === 'L' ? s.lineTo(...p) : s.bezierCurveTo(...p);
-          });
-          return s;
-        };
-        const extrude = (sh, depth, bevel, mat) => {
-          const g = new T.ExtrudeGeometry(sh, { depth, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel * .8, bevelSegments: 8, curveSegments: 40 });
-          g.translate(0, 0, -depth / 2);
-          return new T.Mesh(g, mat);
-        };
-        const bodyShape = shape([['M', 40, 196], ['C', 36, 168, 52, 150, 92, 144], ['L', 176, 132], ['L', 490, 128], ['C', 510, 131, 530, 134, 546, 138],
-        ['C', 572, 143, 582, 165, 580, 196], ['C', 580, 206, 574, 214, 566, 216], ['L', 524, 216], ['L', 524, 208],
-        ['C', 524, 178, 500, 154, 470, 154], ['C', 440, 154, 416, 178, 416, 208], ['L', 416, 216], ['L', 204, 216], ['L', 204, 208],
-        ['C', 204, 178, 180, 154, 150, 154], ['C', 120, 154, 96, 178, 96, 208], ['L', 96, 216], ['L', 54, 216], ['C', 46, 216, 40, 206, 40, 196]]);
-        car.add(extrude(bodyShape, 1.66, .14, paint));
-
-        const cabin = extrude(shape([['M', 186, 136], ['C', 214, 96, 252, 80, 304, 78], ['L', 392, 78], ['C', 430, 80, 456, 100, 486, 134], ['L', 186, 136]]), 1.28, .13, glass);
-        car.add(cabin);
-        // Roof rails + side sill trims
-        [-1, 1].forEach(sd => {
-          const rail = new T.Mesh(new T.BoxGeometry(1.5, .035, .04), chrome); rail.position.set(.36, 1.66, sd * .62); car.add(rail);
-          const sill = new T.Mesh(new T.BoxGeometry(3.1, .06, .03), dark); sill.position.set(0, .12, sd * .98); car.add(sill);
-          const belt = new T.Mesh(new T.BoxGeometry(2.9, .02, .02), chrome); belt.position.set(.1, .98, sd * .8); car.add(belt);
-        });
-        // Mirrors, handles, lights, grille, plates
-        const box = (w, h, d, mat, x, y, z, rz = 0) => { const m = new T.Mesh(new T.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.rotation.z = rz; car.add(m); return m; };
-        [-1, 1].forEach(sd => {
-          box(.2, .11, .16, paint, 1.62, 1.02, sd * 1.0);
-          box(.04, .09, .02, glass, 1.53, 1.02, sd * 1.08);
-          box(.18, .03, .02, chrome, .55, .82, sd * .97);
-          box(.18, .03, .02, chrome, -.75, .82, sd * .97);
-          box(.06, .11, .44, glow(0xfff3c2, 2.4), 2.62, .72, sd * .55, -.35);
-          box(.03, .025, .5, glow(0xbfe6ff, 3), 2.63, .63, sd * .55, -.35);
-          box(.06, .12, .42, glow(0xff3b3b, 2), -2.66, .7, sd * .56, .3);
-        });
-        box(.05, .03, .7, glow(0xff3b3b, 1.4), -2.69, .62, 0, .3);
-        box(.08, .2, 1.0, dark, 2.73, .36, 0);
-        for (let i = 0; i < 4; i++) box(.02, .015, .92, chrome, 2.775, .29 + i * .045, 0);
-        box(.03, .12, .5, new T.MeshStandardMaterial({ color: 0xf2f2f2, roughness: .4 }), 2.78, .12, 0);
-        box(.03, .12, .5, wax, -2.77, .4, 0);
-
-        // Wheels
-        function wheel() {
-          const g = new T.Group();
-          const tyre = new T.Mesh(new T.TorusGeometry(.31, .1, 24, 64), tyreM); tyre.scale.z = 1.55; g.add(tyre);
-          const barrel = new T.Mesh(new T.CylinderGeometry(.3, .3, .26, 48, 1, true), dark); barrel.rotation.x = Math.PI / 2; g.add(barrel);
-          const disc = new T.Mesh(new T.CylinderGeometry(.22, .22, .03, 48), new T.MeshStandardMaterial({ color: 0x6a7178, metalness: .9, roughness: .45 }));
-          disc.rotation.x = Math.PI / 2; disc.position.z = .02; g.add(disc);
-          const cal = new T.Mesh(new T.BoxGeometry(.11, .2, .07), wax); cal.position.set(.15, .1, .06); cal.rotation.z = -.55; g.add(cal);
-          const spokes = new T.Group();
-          for (let i = 0; i < 5; i++) {
-            const h = new T.Group(); h.rotation.z = i * Math.PI * 2 / 5;
-            const sp = new T.Mesh(new T.BoxGeometry(.075, .24, .035), chrome); sp.position.y = .15; h.add(sp);
-            const sp2 = sp.clone(); sp2.rotation.z = .35; sp2.position.set(-.04, .15, -.005); h.add(sp2);
-            spokes.add(h);
-          }
-          spokes.position.z = .11; g.add(spokes);
-          const hub = new T.Mesh(new T.CylinderGeometry(.075, .075, .07, 32), chrome); hub.rotation.x = Math.PI / 2; hub.position.z = .12; g.add(hub);
-          const cap = new T.Mesh(new T.CylinderGeometry(.04, .04, .075, 24), wax); cap.rotation.x = Math.PI / 2; cap.position.z = .125; g.add(cap);
-          const lip = new T.Mesh(new T.TorusGeometry(.295, .02, 12, 64), chrome); lip.position.z = .12; g.add(lip);
-          return g;
-        }
-        [[-1.6, 1], [1.6, 1], [-1.6, -1], [1.6, -1]].forEach(([x, sd]) => {
-          const w = wheel(); w.position.set(x, .22, sd * .8); if (sd < 0) w.rotation.y = Math.PI; car.add(w);
-        });
-        car.traverse(o => { if (o.isMesh) o.castShadow = true; });
-
-        // Platform with glowing edge
-        const deck = new T.Mesh(new T.CylinderGeometry(3.4, 3.5, .16, 128), new T.MeshPhysicalMaterial({ color: 0x10263d, metalness: .5, roughness: .25, clearcoat: 1, envMapIntensity: .9 }));
-        deck.position.y = -.27; deck.receiveShadow = true; world.add(deck);
-        const ring = new T.Mesh(new T.TorusGeometry(3.42, .03, 12, 160), glow(0x3fa7f5, 2.5)); ring.rotation.x = Math.PI / 2; ring.position.y = -.19; world.add(ring);
-        const ring2 = new T.Mesh(new T.TorusGeometry(3.0, .008, 8, 160), glow(0x3fa7f5, 1)); ring2.rotation.x = Math.PI / 2; ring2.position.y = -.185; world.add(ring2);
-
-        // Wash gantry that travels along the car
-        const gantry = new T.Group(); world.add(gantry);
-        const steel = new T.MeshStandardMaterial({ color: 0x1b2f45, metalness: .75, roughness: .3 });
-        [-1, 1].forEach(sd => {
-          const post = new T.Mesh(new T.BoxGeometry(.2, 2.55, .2), steel); post.position.set(0, 1.07, sd * 1.6); gantry.add(post);
-          for (let i = 0; i < 5; i++) { const st = new T.Mesh(new T.BoxGeometry(.21, .12, .21), wax); st.position.set(0, .1 + i * .42, sd * 1.6); gantry.add(st); }
-          const brush = new T.Mesh(new T.CylinderGeometry(.16, .16, 1.9, 24, 6), new T.MeshStandardMaterial({ color: 0x3fa7f5, roughness: .9, transparent: true, opacity: .85 }));
-          brush.position.set(0, .95, sd * 1.32); brush.userData.brush = true; gantry.add(brush);
-        });
-        const beam = new T.Mesh(new T.BoxGeometry(.32, .26, 3.5), steel); beam.position.y = 2.38; gantry.add(beam);
-        const led = new T.Mesh(new T.BoxGeometry(.06, .03, 3.1), glow(0x9fd4ff, 3)); led.position.set(.17, 2.3, 0); gantry.add(led);
-        for (let i = -3; i <= 3; i++) { const n = new T.Mesh(new T.CylinderGeometry(.025, .04, .1, 12), chrome); n.position.set(0, 2.2, i * .4); gantry.add(n); }
-        gantry.traverse(o => { if (o.isMesh) o.castShadow = true; });
-
-        // Foam on the roof and bonnet
-        const FN = 110, foam = new T.InstancedMesh(new T.SphereGeometry(1, 16, 12), new T.MeshStandardMaterial({ color: 0xffffff, roughness: .5, emissive: 0x000000, emissiveIntensity: 0 }), FN);
-        const fd = [], dummy = new T.Object3D();
-        for (let i = 0; i < FN; i++) {
-          const roof = i < FN * .62;
-          const x = roof ? -.35 + Math.random() * 1.3 : 1.85 + Math.random() * .6;
-          const y = roof ? 1.66 : 1.1 - (x - 1.85) * .18;
-          fd.push({ x, y, z: (Math.random() - .5) * (roof ? 1.15 : 1.4), r: .05 + Math.random() * .11, ph: Math.random() * 6 });
-        }
-        car.add(foam);
-
-        // Water drops
-        const DN = 700, dpos = new Float32Array(DN * 3), dvel = new Float32Array(DN);
-        const cv = document.createElement('canvas'); cv.width = cv.height = 64;
-        const cx = cv.getContext('2d'), gr = cx.createRadialGradient(32, 32, 0, 32, 32, 32);
-        gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.35, 'rgba(190,230,255,.8)'); gr.addColorStop(1, 'rgba(160,210,255,0)');
-        cx.fillStyle = gr; cx.fillRect(0, 0, 64, 64);
-        const dgeo = new T.BufferGeometry(); dgeo.setAttribute('position', new T.BufferAttribute(dpos, 3));
-        const drops = new T.Points(dgeo, new T.PointsMaterial({ size: .07, map: new T.CanvasTexture(cv), transparent: true, depthWrite: false, blending: T.AdditiveBlending, color: 0xaedcff }));
-        world.add(drops);
-        let gx = 0;
-        const spawn = (i, anyY) => {
-          dpos[i * 3] = gx + (Math.random() - .5) * .3;
-          dpos[i * 3 + 1] = anyY ? Math.random() * 2.2 : 2.15 - Math.random() * .1;
-          dpos[i * 3 + 2] = (Math.random() - .5) * 2.8;
-          dvel[i] = 2.5 + Math.random() * 2.5;
-        };
-        for (let i = 0; i < DN; i++) spawn(i, true);
-        const surface = (x, z) => Math.abs(z) < .95 ? (x > -.6 && x < 1.1 ? 1.62 : (x > -2.7 && x < 2.75 ? 1.02 : -.18)) : -.18;
-
-        // Floating soap bubbles
-        const bubMat = new T.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0, metalness: .1, transparent: true, opacity: .2, clearcoat: 1, envMapIntensity: 3, depthWrite: false });
-        const bubs = [];
-        for (let i = 0; i < 16; i++) {
-          const b = new T.Mesh(new T.SphereGeometry(.08 + Math.random() * .16, 24, 16), bubMat);
-          b.userData = { a: Math.random() * 6.28, rad: 2.2 + Math.random() * 1.6, sp: .15 + Math.random() * .25, y: Math.random() * 3.5 };
-          bubs.push(b); world.add(b);
-        }
-
-        // Interaction
-        let zoom = 1, rotY = .35, vel = 0, dragging = false, lastX = 0, mx = 0, my = 0, t = 0, intro = 0, visible = true;
-        const hint = document.getElementById('spinHint');
-        const cvs = renderer.domElement;
-        cvs.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; cvs.setPointerCapture(e.pointerId); hint.classList.add('gone'); });
-        cvs.addEventListener('pointermove', e => {
-          const r = cvs.getBoundingClientRect();
-          mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5;
-          if (dragging) { const d = (e.clientX - lastX) * .008; rotY += d; vel = d; lastX = e.clientX; }
-        });
-        const end = () => { dragging = false; };
-        cvs.addEventListener('pointerup', end); cvs.addEventListener('pointercancel', end);
-        cvs.addEventListener('pointerleave', () => { mx = my = 0; });
-
-        const resize = () => {
-          const w = host.clientWidth, h = host.clientHeight;
-          renderer.setSize(w, h, false); camera.aspect = w / h;
-          camera.fov = w / h < 1 ? 34 : 30; zoom = w / h < 1 ? 1.02 : 1; camera.updateProjectionMatrix();
-        };
-        resize(); addEventListener('resize', resize);
-        new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(host);
-
-        const clock = new T.Clock();
-        const speed = reduce ? 0 : 1;
-        function frame() {
-          requestAnimationFrame(frame);
-          const dt = Math.min(clock.getDelta(), .05);
-          if (!visible) return;
-          t += dt * speed; intro = Math.min(intro + dt * .7, 1);
-          const ease = 1 - Math.pow(1 - intro, 3);
-          if (!dragging) { vel *= .94; rotY += vel + dt * .16 * speed; }
-          world.rotation.y = rotY + (1 - ease) * -1.4 + scrollY * .0015;
-          world.scale.setScalar(.8 + .2 * ease);
-          camera.position.set(camBase.x * zoom + mx * .8, camBase.y * zoom - my * .6, camBase.z * zoom);
-          camera.lookAt(target);
-
-          gx = Math.sin(t * .45) * 2.3; gantry.position.x = gx;
-          gantry.children.forEach(c => { if (c.userData.brush) c.rotation.y += dt * 8 * speed; });
-
-          for (let i = 0; i < FN; i++) {
-            const f = fd[i], s = f.r * (1 + .1 * Math.sin(t * 2.2 + f.ph));
-            dummy.position.set(f.x, f.y + s * .35, f.z); dummy.scale.setScalar(s); dummy.updateMatrix(); foam.setMatrixAt(i, dummy.matrix);
-          }
-          foam.instanceMatrix.needsUpdate = true;
-
-          for (let i = 0; i < DN; i++) {
-            const k = i * 3;
-            dpos[k + 1] -= dvel[i] * dt * speed; dvel[i] += 9 * dt;
-            if (dpos[k + 1] < surface(dpos[k], dpos[k + 2])) spawn(i);
-          }
-          dgeo.attributes.position.needsUpdate = true;
-
-          bubs.forEach(b => {
-            const u = b.userData; u.y += dt * u.sp * speed; u.a += dt * .12 * speed; if (u.y > 4) u.y = -.1;
-            b.position.set(Math.cos(u.a) * u.rad, u.y, Math.sin(u.a) * u.rad);
-          });
-          renderer.render(scene, camera);
-        }
-        // Colours are written as normal hex (sRGB); convert once so the render matches the brand palette
-        const done = new Set();
-        scene.traverse(o => {
-          if (o.isLight && o.color) o.color.convertSRGBToLinear();
-          if (o.isHemisphereLight) o.groundColor.convertSRGBToLinear();
-          [].concat(o.material || []).forEach(m => {
-            if (done.has(m)) return; done.add(m);
-            m.color && m.color.convertSRGBToLinear(); m.emissive && m.emissive.convertSRGBToLinear();
-          });
-        });
-        frame();
-        host.classList.add('has3d');
-      }
-
-      document.getElementById('yr').textContent = new Date().getFullYear();
-    })();
-  </script>
+  $('#yr').textContent = new Date().getFullYear();
+})();
+</script>
 </body>
-
 </html>
